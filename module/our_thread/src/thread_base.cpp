@@ -17,7 +17,7 @@ void* ThreadBase::func(void* arg) {
 }
 
 
-int ThreadBase::Start() {
+int32_t ThreadBase::Start() {
   if (pthread_create(&pid_, NULL, func, (void*)this) != 0) {
     return ThreadStartFailed;
   }
@@ -25,21 +25,21 @@ int ThreadBase::Start() {
   return ThreadNoError;
 }
 
-int ThreadBase::Join() {
+int32_t ThreadBase::Join() {
   if (pthread_join(pid_, NULL) != 0) {
     return ThreadJoinFailed;
   }
   return ThreadNoError;
 }
 
-int ThreadBase::Detach() {
+int32_t ThreadBase::Detach() {
   if (pthread_detach(pid_) != 0) {
     return ThreadDetachFailed;
   }
   return ThreadNoError;
 }
 
-int ThreadBase::Stop() {
+int32_t ThreadBase::Stop() {
   isAlive_ = false;
   return ThreadNoError;
 }

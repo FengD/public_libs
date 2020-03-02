@@ -1,13 +1,10 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
 
-#ifndef _THREAD_BASE_H_
-#define _THREAD_BASE_H_
+#ifndef _MODULE_OUR_THREAD_THREAD_BASE_H_
+#define _MODULE_OUR_THREAD_THREAD_BASE_H_
 
 #include <pthread.h>
 #include <signal.h>
@@ -17,9 +14,9 @@ namespace itd {
 class ThreadBase {
   enum ThreadStat {
     ThreadStartFailed = -3,
-    ThreadJoinFailed,
-    ThreadDetachFailed,
-    ThreadNoError
+    ThreadJoinFailed = -2,
+    ThreadDetachFailed = -1,
+    ThreadNoError = 0
   };
  private:
   static void* func(void* arg);
@@ -28,10 +25,10 @@ class ThreadBase {
   std::string pName_;
 
  public:
-  int Start();
-  int Join();
-  int Detach();
-  int Stop();
+  int32_t Start();
+  int32_t Join();
+  int32_t Detach();
+  int32_t Stop();
 
   pthread_t getPid();
   void setPName(std::string pName);
@@ -43,4 +40,4 @@ class ThreadBase {
 };
 } // namespace itd
 
-#endif // _THREAD_BASE_H_
+#endif  // _MODULE_OUR_THREAD_THREAD_BASE_H_

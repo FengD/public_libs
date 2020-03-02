@@ -11,22 +11,22 @@
 namespace itd {
 
 ThreadMutex::ThreadMutex() {
-  int r = pthread_mutex_init(&mutex_,0);
+  int32_t r = pthread_mutex_init(&mutex_,0);
   if(r != 0) { }
 }
 
 ThreadMutex::~ThreadMutex() {
-  int r = pthread_mutex_destroy(&mutex_);
+  int32_t r = pthread_mutex_destroy(&mutex_);
   if(r != 0) { }
 }
 
 void ThreadMutex::Lock() {
-  int r = pthread_mutex_lock(&mutex_);
+  int32_t r = pthread_mutex_lock(&mutex_);
   if(r != 0) { }
 }
 
 void ThreadMutex::Unlock() {
-  int r = pthread_mutex_unlock(&mutex_);
+  int32_t r = pthread_mutex_unlock(&mutex_);
   if(r != 0) { }
 }
 

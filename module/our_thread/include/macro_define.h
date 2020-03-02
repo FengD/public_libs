@@ -1,13 +1,10 @@
-/* mode: C++ -*-
-*
-*  Copyright (C) 2019 Feng DING, Hirain
-*
-*  License: Modified BSD Software License Agreement
-*
-*/
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
 
-#ifndef _MACRO_DEFINE_H_
-#define _MACRO_DEFINE_H_
+#ifndef _MODULE_OUR_THREAD_MACRO_DEFINE_H_
+#define _MODULE_OUR_THREAD_MACRO_DEFINE_H_
 
 // thread start and detach
 #define SDT(switch, thread)\
@@ -27,4 +24,4 @@ if (switch) {\
   LOGINFO("%s start: %d\n", thread->getPName().c_str(), thread->Stop());\
 }
 
-#endif // _MACRO_DEFINE_H_
+#endif  // _MODULE_OUR_THREAD_MACRO_DEFINE_H_

@@ -1,13 +1,10 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
 
-#ifndef _THREAD_MUTEX_H_
-#define _THREAD_MUTEX_H_
+#ifndef _MODULE_OUR_THREAD_THREAD_MUTEX_H_
+#define _MODULE_OUR_THREAD_THREAD_MUTEX_H_
 
 #include <pthread.h>
 
@@ -34,4 +31,4 @@ class EnterCriticalSection {
 
 } // namespace itd
 
-#endif // _THREAD_MUTEX_H_
+#endif  // _MODULE_OUR_THREAD_THREAD_MUTEX_H_
