@@ -1,6 +1,7 @@
 # Description
-
-This project is a common library.
+基础库；
+可按照vsdk的使用方式在s32v工程中直接执行；
+也可使用cmake在x86下执行。
 
 # Change Log
 
