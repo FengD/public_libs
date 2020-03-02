@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: udp sender
 
-#ifndef _UDP_SENDER_H_
-#define _UDP_SENDER_H_
+#ifndef _MODULE_COMMUNICATION_UDP_SENDER_H_
+#define _MODULE_COMMUNICATION_UDP_SENDER_H_
 
 #include <stdlib.h>
 #include <sys/types.h>
@@ -41,4 +41,4 @@ class UdpSender {
 }  // namespace communication
 }  // namespace itd
 
-#endif // _UDP_SENDER_H_
+#endif  // _MODULE_COMMUNICATION_UDP_SENDER_H_
