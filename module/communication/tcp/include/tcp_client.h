@@ -18,6 +18,7 @@
 #include <netdb.h>
 #include <netdb.h>
 #include <vector>
+#include <stdint.h>
 
 namespace itd {
 namespace communication {

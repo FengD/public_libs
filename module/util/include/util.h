@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <string>
 #include <vector>
+#include <stdint.h>
 
 void calc_time_diff(const struct timespec *lo, const struct timespec *hi, struct timespec *diff);
 void printfTime(int32_t time);

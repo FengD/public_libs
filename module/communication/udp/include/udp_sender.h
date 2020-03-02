@@ -17,6 +17,7 @@
 #include <string.h>
 #include <sys/time.h>
 #include <string>
+#include <stdint.h>
 
 namespace itd {
 namespace communication {

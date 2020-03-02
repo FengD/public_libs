@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <string>
 #include <netinet/in.h>
+#include <stdint.h>
 
 namespace itd {
 namespace communication {
