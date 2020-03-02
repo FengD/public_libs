@@ -7,6 +7,7 @@
 #define _MODULE_OUR_THREAD_THREAD_MUTEX_H_
 
 #include <pthread.h>
+#include <stdint.h>
 
 namespace itd {
 

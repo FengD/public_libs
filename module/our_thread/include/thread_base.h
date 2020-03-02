@@ -9,6 +9,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <string>
+#include <stdint.h>
 
 namespace itd {
 class ThreadBase {
