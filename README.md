@@ -6,7 +6,7 @@
 # Change Log
 
 * Created by feng.ding @Hirain 20200302
-- Create 4 module "common", "communication", "our_thread" and "util"
+- Create 5 module "common", "communication", "our_thread", "util" and "tools"
 
 ## Notice
 
