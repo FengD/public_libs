@@ -7,6 +7,14 @@
 #define _MODULE_COMMON_ERROR_CODE_H_
 
 enum CommunicationStatus {
+  ERR_CAN_CLOSE = -20,
+  ERR_CAN_OPEN = -19,
+  ERR_BIND = -18,
+  ERR_CAN_READ = -17,
+  ERR_CAN_WRITE = -16,
+  ERR_INTERFACEMTU = -15,
+  ERR_INTERFACE = -14,
+  ERR_IO = -13,
   CONNECT_ERROR = -12,
   UNKOWN_HOST_ERROR = -11,
   IP_EMPTY_ERROR = -10,
