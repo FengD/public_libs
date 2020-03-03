@@ -17,3 +17,10 @@ Thread
 | Version | Update | Contractor | Description | Remark |
 | ------ | ------- | :----: | --------| --------- |
 | V1.0.0 | 2020/03/02 |  丁丰  | 创建 | |
+
+## 依赖
+```
+yaml-cpp
+pthread
+tools/hlog
+```

@@ -31,10 +31,12 @@ ARM_LIB = libour_thread.a
 
 ARM_LIB_SRCS += thread_base.cpp
 ARM_LIB_SRCS += thread_mutex.cpp
+ARM_LIB_SRCS += thread_period.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../include
-ARM_INCS += -I../../util/include/
+ARM_INCS += -I../../util/include
+ARM_INCS += -I../../tools/hlog/include
 
 ARM_LDOPTS += -lpthread -lyaml-cpp
 

@@ -11,9 +11,10 @@ aux_source_directory(src SRCS)
 message(${SRCS})
 
 include_directories(
-  ../../common/include
+  ../common/include
   include
-  ../../util/include/
+  ../util/include
+  ../tools/hlog/include
 )
 
 add_library(module_our_thread ${SRCS})
