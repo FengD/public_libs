@@ -5,7 +5,6 @@ Socket Can Module
 # Change Log
 
 * Created by feng.ding @Hirain 20200302
-- 添加TCP Client
 
 ## Notice
 
