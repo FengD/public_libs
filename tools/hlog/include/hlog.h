@@ -32,11 +32,11 @@ private:
  static pthread_mutex_t mutex_;
  char p_log_buf_[2048];
 };
-#define LOGINIT(...) itd_lidar::HLog::Instance()->InitHLog(__VA_ARGS__);
-#define LOGINFO(...) itd_lidar::HLog::Instance()->HLogMsg(0, __VA_ARGS__);
-#define LOGWARNING(...) itd_lidar::HLog::Instance()->HLogMsg(1, __VA_ARGS__);
-#define LOGERROR(...) itd_lidar::HLog::Instance()->HLogMsg(2, __VA_ARGS__);
-#define LOGFATAL(...) itd_lidar::HLog::Instance()->HLogMsg(3, __VA_ARGS__);
+#define LOGINIT(...) itd::tools::HLog::Instance()->InitHLog(__VA_ARGS__);
+#define LOGINFO(...) itd::tools::HLog::Instance()->HLogMsg(0, __VA_ARGS__);
+#define LOGWARNING(...) itd::tools::HLog::Instance()->HLogMsg(1, __VA_ARGS__);
+#define LOGERROR(...) itd::tools::HLog::Instance()->HLogMsg(2, __VA_ARGS__);
+#define LOGFATAL(...) itd::tools::HLog::Instance()->HLogMsg(3, __VA_ARGS__);
 }  // namespace tools
 }  // namespace itd
 
