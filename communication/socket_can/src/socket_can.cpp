@@ -17,28 +17,13 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "socket_can.h"
+#include "socket_can_config.h"
+#include "socket_can_handler.h"
 #include "hlog.h"
 #include "error_code.h"
 
 namespace itd {
 namespace communication {
-
-class CanHandler {
- public:
-  int32_t fd;
-  int32_t ifindex;
-  bool fd_mode;
-};
-
-class CanConfig {
- public:
-  char *ifname;
-  int32_t loopback;
-  size_t mtu;
-  int32_t is_filter_set;
-  struct can_filter *rx_filter;
-  size_t rx_filter_len;
-};
 
 int32_t SocketCan::can_socket_cfg(struct CanHandler *hdl, struct CanConfig *cfg) {
   signal(SIGPIPE, SIG_IGN);
