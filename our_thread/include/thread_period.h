@@ -29,7 +29,7 @@ class ThreadPeriod : public ThreadBase {
   virtual ~ThreadPeriod();
   void Run();
   virtual void RunInPeriod() = 0;
-  virtual void SetParam(const YAML::Node &config) = 0;
+  virtual void SetParam(YAML::Node config) = 0;
 };
 }  // namespace itd
 
