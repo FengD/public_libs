@@ -66,7 +66,7 @@ void CanTxBase::LoadDbcs() {
   DbcAnalysis::getInstance()->analysisFiles();
 }
 
-void CanTxBase::packValue(const int64_t &id, const int32_t valueSize, const double *valueInput, Canmsg *msg) {
+void CanTxBase::packValue(const int64_t &id, const int32_t &valueSize, const double *valueInput, Canmsg *msg) {
   memset(msg->data, 0, 8 * sizeof(unsigned char));
   Message canMsgStruct = DbcAnalysis::getInstance()->getMessages()[id];
   packCanmsg(canMsgStruct, valueSize, valueInput, msg);

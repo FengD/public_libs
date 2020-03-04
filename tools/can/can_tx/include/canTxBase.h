@@ -27,7 +27,7 @@ class CanTxBase {
    // can channel
   int32_t channel_;
   std::string dbcsFolderPath_;
-  void packValue(const int64_t &id, const int32_t valueSize, const double *valueInput, Canmsg *msg);
+  void packValue(const int64_t &id, const int32_t &valueSize, const double *valueInput, Canmsg *msg);
   void copyFromCanmsg2CanFrame(const Canmsg &msg, struct can_frame *frame);
   int32_t ret_;
   communication::CanHandler *can_hdl_;
