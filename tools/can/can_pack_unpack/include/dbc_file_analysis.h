@@ -33,12 +33,10 @@ class DbcAnalysis {
   void getFactorOffsetFromStr(std::string str, Signal &s);
   void getMaxMinFromStr(std::string str, Signal &s);
   void getUnitFromStr(std::string str, Signal &s);
-  void analysisMessage(std::string line);
   std::map<long, Message> messages_;
   std::vector<std::string> files_;
   static DbcAnalysis* instance_;
   static pthread_mutex_t mutex_;
-  std::ifstream in_;
 
  public:
   static DbcAnalysis *getInstance();

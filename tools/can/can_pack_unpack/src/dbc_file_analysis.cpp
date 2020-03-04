@@ -129,34 +129,27 @@ void DbcAnalysis::analysisFiles() {
     return;
   }
   for (std::string &filename : files_) {
-    in_.open(filename.c_str());
+    std::ifstream in(filename.c_str());
     std::string line;
-    if (in_) {
-      while (getline (in_, line)) {
-        analysisMessage(line);
+    if(in) {
+      while (getline (in, line)) {
+        while(line.find( MSSAGEHEAD ) == 0){
+          Message newMessage;
+          transformMessageFromLine(line, newMessage);
+          while(getline (in, line)){
+            if(line.find( SIGNALHEAD ) == 1){
+              transformSignalFromLine(line, newMessage);
+              continue;
+            }
+            sort(newMessage.signals.begin(), newMessage.signals.end());
+            break;
+          }
+          messages_.insert(std::map<long, Message>::value_type (newMessage.id, newMessage));
+        }
       }
     } else {
       printf("No file named %s\n", filename.c_str());
     }
-  }
-}
-
-void DbcAnalysis::analysisMessage(std::string line) {
-  if (line.find( MSSAGEHEAD ) == 0) {
-    Message newMessage;
-    transformMessageFromLine(line, newMessage);
-    while(getline (in_, line)){
-      if (line.find( SIGNALHEAD ) == 1) {
-        transformSignalFromLine(line, newMessage);
-        continue;
-      } else {
-        analysisMessage(line);
-      }
-      sort(newMessage.signals.begin(), newMessage.signals.end());
-      break;
-    }
-
-    messages_.insert(std::map<long, Message>::value_type (newMessage.id, newMessage));
   }
 }
 
