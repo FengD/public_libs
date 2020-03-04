@@ -18,7 +18,11 @@ namespace itd {
 namespace tools {
 namespace can {
 
-CanTxBase::~CanTxBase() {}
+CanTxBase::CanTxBase() {}
+
+CanTxBase::~CanTxBase() {
+  Finish();
+}
 
 void CanTxBase::Init() {
   ret_ = 0;
@@ -35,7 +39,7 @@ void CanTxBase::Init() {
   }
 }
 
-void CanTxBase::finish() {
+void CanTxBase::Finish() {
   communication::SocketCan::can_close(&can_hdl_);
 }
 
@@ -77,6 +81,12 @@ void CanTxBase::copyFromCanmsg2CanFrame(const Canmsg &msg, struct can_frame *fra
   for(int32_t j = 0; j < msg.length; j++) {
     frame->data[j] = msg.data[j];
   }
+}
+
+int32_t CanTxBase::Send(const int64_t &id, const double *value , const int32_t &value_size) {
+  packValue(id, value_size, value, &msg_);
+  copyFromCanmsg2CanFrame(msg_, &can_tx_frame_);
+  return communication::SocketCan::can_write(can_hdl_, &can_tx_frame_);
 }
 
 }  // namespace can
