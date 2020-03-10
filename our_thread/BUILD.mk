@@ -32,12 +32,17 @@ ARM_LIB = libour_thread.a
 ARM_LIB_SRCS += thread_base.cpp
 ARM_LIB_SRCS += thread_mutex.cpp
 ARM_LIB_SRCS += thread_period.cpp
+ARM_LIB_SRCS += synchronizer_impl.cpp
+ARM_LIB_SRCS += synchronized_queue_impl.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../include
 ARM_INCS += -I../../util/include
 ARM_INCS += -I../../tools/hlog/include
+ARM_INCS += -I$(CROSS_COMPILE_SYSROOT)/usr/include/pcl-1.8
+ARM_INCS += -I$(CROSS_COMPILE_SYSROOT)/usr/include/eigen3
 
 ARM_LDOPTS += -lpthread -lyaml-cpp
+ARM_LDOPTS += -lpcl_common
 
 ##############################################################################
