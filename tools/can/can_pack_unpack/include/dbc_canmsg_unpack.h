@@ -5,8 +5,8 @@
 * Description:
 */
 
-#ifndef _MODULE_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
-#define _MODULE_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
+#define _ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
 
 #include <map>
 #include <string>
@@ -38,4 +38,4 @@ real64_T unpackSignal (const Signal &s, const uint8_T *data);
 }  // namespace tools
 }  // namespace itd
 
-#endif  //_MODULE_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
+#endif  //_ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_

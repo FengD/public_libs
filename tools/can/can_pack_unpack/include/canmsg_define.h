@@ -1,5 +1,5 @@
-#ifndef _MODULE_TOOLS_CAN_CANMSG_DEFINE_H_
-#define _MODULE_TOOLS_CAN_CANMSG_DEFINE_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_CAN_CANMSG_DEFINE_H_
+#define _ITD_IPD_LIBS_TOOLS_CAN_CANMSG_DEFINE_H_
 
 #include <vector>
 #include <map>
@@ -74,4 +74,4 @@ enum PackUnpackStat {
   PACK_UNPACK_SUCCESS = 0
 };
 
-#endif  //_MODULE_TOOLS_CAN_CANMSG_DEFINE_H_
+#endif  //_ITD_IPD_LIBS_TOOLS_CAN_CANMSG_DEFINE_H_

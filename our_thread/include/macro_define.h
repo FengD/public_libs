@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _MODULE_OUR_THREAD_MACRO_DEFINE_H_
-#define _MODULE_OUR_THREAD_MACRO_DEFINE_H_
+#ifndef _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
+#define _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
 
 // thread start and detach
 #define SDT(switch, thread)\
@@ -24,4 +24,4 @@ if (switch) {\
   LOGINFO("%s start: %d\n", thread->getPName().c_str(), thread->Stop());\
 }
 
-#endif  // _MODULE_OUR_THREAD_MACRO_DEFINE_H_
+#endif  // _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_

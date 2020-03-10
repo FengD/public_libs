@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef _MODULE_COMMUNICATION_SOCKET_CAN_CONFIG_H_
-#define _MODULE_COMMUNICATION_SOCKET_CAN_CONFIG_H_
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_CONFIG_H_
+#define _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_CONFIG_H_
 
 #include <stdint.h>
 #include <sys/types.h>
@@ -29,4 +29,4 @@ class CanConfig {
 }  // namespace communication
 
 
-#endif  //_MODULE_COMMUNICATION_SOCKET_CAN_CONFIG_H_
+#endif  //_ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_CONFIG_H_

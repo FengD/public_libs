@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _MODULE_UTIL_H_
-#define _MODULE_UTIL_H_
+#ifndef _ITD_IPD_LIBS_UTIL_H_
+#define _ITD_IPD_LIBS_UTIL_H_
 
 #include <sys/wait.h>
 #include <string>
@@ -16,4 +16,4 @@ void printfTime(int32_t time);
 void split(const std::string &s, const std::string &seperator, std::vector<std::string> *result);
 void getAllFilesInFolder(const std::string& dir_in, std::vector<std::string> *files);
 
-#endif  // _MODULE_UTIL_H_
+#endif  // _ITD_IPD_LIBS_UTIL_H_

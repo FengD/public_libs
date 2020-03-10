@@ -5,8 +5,8 @@
   * Description: log
   */
 
-#ifndef _MODULE_TOOLS_HLOG_H_
-#define _MODULE_TOOLS_HLOG_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_HLOG_H_
+#define _ITD_IPD_LIBS_TOOLS_HLOG_H_
 #include <pthread.h>
 #include <glog/logging.h>
 #include <glog/log_severity.h>
@@ -40,4 +40,4 @@ private:
 }  // namespace tools
 }  // namespace itd
 
-#endif  // _MODULE_TOOLS_HLOG_H_
+#endif  // _ITD_IPD_LIBS_TOOLS_HLOG_H_

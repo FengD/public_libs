@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _MODULE_OUR_THREAD_THREAD_MUTEX_H_
-#define _MODULE_OUR_THREAD_THREAD_MUTEX_H_
+#ifndef _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_
+#define _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_
 
 #include <pthread.h>
 #include <stdint.h>
@@ -32,4 +32,4 @@ class EnterCriticalSection {
 
 } // namespace itd
 
-#endif  // _MODULE_OUR_THREAD_THREAD_MUTEX_H_
+#endif  // _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_

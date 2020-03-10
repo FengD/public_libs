@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _MODULE_COMMUNICATION_TCP_CLIENT_H_
-#define _MODULE_COMMUNICATION_TCP_CLIENT_H_
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_
+#define _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_
 
 #include <iostream>
 #include <stdio.h>
@@ -41,4 +41,4 @@ class TcpClient {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _MODULE_COMMUNICATION_TCP_CLIENT_H_
+#endif  // _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_

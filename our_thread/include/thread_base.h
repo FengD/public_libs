@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _MODULE_OUR_THREAD_THREAD_BASE_H_
-#define _MODULE_OUR_THREAD_THREAD_BASE_H_
+#ifndef _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_
+#define _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_
 
 #include <pthread.h>
 #include <signal.h>
@@ -41,4 +41,4 @@ class ThreadBase {
 };
 } // namespace itd
 
-#endif  // _MODULE_OUR_THREAD_THREAD_BASE_H_
+#endif  // _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_

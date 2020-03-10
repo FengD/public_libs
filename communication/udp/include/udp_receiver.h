@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: This file used to define the udp input
 
-#ifndef _MODULE_COMMUNICATION_UDP_RECEIVER_H_
-#define _MODULE_COMMUNICATION_UDP_RECEIVER_H_
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_
+#define _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_
 
 #include <unistd.h>
 #include <string>
@@ -35,4 +35,4 @@ class UdpReceiver {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _MODULE_COMMUNICATION_UDP_RECEIVER_H_
+#endif  // _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_

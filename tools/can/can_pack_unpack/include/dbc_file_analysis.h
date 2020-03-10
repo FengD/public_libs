@@ -5,8 +5,8 @@
 * Description:
 */
 
-#ifndef _MODULE_TOOLS_CAN_DBC_FILE_ANALYSIS_H_
-#define _MODULE_TOOLS_CAN_DBC_FILE_ANALYSIS_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_CAN_DBC_FILE_ANALYSIS_H_
+#define _ITD_IPD_LIBS_TOOLS_CAN_DBC_FILE_ANALYSIS_H_
 
 #include <fstream>
 #include <string>
@@ -50,4 +50,4 @@ class DbcAnalysis {
 }  // namespace tools
 }  // namespace itd
 
-#endif  //_MODULE_TOOLS_CAN_DBC_FILE_ANALYSIS_H_
+#endif  //_ITD_IPD_LIBS_TOOLS_CAN_DBC_FILE_ANALYSIS_H_

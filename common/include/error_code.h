@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: error code
 
-#ifndef _MODULE_COMMON_ERROR_CODE_H_
-#define _MODULE_COMMON_ERROR_CODE_H_
+#ifndef _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
+#define _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
 
 enum CommunicationStatus {
   ERR_CAN_CLOSE = -20,
@@ -30,4 +30,4 @@ enum CommunicationStatus {
   NO_ERROR = 0
 };
 
-#endif  // _MODULE_COMMON_ERROR_CODE_H_
+#endif  // _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_

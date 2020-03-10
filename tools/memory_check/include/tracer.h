@@ -1,5 +1,5 @@
-#ifndef _MODULE_TOOLS_TRACER_H_
-#define _MODULE_TOOLS_TRACER_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_TRACER_H_
+#define _ITD_IPD_LIBS_TOOLS_TRACER_H_
 
 #include <pthread.h>
 #include <stdio.h>
@@ -104,4 +104,4 @@ inline void operator delete [](void *p, const char* file, const size_t line) {
 #define new new(__FILE__, __LINE__)
 #endif
 
-#endif  // _MODULE_TOOLS_TRACER_H_
+#endif  // _ITD_IPD_LIBS_TOOLS_TRACER_H_

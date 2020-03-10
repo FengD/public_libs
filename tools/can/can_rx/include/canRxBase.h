@@ -5,8 +5,8 @@
  *  License: Modified BSD Software License Agreement
  *
  */
-#ifndef _MODULE_TOOLS_CAN_CANRX_BASE_H_
-#define _MODULE_TOOLS_CAN_CANRX_BASE_H_
+#ifndef _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_
+#define _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_
 
 #include <list>
 #include <yaml-cpp/yaml.h>
@@ -58,4 +58,4 @@ class CanRxBase {
 }  // namespace tools
 }  // namespace itd
 
-#endif  // _MODULE_TOOLS_CAN_CANRX_BASE_H_
+#endif  // _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_

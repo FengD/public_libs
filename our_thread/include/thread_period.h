@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef _MODULE_OUR_THREAD_PERIOD_H_
-#define _MODULE_OUR_THREAD_PERIOD_H_
+#ifndef _ITD_IPD_LIBS_OUR_THREAD_PERIOD_H_
+#define _ITD_IPD_LIBS_OUR_THREAD_PERIOD_H_
 
 #include <yaml-cpp/yaml.h>
 #include "thread_base.h"
@@ -33,4 +33,4 @@ class ThreadPeriod : public ThreadBase {
 };
 }  // namespace itd
 
-#endif  // _MODULE_OUR_THREAD_PERIOD_H_
+#endif  // _ITD_IPD_LIBS_OUR_THREAD_PERIOD_H_

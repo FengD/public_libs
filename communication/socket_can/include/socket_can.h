@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef _MODULE_COMMUNICATION_SOCKET_CAN_
-#define _MODULE_COMMUNICATION_SOCKET_CAN_
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_
+#define _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_
 
 #include <linux/can.h>
 #include <linux/can/raw.h>
@@ -34,4 +34,4 @@ class SocketCan {
 }  // namespace communication
 
 
-#endif  //_MODULE_COMMUNICATION_SOCKET_CAN_
+#endif  //_ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_
