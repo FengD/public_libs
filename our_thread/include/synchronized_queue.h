@@ -46,9 +46,9 @@ class SynchronizedQueue {
     cond_.notify_one();
   }
 
-  unsigned int32_t size() {
+  uint32_t size() {
     std::unique_lock<std::mutex> lock(mutex_);
-    return static_cast<unsigned int32_t>(queue_.size());
+    return static_cast<uint32_t>(queue_.size());
   }
 
   bool isEmpty() const {
