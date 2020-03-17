@@ -18,7 +18,7 @@ Can rx
 
 ## 依赖
 ```
-yaml-can
+yaml-cpp
 communication/socket_can
 tools/hlog
 tools/can/can_pack_unpack
