@@ -16,7 +16,7 @@
 namespace itd {
 class ThreadPeriod : public ThreadBase {
  private:
-  struct timespec periodCall_;
+  struct timespec period_call_, start_time_, end_time_, elapsed_time_, sleep_time_;
   bool isLogOn_;
 
  protected:
@@ -28,8 +28,10 @@ class ThreadPeriod : public ThreadBase {
  public:
   virtual ~ThreadPeriod();
   void Run();
+  int64_t getElapsedTimeUs();
   virtual void RunInPeriod() = 0;
   virtual void SetParam(YAML::Node config) = 0;
+
 };
 }  // namespace itd
 
