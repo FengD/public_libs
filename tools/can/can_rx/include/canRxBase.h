@@ -10,7 +10,6 @@
 
 #include <list>
 #include <yaml-cpp/yaml.h>
-#include <boost/function.hpp>
 #include <linux/can.h>
 #include <stdint.h>
 #include <float.h>
@@ -37,7 +36,7 @@ class CanRxBase {
   int32_t id_list_size_;
   int32_t channel_;
   std::string dbcs_folder_path_;
-  boost::function<void(int32_t id, double *value, int32_t value_size)> canmsg_unpack_callback_;
+  std::function<void(int64_t id, double *value, int32_t value_size)> canmsg_unpack_callback_;
 
  public:
   CanRxBase();
@@ -47,7 +46,7 @@ class CanRxBase {
   void SetDbcsFolderPath(const std::string &dbcs_folder_path);
   void SetCanFilterIdListByYaml(const YAML::Node &list);
   void SetCanFilterIdList(const int64_t* list, const int32_t &list_size);
-  void SetCallBackFunction(boost::function<void(int32_t id, double *value, int32_t value_size)> canmsg_unpack_callback);
+  void SetCallBackFunction(std::function<void(int64_t id, double *value, int32_t value_size)> canmsg_unpack_callback);
   void LoadDbcs();
   void Init();
   void Receive();

@@ -91,7 +91,7 @@ void CanRxBase::SetCanFilterIdList(const int64_t* list, const int32_t &list_size
   }
 }
 
-void CanRxBase::SetCallBackFunction(boost::function<void(int32_t id, double *value, int32_t value_size)> canmsg_unpack_callback) {
+void CanRxBase::SetCallBackFunction(std::function<void(int64_t id, double *value, int32_t value_size)> canmsg_unpack_callback) {
   canmsg_unpack_callback_ = canmsg_unpack_callback;
 }
 
