@@ -7,6 +7,7 @@
 #define _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
 
 enum CommunicationStatus {
+  ERR_INIT = -21,
   ERR_CAN_CLOSE = -20,
   ERR_CAN_OPEN = -19,
   ERR_BIND = -18,
