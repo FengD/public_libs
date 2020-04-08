@@ -32,8 +32,9 @@ ARM_APP = mosquitto_sub
 ARM_APP_SRCS += demo.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
-ARM_INCS += -I../include
+ARM_INCS += -I../../../include/
 
 ##############################################################################
 
+ARM_APP_LIBS += ../../../$(ODIR)/libMqtt.a
 ARM_LDOPTS += -lmosquitto
