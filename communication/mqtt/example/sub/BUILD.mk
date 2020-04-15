@@ -36,5 +36,5 @@ ARM_INCS += -I../../../include/
 
 ##############################################################################
 
-ARM_APP_LIBS += ../../../$(ODIR)/libMqtt.a
+ARM_APP_LIBS += ../../../$(ODIR)/libCommunicationMqtt.a
 ARM_LDOPTS += -lmosquitto

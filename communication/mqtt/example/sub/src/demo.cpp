@@ -2,30 +2,22 @@
 #include <stdlib.h>
 #include <mosquitto.h>
 #include <string.h>
-#include "hi_mqtt.h"
+#include "mqtt_subscriber.h"
 
-#define HOST "localhost"
+#define HOST "192.168.8.210"
 #define PORT  1883
 #define KEEP_ALIVE 60
 
-void* my_message_callback(struct mosquitto *mosq, void *userdata, const struct mosquitto_message *message) {
-  printf("sdfsdf\n");
-  if (message->payloadlen) {
-      printf("%s %s", message->topic, message->payload);
-  } else {
-      printf("%s (null)\n", message->topic);
-  }
+void OnMessage(struct mosquitto *mosq, void *obj, const struct mosquitto_message *msg) {
+  (void)(mosq);
+  (void)(obj);
+  printf("%d %s\n", msg->payloadlen, (char *)msg->payload);
 }
 
 int main() {
-  itd::communication::HiMqtt *client = new itd::communication::HiMqtt();
-  client->SetHost(HOST);
-  client->SetAliveTime(KEEP_ALIVE);
-  client->SetPort(PORT);
-  client->Init();
-  client->Subscribe( "test", std::bind(my_message_callback,
-                                       std::placeholders::_1,
-                                       std::placeholders::_2,
-                                       std::placeholders::_3) );
+  itd::communication::MqttSubscriber *sub;
+  sub = new itd::communication::MqttSubscriber(KEEP_ALIVE, HOST, PORT, "Test");
+  sub->SetOnMessage(OnMessage);
+  sub->Subscribe();
   return 0;
 }
