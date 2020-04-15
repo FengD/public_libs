@@ -16,3 +16,7 @@ Mqtt Module
 | Version | Update | Contractor | Description | Remark |
 | ------ | ------- | :----: | --------| --------- |
 | V0.0.1 | 2020/04/08 |  丁丰  | 创建并测试 | |
+| V1.0.0 | 2020/04/16 |  丁丰  | 基于mosquitto完成了mqtt sub pub的封装，并常见了demo | |
+
+## 依赖
+mosquitto
