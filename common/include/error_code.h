@@ -7,7 +7,9 @@
 #define _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
 
 enum CommunicationStatus {
-  ERR_INIT = -21,
+  ERR_MQTT_INIT = -23,
+  ERR_MQTT_CONNECT = -22,
+  ERR_MQTT_USER_PWD = -21,
   ERR_CAN_CLOSE = -20,
   ERR_CAN_OPEN = -19,
   ERR_BIND = -18,
