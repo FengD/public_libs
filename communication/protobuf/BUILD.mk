@@ -30,9 +30,13 @@ ARM_LIB = libCommunicationProtobuf.a
 ##############################################################################
 
 ARM_LIB_SRCS += msg.pb.cc
+ARM_LIB_SRCS += lidar_msg_serialization.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../include
+ARM_INCS += -I$(CROSS_COMPILE_SYSROOT)/usr/include/eigen3
+ARM_INCS += -I$(CROSS_COMPILE_SYSROOT)/usr/include/pcl-1.8
 
 ##############################################################################
 ARM_LDOPTS += -lprotobuf
+ARM_LDOPTS += -lpcl_common
