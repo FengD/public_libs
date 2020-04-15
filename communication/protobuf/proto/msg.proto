@@ -1,0 +1,35 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+package itd.communication.protobuf;
+
+message Header {
+  uint32 seq = 1;
+  int32 stamp = 2;
+  string frame_id = 3;
+}
+
+message PointCloud {
+  Header header = 1;
+  uint32 height = 2;
+  uint32 width = 3;
+  repeated float x = 4;
+  repeated float y = 5;
+  repeated float z = 6;
+  repeated float intensity = 7;
+  repeated float ring = 8;
+  repeated float azimuth = 9;
+  repeated float hor = 10;
+  repeated float time_offset = 11;
+  repeated float distance = 12;
+}
+
+message Message {
+  enum MessageType {
+    PointCloud = 0;
+  }
+
+  MessageType type = 1;
+  oneof msg {
+    PointCloud cloud = 2;
+  }
+}
