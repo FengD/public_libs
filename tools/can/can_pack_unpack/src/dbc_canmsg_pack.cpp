@@ -101,7 +101,7 @@ void packSignal (const Signal &s, const double &value, uint8_T *data) {
       }
 
       result = (result - s.offset) / s.factor;
-      outValue = result;
+      outValue = round(result);
     }
 
     int startBit = s.startBit;
