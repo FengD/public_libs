@@ -37,5 +37,21 @@ int LidarMsgSerialization::CloudSerialization(const pcl::PointCloud<pcl::PointXY
   return out_size;
 }
 
+int LidarMsgSerialization::FsSerialization(const float *fs, char *output_buffer) {
+  itd::communication::protobuf::Message out_msg;
+  itd::communication::protobuf::Freespace *freespace = new itd::communication::protobuf::Freespace();
+
+  for (int i = 0; i < 360; i++) {
+    freespace->add_distance(fs[i]);
+  }
+
+  out_msg.set_type(itd::communication::protobuf::Message_MessageType_Freespace);
+  out_msg.set_allocated_fs(freespace);
+  int out_size = out_msg.ByteSize();
+  memset(output_buffer, 0, out_size * sizeof(char));
+  out_msg.SerializeToArray(output_buffer, out_size);
+  return out_size;
+}
+
 }  // namespace itd
 }  // namespace communication

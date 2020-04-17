@@ -16,6 +16,7 @@ class LidarMsgSerialization {
  public:
   static int CloudSerialization(const pcl::PointCloud<pcl::PointXYZI> &cloud,
                                 char *output_buffer, int filter_size = 1);
+  static int FsSerialization(const float *fs, char *output_buffer);
 };
 
 }  // namespace itd
