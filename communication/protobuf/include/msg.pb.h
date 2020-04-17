@@ -37,7 +37,7 @@ namespace protobuf_msg_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[3];
+  static const ::google::protobuf::internal::ParseTable schema[10];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -47,26 +47,68 @@ void InitDefaultsHeaderImpl();
 void InitDefaultsHeader();
 void InitDefaultsPointCloudImpl();
 void InitDefaultsPointCloud();
+void InitDefaultsFreespaceImpl();
+void InitDefaultsFreespace();
+void InitDefaultsTrailerImpl();
+void InitDefaultsTrailer();
+void InitDefaultsBridgeImpl();
+void InitDefaultsBridge();
+void InitDefaultsBoundryImpl();
+void InitDefaultsBoundry();
+void InitDefaultsContainerImpl();
+void InitDefaultsContainer();
+void InitDefaultsSignboardImpl();
+void InitDefaultsSignboard();
+void InitDefaultsLidarStatusImpl();
+void InitDefaultsLidarStatus();
 void InitDefaultsMessageImpl();
 void InitDefaultsMessage();
 inline void InitDefaults() {
   InitDefaultsHeader();
   InitDefaultsPointCloud();
+  InitDefaultsFreespace();
+  InitDefaultsTrailer();
+  InitDefaultsBridge();
+  InitDefaultsBoundry();
+  InitDefaultsContainer();
+  InitDefaultsSignboard();
+  InitDefaultsLidarStatus();
   InitDefaultsMessage();
 }
 }  // namespace protobuf_msg_2eproto
 namespace itd {
 namespace communication {
 namespace protobuf {
+class Boundry;
+class BoundryDefaultTypeInternal;
+extern BoundryDefaultTypeInternal _Boundry_default_instance_;
+class Bridge;
+class BridgeDefaultTypeInternal;
+extern BridgeDefaultTypeInternal _Bridge_default_instance_;
+class Container;
+class ContainerDefaultTypeInternal;
+extern ContainerDefaultTypeInternal _Container_default_instance_;
+class Freespace;
+class FreespaceDefaultTypeInternal;
+extern FreespaceDefaultTypeInternal _Freespace_default_instance_;
 class Header;
 class HeaderDefaultTypeInternal;
 extern HeaderDefaultTypeInternal _Header_default_instance_;
+class LidarStatus;
+class LidarStatusDefaultTypeInternal;
+extern LidarStatusDefaultTypeInternal _LidarStatus_default_instance_;
 class Message;
 class MessageDefaultTypeInternal;
 extern MessageDefaultTypeInternal _Message_default_instance_;
 class PointCloud;
 class PointCloudDefaultTypeInternal;
 extern PointCloudDefaultTypeInternal _PointCloud_default_instance_;
+class Signboard;
+class SignboardDefaultTypeInternal;
+extern SignboardDefaultTypeInternal _Signboard_default_instance_;
+class Trailer;
+class TrailerDefaultTypeInternal;
+extern TrailerDefaultTypeInternal _Trailer_default_instance_;
 }  // namespace protobuf
 }  // namespace communication
 }  // namespace itd
@@ -76,12 +118,19 @@ namespace protobuf {
 
 enum Message_MessageType {
   Message_MessageType_PointCloud = 0,
+  Message_MessageType_Freespace = 1,
+  Message_MessageType_Trailer = 2,
+  Message_MessageType_Bridge = 3,
+  Message_MessageType_Boundry = 4,
+  Message_MessageType_Container = 5,
+  Message_MessageType_Signboard = 6,
+  Message_MessageType_LidarStatus = 7,
   Message_MessageType_Message_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   Message_MessageType_Message_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Message_MessageType_IsValid(int value);
 const Message_MessageType Message_MessageType_MessageType_MIN = Message_MessageType_PointCloud;
-const Message_MessageType Message_MessageType_MessageType_MAX = Message_MessageType_PointCloud;
+const Message_MessageType Message_MessageType_MessageType_MAX = Message_MessageType_LidarStatus;
 const int Message_MessageType_MessageType_ARRAYSIZE = Message_MessageType_MessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Message_MessageType_descriptor();
@@ -504,6 +553,1007 @@ class PointCloud : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
+class Freespace : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Freespace) */ {
+ public:
+  Freespace();
+  virtual ~Freespace();
+
+  Freespace(const Freespace& from);
+
+  inline Freespace& operator=(const Freespace& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Freespace(Freespace&& from) noexcept
+    : Freespace() {
+    *this = ::std::move(from);
+  }
+
+  inline Freespace& operator=(Freespace&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Freespace& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Freespace* internal_default_instance() {
+    return reinterpret_cast<const Freespace*>(
+               &_Freespace_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    2;
+
+  void UnsafeArenaSwap(Freespace* other);
+  void Swap(Freespace* other);
+  friend void swap(Freespace& a, Freespace& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Freespace* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Freespace* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Freespace& from);
+  void MergeFrom(const Freespace& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Freespace* other);
+  protected:
+  explicit Freespace(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated float distance = 2;
+  int distance_size() const;
+  void clear_distance();
+  static const int kDistanceFieldNumber = 2;
+  float distance(int index) const;
+  void set_distance(int index, float value);
+  void add_distance(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      distance() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_distance();
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Freespace)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::google::protobuf::RepeatedField< float > distance_;
+  mutable int _distance_cached_byte_size_;
+  ::itd::communication::protobuf::Header* header_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsFreespaceImpl();
+};
+// -------------------------------------------------------------------
+
+class Trailer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Trailer) */ {
+ public:
+  Trailer();
+  virtual ~Trailer();
+
+  Trailer(const Trailer& from);
+
+  inline Trailer& operator=(const Trailer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Trailer(Trailer&& from) noexcept
+    : Trailer() {
+    *this = ::std::move(from);
+  }
+
+  inline Trailer& operator=(Trailer&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Trailer& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Trailer* internal_default_instance() {
+    return reinterpret_cast<const Trailer*>(
+               &_Trailer_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    3;
+
+  void UnsafeArenaSwap(Trailer* other);
+  void Swap(Trailer* other);
+  friend void swap(Trailer& a, Trailer& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Trailer* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Trailer* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Trailer& from);
+  void MergeFrom(const Trailer& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Trailer* other);
+  protected:
+  explicit Trailer(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float k = 2;
+  void clear_k();
+  static const int kKFieldNumber = 2;
+  float k() const;
+  void set_k(float value);
+
+  // float b = 3;
+  void clear_b();
+  static const int kBFieldNumber = 3;
+  float b() const;
+  void set_b(float value);
+
+  // int32 flag = 4;
+  void clear_flag();
+  static const int kFlagFieldNumber = 4;
+  ::google::protobuf::int32 flag() const;
+  void set_flag(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Trailer)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float k_;
+  float b_;
+  ::google::protobuf::int32 flag_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsTrailerImpl();
+};
+// -------------------------------------------------------------------
+
+class Bridge : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Bridge) */ {
+ public:
+  Bridge();
+  virtual ~Bridge();
+
+  Bridge(const Bridge& from);
+
+  inline Bridge& operator=(const Bridge& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Bridge(Bridge&& from) noexcept
+    : Bridge() {
+    *this = ::std::move(from);
+  }
+
+  inline Bridge& operator=(Bridge&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Bridge& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Bridge* internal_default_instance() {
+    return reinterpret_cast<const Bridge*>(
+               &_Bridge_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    4;
+
+  void UnsafeArenaSwap(Bridge* other);
+  void Swap(Bridge* other);
+  friend void swap(Bridge& a, Bridge& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Bridge* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Bridge* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Bridge& from);
+  void MergeFrom(const Bridge& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Bridge* other);
+  protected:
+  explicit Bridge(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float k = 2;
+  void clear_k();
+  static const int kKFieldNumber = 2;
+  float k() const;
+  void set_k(float value);
+
+  // float b = 3;
+  void clear_b();
+  static const int kBFieldNumber = 3;
+  float b() const;
+  void set_b(float value);
+
+  // int32 flag = 4;
+  void clear_flag();
+  static const int kFlagFieldNumber = 4;
+  ::google::protobuf::int32 flag() const;
+  void set_flag(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Bridge)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float k_;
+  float b_;
+  ::google::protobuf::int32 flag_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsBridgeImpl();
+};
+// -------------------------------------------------------------------
+
+class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Boundry) */ {
+ public:
+  Boundry();
+  virtual ~Boundry();
+
+  Boundry(const Boundry& from);
+
+  inline Boundry& operator=(const Boundry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Boundry(Boundry&& from) noexcept
+    : Boundry() {
+    *this = ::std::move(from);
+  }
+
+  inline Boundry& operator=(Boundry&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Boundry& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Boundry* internal_default_instance() {
+    return reinterpret_cast<const Boundry*>(
+               &_Boundry_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    5;
+
+  void UnsafeArenaSwap(Boundry* other);
+  void Swap(Boundry* other);
+  friend void swap(Boundry& a, Boundry& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Boundry* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Boundry* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Boundry& from);
+  void MergeFrom(const Boundry& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Boundry* other);
+  protected:
+  explicit Boundry(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float k = 2;
+  void clear_k();
+  static const int kKFieldNumber = 2;
+  float k() const;
+  void set_k(float value);
+
+  // float b = 3;
+  void clear_b();
+  static const int kBFieldNumber = 3;
+  float b() const;
+  void set_b(float value);
+
+  // int32 flag = 4;
+  void clear_flag();
+  static const int kFlagFieldNumber = 4;
+  ::google::protobuf::int32 flag() const;
+  void set_flag(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Boundry)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float k_;
+  float b_;
+  ::google::protobuf::int32 flag_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsBoundryImpl();
+};
+// -------------------------------------------------------------------
+
+class Container : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Container) */ {
+ public:
+  Container();
+  virtual ~Container();
+
+  Container(const Container& from);
+
+  inline Container& operator=(const Container& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Container(Container&& from) noexcept
+    : Container() {
+    *this = ::std::move(from);
+  }
+
+  inline Container& operator=(Container&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Container& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Container* internal_default_instance() {
+    return reinterpret_cast<const Container*>(
+               &_Container_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void UnsafeArenaSwap(Container* other);
+  void Swap(Container* other);
+  friend void swap(Container& a, Container& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Container* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Container* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Container& from);
+  void MergeFrom(const Container& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Container* other);
+  protected:
+  explicit Container(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float distance = 2;
+  void clear_distance();
+  static const int kDistanceFieldNumber = 2;
+  float distance() const;
+  void set_distance(float value);
+
+  // int32 flag = 3;
+  void clear_flag();
+  static const int kFlagFieldNumber = 3;
+  ::google::protobuf::int32 flag() const;
+  void set_flag(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Container)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float distance_;
+  ::google::protobuf::int32 flag_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsContainerImpl();
+};
+// -------------------------------------------------------------------
+
+class Signboard : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Signboard) */ {
+ public:
+  Signboard();
+  virtual ~Signboard();
+
+  Signboard(const Signboard& from);
+
+  inline Signboard& operator=(const Signboard& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Signboard(Signboard&& from) noexcept
+    : Signboard() {
+    *this = ::std::move(from);
+  }
+
+  inline Signboard& operator=(Signboard&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Signboard& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Signboard* internal_default_instance() {
+    return reinterpret_cast<const Signboard*>(
+               &_Signboard_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    7;
+
+  void UnsafeArenaSwap(Signboard* other);
+  void Swap(Signboard* other);
+  friend void swap(Signboard& a, Signboard& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Signboard* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Signboard* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Signboard& from);
+  void MergeFrom(const Signboard& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Signboard* other);
+  protected:
+  explicit Signboard(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float x = 2;
+  void clear_x();
+  static const int kXFieldNumber = 2;
+  float x() const;
+  void set_x(float value);
+
+  // float y = 3;
+  void clear_y();
+  static const int kYFieldNumber = 3;
+  float y() const;
+  void set_y(float value);
+
+  // float angle = 4;
+  void clear_angle();
+  static const int kAngleFieldNumber = 4;
+  float angle() const;
+  void set_angle(float value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Signboard)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float x_;
+  float y_;
+  float angle_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsSignboardImpl();
+};
+// -------------------------------------------------------------------
+
+class LidarStatus : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.LidarStatus) */ {
+ public:
+  LidarStatus();
+  virtual ~LidarStatus();
+
+  LidarStatus(const LidarStatus& from);
+
+  inline LidarStatus& operator=(const LidarStatus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LidarStatus(LidarStatus&& from) noexcept
+    : LidarStatus() {
+    *this = ::std::move(from);
+  }
+
+  inline LidarStatus& operator=(LidarStatus&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LidarStatus& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const LidarStatus* internal_default_instance() {
+    return reinterpret_cast<const LidarStatus*>(
+               &_LidarStatus_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void UnsafeArenaSwap(LidarStatus* other);
+  void Swap(LidarStatus* other);
+  friend void swap(LidarStatus& a, LidarStatus& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LidarStatus* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  LidarStatus* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const LidarStatus& from);
+  void MergeFrom(const LidarStatus& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(LidarStatus* other);
+  protected:
+  explicit LidarStatus(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // int32 left = 2;
+  void clear_left();
+  static const int kLeftFieldNumber = 2;
+  ::google::protobuf::int32 left() const;
+  void set_left(::google::protobuf::int32 value);
+
+  // int32 right = 3;
+  void clear_right();
+  static const int kRightFieldNumber = 3;
+  ::google::protobuf::int32 right() const;
+  void set_right(::google::protobuf::int32 value);
+
+  // int32 top = 4;
+  void clear_top();
+  static const int kTopFieldNumber = 4;
+  ::google::protobuf::int32 top() const;
+  void set_top(::google::protobuf::int32 value);
+
+  // int32 single = 5;
+  void clear_single();
+  static const int kSingleFieldNumber = 5;
+  ::google::protobuf::int32 single() const;
+  void set_single(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.LidarStatus)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  ::google::protobuf::int32 left_;
+  ::google::protobuf::int32 right_;
+  ::google::protobuf::int32 top_;
+  ::google::protobuf::int32 single_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsLidarStatusImpl();
+};
+// -------------------------------------------------------------------
+
 class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Message) */ {
  public:
   Message();
@@ -540,7 +1590,14 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   static const Message& default_instance();
 
   enum MsgCase {
-    kCloud = 2,
+    kCloud = 9,
+    kFs = 10,
+    kTrailer = 11,
+    kBridge = 12,
+    kBoundry = 13,
+    kContainer = 14,
+    kSignboard = 15,
+    kLidarStatus = 16,
     MSG_NOT_SET = 0,
   };
 
@@ -550,7 +1607,7 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_Message_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
+    9;
 
   void UnsafeArenaSwap(Message* other);
   void Swap(Message* other);
@@ -604,6 +1661,20 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   typedef Message_MessageType MessageType;
   static const MessageType PointCloud =
     Message_MessageType_PointCloud;
+  static const MessageType Freespace =
+    Message_MessageType_Freespace;
+  static const MessageType Trailer =
+    Message_MessageType_Trailer;
+  static const MessageType Bridge =
+    Message_MessageType_Bridge;
+  static const MessageType Boundry =
+    Message_MessageType_Boundry;
+  static const MessageType Container =
+    Message_MessageType_Container;
+  static const MessageType Signboard =
+    Message_MessageType_Signboard;
+  static const MessageType LidarStatus =
+    Message_MessageType_LidarStatus;
   static inline bool MessageType_IsValid(int value) {
     return Message_MessageType_IsValid(value);
   }
@@ -627,16 +1698,16 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .itd.communication.protobuf.Message.MessageType type = 1;
+  // .itd.communication.protobuf.Message.MessageType type = 8;
   void clear_type();
-  static const int kTypeFieldNumber = 1;
+  static const int kTypeFieldNumber = 8;
   ::itd::communication::protobuf::Message_MessageType type() const;
   void set_type(::itd::communication::protobuf::Message_MessageType value);
 
-  // .itd.communication.protobuf.PointCloud cloud = 2;
+  // .itd.communication.protobuf.PointCloud cloud = 9;
   bool has_cloud() const;
   void clear_cloud();
-  static const int kCloudFieldNumber = 2;
+  static const int kCloudFieldNumber = 9;
   private:
   void _slow_mutable_cloud();
   public:
@@ -648,10 +1719,122 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::PointCloud* cloud);
   ::itd::communication::protobuf::PointCloud* unsafe_arena_release_cloud();
 
+  // .itd.communication.protobuf.Freespace fs = 10;
+  bool has_fs() const;
+  void clear_fs();
+  static const int kFsFieldNumber = 10;
+  private:
+  void _slow_mutable_fs();
+  public:
+  const ::itd::communication::protobuf::Freespace& fs() const;
+  ::itd::communication::protobuf::Freespace* release_fs();
+  ::itd::communication::protobuf::Freespace* mutable_fs();
+  void set_allocated_fs(::itd::communication::protobuf::Freespace* fs);
+  void unsafe_arena_set_allocated_fs(
+      ::itd::communication::protobuf::Freespace* fs);
+  ::itd::communication::protobuf::Freespace* unsafe_arena_release_fs();
+
+  // .itd.communication.protobuf.Trailer trailer = 11;
+  bool has_trailer() const;
+  void clear_trailer();
+  static const int kTrailerFieldNumber = 11;
+  private:
+  void _slow_mutable_trailer();
+  public:
+  const ::itd::communication::protobuf::Trailer& trailer() const;
+  ::itd::communication::protobuf::Trailer* release_trailer();
+  ::itd::communication::protobuf::Trailer* mutable_trailer();
+  void set_allocated_trailer(::itd::communication::protobuf::Trailer* trailer);
+  void unsafe_arena_set_allocated_trailer(
+      ::itd::communication::protobuf::Trailer* trailer);
+  ::itd::communication::protobuf::Trailer* unsafe_arena_release_trailer();
+
+  // .itd.communication.protobuf.Bridge bridge = 12;
+  bool has_bridge() const;
+  void clear_bridge();
+  static const int kBridgeFieldNumber = 12;
+  private:
+  void _slow_mutable_bridge();
+  public:
+  const ::itd::communication::protobuf::Bridge& bridge() const;
+  ::itd::communication::protobuf::Bridge* release_bridge();
+  ::itd::communication::protobuf::Bridge* mutable_bridge();
+  void set_allocated_bridge(::itd::communication::protobuf::Bridge* bridge);
+  void unsafe_arena_set_allocated_bridge(
+      ::itd::communication::protobuf::Bridge* bridge);
+  ::itd::communication::protobuf::Bridge* unsafe_arena_release_bridge();
+
+  // .itd.communication.protobuf.Boundry boundry = 13;
+  bool has_boundry() const;
+  void clear_boundry();
+  static const int kBoundryFieldNumber = 13;
+  private:
+  void _slow_mutable_boundry();
+  public:
+  const ::itd::communication::protobuf::Boundry& boundry() const;
+  ::itd::communication::protobuf::Boundry* release_boundry();
+  ::itd::communication::protobuf::Boundry* mutable_boundry();
+  void set_allocated_boundry(::itd::communication::protobuf::Boundry* boundry);
+  void unsafe_arena_set_allocated_boundry(
+      ::itd::communication::protobuf::Boundry* boundry);
+  ::itd::communication::protobuf::Boundry* unsafe_arena_release_boundry();
+
+  // .itd.communication.protobuf.Container container = 14;
+  bool has_container() const;
+  void clear_container();
+  static const int kContainerFieldNumber = 14;
+  private:
+  void _slow_mutable_container();
+  public:
+  const ::itd::communication::protobuf::Container& container() const;
+  ::itd::communication::protobuf::Container* release_container();
+  ::itd::communication::protobuf::Container* mutable_container();
+  void set_allocated_container(::itd::communication::protobuf::Container* container);
+  void unsafe_arena_set_allocated_container(
+      ::itd::communication::protobuf::Container* container);
+  ::itd::communication::protobuf::Container* unsafe_arena_release_container();
+
+  // .itd.communication.protobuf.Signboard signboard = 15;
+  bool has_signboard() const;
+  void clear_signboard();
+  static const int kSignboardFieldNumber = 15;
+  private:
+  void _slow_mutable_signboard();
+  public:
+  const ::itd::communication::protobuf::Signboard& signboard() const;
+  ::itd::communication::protobuf::Signboard* release_signboard();
+  ::itd::communication::protobuf::Signboard* mutable_signboard();
+  void set_allocated_signboard(::itd::communication::protobuf::Signboard* signboard);
+  void unsafe_arena_set_allocated_signboard(
+      ::itd::communication::protobuf::Signboard* signboard);
+  ::itd::communication::protobuf::Signboard* unsafe_arena_release_signboard();
+
+  // .itd.communication.protobuf.LidarStatus lidar_status = 16;
+  bool has_lidar_status() const;
+  void clear_lidar_status();
+  static const int kLidarStatusFieldNumber = 16;
+  private:
+  void _slow_mutable_lidar_status();
+  public:
+  const ::itd::communication::protobuf::LidarStatus& lidar_status() const;
+  ::itd::communication::protobuf::LidarStatus* release_lidar_status();
+  ::itd::communication::protobuf::LidarStatus* mutable_lidar_status();
+  void set_allocated_lidar_status(::itd::communication::protobuf::LidarStatus* lidar_status);
+  void unsafe_arena_set_allocated_lidar_status(
+      ::itd::communication::protobuf::LidarStatus* lidar_status);
+  ::itd::communication::protobuf::LidarStatus* unsafe_arena_release_lidar_status();
+
   MsgCase msg_case() const;
   // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Message)
  private:
   void set_has_cloud();
+  void set_has_fs();
+  void set_has_trailer();
+  void set_has_bridge();
+  void set_has_boundry();
+  void set_has_container();
+  void set_has_signboard();
+  void set_has_lidar_status();
 
   inline bool has_msg() const;
   void clear_msg();
@@ -665,6 +1848,13 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   union MsgUnion {
     MsgUnion() {}
     ::itd::communication::protobuf::PointCloud* cloud_;
+    ::itd::communication::protobuf::Freespace* fs_;
+    ::itd::communication::protobuf::Trailer* trailer_;
+    ::itd::communication::protobuf::Bridge* bridge_;
+    ::itd::communication::protobuf::Boundry* boundry_;
+    ::itd::communication::protobuf::Container* container_;
+    ::itd::communication::protobuf::Signboard* signboard_;
+    ::itd::communication::protobuf::LidarStatus* lidar_status_;
   } msg_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1151,9 +2341,746 @@ PointCloud::mutable_distance() {
 
 // -------------------------------------------------------------------
 
+// Freespace
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Freespace::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Freespace::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Freespace::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Freespace.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Freespace::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Freespace.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Freespace::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Freespace.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Freespace::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Freespace.header)
+  return header_;
+}
+inline void Freespace::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Freespace.header)
+}
+
+// repeated float distance = 2;
+inline int Freespace::distance_size() const {
+  return distance_.size();
+}
+inline void Freespace::clear_distance() {
+  distance_.Clear();
+}
+inline float Freespace::distance(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Freespace.distance)
+  return distance_.Get(index);
+}
+inline void Freespace::set_distance(int index, float value) {
+  distance_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Freespace.distance)
+}
+inline void Freespace::add_distance(float value) {
+  distance_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Freespace.distance)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Freespace::distance() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Freespace.distance)
+  return distance_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Freespace::mutable_distance() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Freespace.distance)
+  return &distance_;
+}
+
+// -------------------------------------------------------------------
+
+// Trailer
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Trailer::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Trailer::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Trailer::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Trailer.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Trailer::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Trailer.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Trailer::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Trailer.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Trailer::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Trailer.header)
+  return header_;
+}
+inline void Trailer::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Trailer.header)
+}
+
+// float k = 2;
+inline void Trailer::clear_k() {
+  k_ = 0;
+}
+inline float Trailer::k() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Trailer.k)
+  return k_;
+}
+inline void Trailer::set_k(float value) {
+  
+  k_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Trailer.k)
+}
+
+// float b = 3;
+inline void Trailer::clear_b() {
+  b_ = 0;
+}
+inline float Trailer::b() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Trailer.b)
+  return b_;
+}
+inline void Trailer::set_b(float value) {
+  
+  b_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Trailer.b)
+}
+
+// int32 flag = 4;
+inline void Trailer::clear_flag() {
+  flag_ = 0;
+}
+inline ::google::protobuf::int32 Trailer::flag() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Trailer.flag)
+  return flag_;
+}
+inline void Trailer::set_flag(::google::protobuf::int32 value) {
+  
+  flag_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Trailer.flag)
+}
+
+// -------------------------------------------------------------------
+
+// Bridge
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Bridge::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Bridge::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Bridge::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Bridge.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Bridge::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Bridge.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Bridge::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Bridge.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Bridge::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Bridge.header)
+  return header_;
+}
+inline void Bridge::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Bridge.header)
+}
+
+// float k = 2;
+inline void Bridge::clear_k() {
+  k_ = 0;
+}
+inline float Bridge::k() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Bridge.k)
+  return k_;
+}
+inline void Bridge::set_k(float value) {
+  
+  k_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Bridge.k)
+}
+
+// float b = 3;
+inline void Bridge::clear_b() {
+  b_ = 0;
+}
+inline float Bridge::b() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Bridge.b)
+  return b_;
+}
+inline void Bridge::set_b(float value) {
+  
+  b_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Bridge.b)
+}
+
+// int32 flag = 4;
+inline void Bridge::clear_flag() {
+  flag_ = 0;
+}
+inline ::google::protobuf::int32 Bridge::flag() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Bridge.flag)
+  return flag_;
+}
+inline void Bridge::set_flag(::google::protobuf::int32 value) {
+  
+  flag_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Bridge.flag)
+}
+
+// -------------------------------------------------------------------
+
+// Boundry
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Boundry::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Boundry::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Boundry::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Boundry::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Boundry.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Boundry::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Boundry.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Boundry::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Boundry.header)
+  return header_;
+}
+inline void Boundry::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Boundry.header)
+}
+
+// float k = 2;
+inline void Boundry::clear_k() {
+  k_ = 0;
+}
+inline float Boundry::k() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.k)
+  return k_;
+}
+inline void Boundry::set_k(float value) {
+  
+  k_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.k)
+}
+
+// float b = 3;
+inline void Boundry::clear_b() {
+  b_ = 0;
+}
+inline float Boundry::b() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.b)
+  return b_;
+}
+inline void Boundry::set_b(float value) {
+  
+  b_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.b)
+}
+
+// int32 flag = 4;
+inline void Boundry::clear_flag() {
+  flag_ = 0;
+}
+inline ::google::protobuf::int32 Boundry::flag() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.flag)
+  return flag_;
+}
+inline void Boundry::set_flag(::google::protobuf::int32 value) {
+  
+  flag_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.flag)
+}
+
+// -------------------------------------------------------------------
+
+// Container
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Container::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Container::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Container::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Container.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Container::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Container.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Container::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Container.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Container::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Container.header)
+  return header_;
+}
+inline void Container::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Container.header)
+}
+
+// float distance = 2;
+inline void Container::clear_distance() {
+  distance_ = 0;
+}
+inline float Container::distance() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Container.distance)
+  return distance_;
+}
+inline void Container::set_distance(float value) {
+  
+  distance_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Container.distance)
+}
+
+// int32 flag = 3;
+inline void Container::clear_flag() {
+  flag_ = 0;
+}
+inline ::google::protobuf::int32 Container::flag() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Container.flag)
+  return flag_;
+}
+inline void Container::set_flag(::google::protobuf::int32 value) {
+  
+  flag_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Container.flag)
+}
+
+// -------------------------------------------------------------------
+
+// Signboard
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool Signboard::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void Signboard::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& Signboard::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Signboard::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Signboard.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Signboard::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Signboard.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Signboard::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Signboard.header)
+  return header_;
+}
+inline void Signboard::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Signboard.header)
+}
+
+// float x = 2;
+inline void Signboard::clear_x() {
+  x_ = 0;
+}
+inline float Signboard::x() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.x)
+  return x_;
+}
+inline void Signboard::set_x(float value) {
+  
+  x_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.x)
+}
+
+// float y = 3;
+inline void Signboard::clear_y() {
+  y_ = 0;
+}
+inline float Signboard::y() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.y)
+  return y_;
+}
+inline void Signboard::set_y(float value) {
+  
+  y_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.y)
+}
+
+// float angle = 4;
+inline void Signboard::clear_angle() {
+  angle_ = 0;
+}
+inline float Signboard::angle() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.angle)
+  return angle_;
+}
+inline void Signboard::set_angle(float value) {
+  
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.angle)
+}
+
+// -------------------------------------------------------------------
+
+// LidarStatus
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool LidarStatus::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void LidarStatus::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& LidarStatus::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.LidarStatus.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* LidarStatus::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.LidarStatus.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* LidarStatus::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.LidarStatus.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* LidarStatus::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.LidarStatus.header)
+  return header_;
+}
+inline void LidarStatus::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.LidarStatus.header)
+}
+
+// int32 left = 2;
+inline void LidarStatus::clear_left() {
+  left_ = 0;
+}
+inline ::google::protobuf::int32 LidarStatus::left() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.LidarStatus.left)
+  return left_;
+}
+inline void LidarStatus::set_left(::google::protobuf::int32 value) {
+  
+  left_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.LidarStatus.left)
+}
+
+// int32 right = 3;
+inline void LidarStatus::clear_right() {
+  right_ = 0;
+}
+inline ::google::protobuf::int32 LidarStatus::right() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.LidarStatus.right)
+  return right_;
+}
+inline void LidarStatus::set_right(::google::protobuf::int32 value) {
+  
+  right_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.LidarStatus.right)
+}
+
+// int32 top = 4;
+inline void LidarStatus::clear_top() {
+  top_ = 0;
+}
+inline ::google::protobuf::int32 LidarStatus::top() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.LidarStatus.top)
+  return top_;
+}
+inline void LidarStatus::set_top(::google::protobuf::int32 value) {
+  
+  top_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.LidarStatus.top)
+}
+
+// int32 single = 5;
+inline void LidarStatus::clear_single() {
+  single_ = 0;
+}
+inline ::google::protobuf::int32 LidarStatus::single() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.LidarStatus.single)
+  return single_;
+}
+inline void LidarStatus::set_single(::google::protobuf::int32 value) {
+  
+  single_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.LidarStatus.single)
+}
+
+// -------------------------------------------------------------------
+
 // Message
 
-// .itd.communication.protobuf.Message.MessageType type = 1;
+// .itd.communication.protobuf.Message.MessageType type = 8;
 inline void Message::clear_type() {
   type_ = 0;
 }
@@ -1167,7 +3094,7 @@ inline void Message::set_type(::itd::communication::protobuf::Message_MessageTyp
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.Message.type)
 }
 
-// .itd.communication.protobuf.PointCloud cloud = 2;
+// .itd.communication.protobuf.PointCloud cloud = 9;
 inline bool Message::has_cloud() const {
   return msg_case() == kCloud;
 }
@@ -1233,6 +3160,468 @@ inline ::itd::communication::protobuf::PointCloud* Message::mutable_cloud() {
   return msg_.cloud_;
 }
 
+// .itd.communication.protobuf.Freespace fs = 10;
+inline bool Message::has_fs() const {
+  return msg_case() == kFs;
+}
+inline void Message::set_has_fs() {
+  _oneof_case_[0] = kFs;
+}
+inline void Message::clear_fs() {
+  if (has_fs()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.fs_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Freespace* Message::release_fs() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.fs)
+  if (has_fs()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Freespace* temp = msg_.fs_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.fs_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Freespace& Message::fs() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.fs)
+  return has_fs()
+      ? *msg_.fs_
+      : *reinterpret_cast< ::itd::communication::protobuf::Freespace*>(&::itd::communication::protobuf::_Freespace_default_instance_);
+}
+inline ::itd::communication::protobuf::Freespace* Message::unsafe_arena_release_fs() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.fs)
+  if (has_fs()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Freespace* temp = msg_.fs_;
+    msg_.fs_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_fs(::itd::communication::protobuf::Freespace* fs) {
+  clear_msg();
+  if (fs) {
+    set_has_fs();
+    msg_.fs_ = fs;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.fs)
+}
+inline ::itd::communication::protobuf::Freespace* Message::mutable_fs() {
+  if (!has_fs()) {
+    clear_msg();
+    set_has_fs();
+    msg_.fs_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Freespace >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.fs)
+  return msg_.fs_;
+}
+
+// .itd.communication.protobuf.Trailer trailer = 11;
+inline bool Message::has_trailer() const {
+  return msg_case() == kTrailer;
+}
+inline void Message::set_has_trailer() {
+  _oneof_case_[0] = kTrailer;
+}
+inline void Message::clear_trailer() {
+  if (has_trailer()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.trailer_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Trailer* Message::release_trailer() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.trailer)
+  if (has_trailer()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Trailer* temp = msg_.trailer_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.trailer_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Trailer& Message::trailer() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.trailer)
+  return has_trailer()
+      ? *msg_.trailer_
+      : *reinterpret_cast< ::itd::communication::protobuf::Trailer*>(&::itd::communication::protobuf::_Trailer_default_instance_);
+}
+inline ::itd::communication::protobuf::Trailer* Message::unsafe_arena_release_trailer() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.trailer)
+  if (has_trailer()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Trailer* temp = msg_.trailer_;
+    msg_.trailer_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_trailer(::itd::communication::protobuf::Trailer* trailer) {
+  clear_msg();
+  if (trailer) {
+    set_has_trailer();
+    msg_.trailer_ = trailer;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.trailer)
+}
+inline ::itd::communication::protobuf::Trailer* Message::mutable_trailer() {
+  if (!has_trailer()) {
+    clear_msg();
+    set_has_trailer();
+    msg_.trailer_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Trailer >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.trailer)
+  return msg_.trailer_;
+}
+
+// .itd.communication.protobuf.Bridge bridge = 12;
+inline bool Message::has_bridge() const {
+  return msg_case() == kBridge;
+}
+inline void Message::set_has_bridge() {
+  _oneof_case_[0] = kBridge;
+}
+inline void Message::clear_bridge() {
+  if (has_bridge()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.bridge_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Bridge* Message::release_bridge() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.bridge)
+  if (has_bridge()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Bridge* temp = msg_.bridge_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.bridge_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Bridge& Message::bridge() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.bridge)
+  return has_bridge()
+      ? *msg_.bridge_
+      : *reinterpret_cast< ::itd::communication::protobuf::Bridge*>(&::itd::communication::protobuf::_Bridge_default_instance_);
+}
+inline ::itd::communication::protobuf::Bridge* Message::unsafe_arena_release_bridge() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.bridge)
+  if (has_bridge()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Bridge* temp = msg_.bridge_;
+    msg_.bridge_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_bridge(::itd::communication::protobuf::Bridge* bridge) {
+  clear_msg();
+  if (bridge) {
+    set_has_bridge();
+    msg_.bridge_ = bridge;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.bridge)
+}
+inline ::itd::communication::protobuf::Bridge* Message::mutable_bridge() {
+  if (!has_bridge()) {
+    clear_msg();
+    set_has_bridge();
+    msg_.bridge_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Bridge >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.bridge)
+  return msg_.bridge_;
+}
+
+// .itd.communication.protobuf.Boundry boundry = 13;
+inline bool Message::has_boundry() const {
+  return msg_case() == kBoundry;
+}
+inline void Message::set_has_boundry() {
+  _oneof_case_[0] = kBoundry;
+}
+inline void Message::clear_boundry() {
+  if (has_boundry()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.boundry_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Boundry* Message::release_boundry() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.boundry)
+  if (has_boundry()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Boundry* temp = msg_.boundry_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.boundry_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Boundry& Message::boundry() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.boundry)
+  return has_boundry()
+      ? *msg_.boundry_
+      : *reinterpret_cast< ::itd::communication::protobuf::Boundry*>(&::itd::communication::protobuf::_Boundry_default_instance_);
+}
+inline ::itd::communication::protobuf::Boundry* Message::unsafe_arena_release_boundry() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.boundry)
+  if (has_boundry()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Boundry* temp = msg_.boundry_;
+    msg_.boundry_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_boundry(::itd::communication::protobuf::Boundry* boundry) {
+  clear_msg();
+  if (boundry) {
+    set_has_boundry();
+    msg_.boundry_ = boundry;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.boundry)
+}
+inline ::itd::communication::protobuf::Boundry* Message::mutable_boundry() {
+  if (!has_boundry()) {
+    clear_msg();
+    set_has_boundry();
+    msg_.boundry_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Boundry >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.boundry)
+  return msg_.boundry_;
+}
+
+// .itd.communication.protobuf.Container container = 14;
+inline bool Message::has_container() const {
+  return msg_case() == kContainer;
+}
+inline void Message::set_has_container() {
+  _oneof_case_[0] = kContainer;
+}
+inline void Message::clear_container() {
+  if (has_container()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.container_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Container* Message::release_container() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.container)
+  if (has_container()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Container* temp = msg_.container_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.container_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Container& Message::container() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.container)
+  return has_container()
+      ? *msg_.container_
+      : *reinterpret_cast< ::itd::communication::protobuf::Container*>(&::itd::communication::protobuf::_Container_default_instance_);
+}
+inline ::itd::communication::protobuf::Container* Message::unsafe_arena_release_container() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.container)
+  if (has_container()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Container* temp = msg_.container_;
+    msg_.container_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_container(::itd::communication::protobuf::Container* container) {
+  clear_msg();
+  if (container) {
+    set_has_container();
+    msg_.container_ = container;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.container)
+}
+inline ::itd::communication::protobuf::Container* Message::mutable_container() {
+  if (!has_container()) {
+    clear_msg();
+    set_has_container();
+    msg_.container_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Container >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.container)
+  return msg_.container_;
+}
+
+// .itd.communication.protobuf.Signboard signboard = 15;
+inline bool Message::has_signboard() const {
+  return msg_case() == kSignboard;
+}
+inline void Message::set_has_signboard() {
+  _oneof_case_[0] = kSignboard;
+}
+inline void Message::clear_signboard() {
+  if (has_signboard()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.signboard_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::Signboard* Message::release_signboard() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.signboard)
+  if (has_signboard()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::Signboard* temp = msg_.signboard_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.signboard_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::Signboard& Message::signboard() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.signboard)
+  return has_signboard()
+      ? *msg_.signboard_
+      : *reinterpret_cast< ::itd::communication::protobuf::Signboard*>(&::itd::communication::protobuf::_Signboard_default_instance_);
+}
+inline ::itd::communication::protobuf::Signboard* Message::unsafe_arena_release_signboard() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.signboard)
+  if (has_signboard()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::Signboard* temp = msg_.signboard_;
+    msg_.signboard_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_signboard(::itd::communication::protobuf::Signboard* signboard) {
+  clear_msg();
+  if (signboard) {
+    set_has_signboard();
+    msg_.signboard_ = signboard;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.signboard)
+}
+inline ::itd::communication::protobuf::Signboard* Message::mutable_signboard() {
+  if (!has_signboard()) {
+    clear_msg();
+    set_has_signboard();
+    msg_.signboard_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Signboard >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.signboard)
+  return msg_.signboard_;
+}
+
+// .itd.communication.protobuf.LidarStatus lidar_status = 16;
+inline bool Message::has_lidar_status() const {
+  return msg_case() == kLidarStatus;
+}
+inline void Message::set_has_lidar_status() {
+  _oneof_case_[0] = kLidarStatus;
+}
+inline void Message::clear_lidar_status() {
+  if (has_lidar_status()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.lidar_status_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::LidarStatus* Message::release_lidar_status() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.lidar_status)
+  if (has_lidar_status()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::LidarStatus* temp = msg_.lidar_status_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.lidar_status_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::LidarStatus& Message::lidar_status() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.lidar_status)
+  return has_lidar_status()
+      ? *msg_.lidar_status_
+      : *reinterpret_cast< ::itd::communication::protobuf::LidarStatus*>(&::itd::communication::protobuf::_LidarStatus_default_instance_);
+}
+inline ::itd::communication::protobuf::LidarStatus* Message::unsafe_arena_release_lidar_status() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.lidar_status)
+  if (has_lidar_status()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::LidarStatus* temp = msg_.lidar_status_;
+    msg_.lidar_status_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_lidar_status(::itd::communication::protobuf::LidarStatus* lidar_status) {
+  clear_msg();
+  if (lidar_status) {
+    set_has_lidar_status();
+    msg_.lidar_status_ = lidar_status;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.lidar_status)
+}
+inline ::itd::communication::protobuf::LidarStatus* Message::mutable_lidar_status() {
+  if (!has_lidar_status()) {
+    clear_msg();
+    set_has_lidar_status();
+    msg_.lidar_status_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::LidarStatus >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.lidar_status)
+  return msg_.lidar_status_;
+}
+
 inline bool Message::has_msg() const {
   return msg_case() != MSG_NOT_SET;
 }
@@ -1245,6 +3634,20 @@ inline Message::MsgCase Message::msg_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
