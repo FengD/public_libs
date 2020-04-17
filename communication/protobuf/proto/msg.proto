@@ -23,13 +23,74 @@ message PointCloud {
   repeated float distance = 12;
 }
 
+message Freespace {
+  Header header = 1;
+  repeated float distance = 2;
+}
+
+message Trailer {
+  Header header = 1;
+  float k = 2;
+  float b = 3;
+  int32 flag = 4;
+}
+
+message Bridge {
+  Header header = 1;
+  float k = 2;
+  float b = 3;
+  int32 flag = 4;
+}
+
+message Boundry {
+  Header header = 1;
+  float k = 2;
+  float b = 3;
+  int32 flag = 4;
+}
+
+message Container {
+  Header header = 1;
+  float distance = 2;
+  int32 flag = 3;
+}
+
+message Signboard {
+  Header header = 1;
+  float x = 2;
+  float y = 3;
+  float angle = 4;
+}
+
+message LidarStatus {
+  Header header = 1;
+  int32 left = 2;
+  int32 right = 3;
+  int32 top = 4;
+  int32 single = 5;
+}
+
 message Message {
   enum MessageType {
     PointCloud = 0;
+    Freespace = 1;
+    Trailer = 2;
+    Bridge = 3;
+    Boundry = 4;
+    Container = 5;
+    Signboard = 6;
+    LidarStatus = 7;
   }
 
-  MessageType type = 1;
+  MessageType type = 8;
   oneof msg {
-    PointCloud cloud = 2;
+    PointCloud cloud = 9;
+    Freespace fs = 10;
+    Trailer trailer = 11;
+    Bridge bridge = 12;
+    Boundry boundry = 13;
+    Container container = 14;
+    Signboard signboard = 15;
+    LidarStatus lidar_status = 16;
   }
 }
