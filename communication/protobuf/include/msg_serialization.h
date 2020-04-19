@@ -16,8 +16,13 @@ class MsgSerialization {
  public:
   static bool CloudSerialization(const pcl::PointCloud<pcl::PointXYZI> &cloud,
                                  std::string &output_buffer, int filter_size = 1);
-                                 
+
   static bool FsSerialization(const float *fs, std::string &output_buffer);
+
+  static bool BridgeSerialization(const float &k,
+                                  const float &b,
+                                  const int &flag,
+                                  std::string &output_buffer);
 };
 
 }  // namespace itd
