@@ -30,7 +30,8 @@ ARM_LIB = libCommunicationProtobuf.a
 ##############################################################################
 
 ARM_LIB_SRCS += msg.pb.cc
-ARM_LIB_SRCS += lidar_msg_serialization.cpp
+ARM_LIB_SRCS += msg_serialization.cpp
+ARM_LIB_SRCS += msg_deserialization.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../include

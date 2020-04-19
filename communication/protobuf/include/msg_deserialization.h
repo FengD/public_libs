@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: This file used to define the protobuf msg serialization
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_PROTOBUF_LIDAR_MSG_SERIALIZATION_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_PROTOBUF_LIDAR_MSG_SERIALIZATION_H_
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_PROTOBUF_MSG_DESERIALIZATION_H_
+#define _ITD_IPD_LIBS_COMMUNICATION_PROTOBUF_MSG_DESERIALIZATION_H_
 
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
@@ -12,11 +12,12 @@
 
 namespace itd {
 namespace communication {
-class LidarMsgSerialization {
+class MsgDeserialization {
  public:
-  static int CloudSerialization(const pcl::PointCloud<pcl::PointXYZI> &cloud,
-                                char *output_buffer, int filter_size = 1);
-  static int FsSerialization(const float *fs, char *output_buffer);
+  static void CloudDeserialization(const std::string &output_buffer,
+                                   pcl::PointCloud<pcl::PointXYZI> &cloud);
+
+  static void FsDeserialization(const std::string &output_buffer, float *fs);
 };
 
 }  // namespace itd

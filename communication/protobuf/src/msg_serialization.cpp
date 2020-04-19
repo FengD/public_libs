@@ -3,18 +3,23 @@
 // Author: Feng DING
 // Description: This file used to define the protobuf msg serialization
 
-#include "lidar_msg_serialization.h"
+#include "msg_serialization.h"
 
 namespace itd {
 namespace communication {
-int LidarMsgSerialization::CloudSerialization(const pcl::PointCloud<pcl::PointXYZI> &cloud,
-                                              char *output_buffer, int filter_size) {
+bool MsgSerialization::CloudSerialization(const pcl::PointCloud<pcl::PointXYZI> &cloud,
+                                               std::string &output_buffer, int filter_size) {
+  output_buffer = "";
   if (filter_size == 0) {
     printf("error filter_size\n");
     return -1;
   }
   itd::communication::protobuf::Message out_msg;
   itd::communication::protobuf::PointCloud *proto_cloud = new itd::communication::protobuf::PointCloud();
+  itd::communication::protobuf::Header *header = new itd::communication::protobuf::Header();
+  header->set_seq(cloud.header.seq);
+  header->set_stamp(cloud.header.stamp);
+  header->set_frame_id(cloud.header.frame_id);
   int cloud_size = cloud.size();
   proto_cloud->set_height(1);
   proto_cloud->set_width(cloud_size / filter_size);
@@ -30,27 +35,22 @@ int LidarMsgSerialization::CloudSerialization(const pcl::PointCloud<pcl::PointXY
   }
 
   out_msg.set_type(itd::communication::protobuf::Message_MessageType_PointCloud);
+  proto_cloud->set_allocated_header(header);
   out_msg.set_allocated_cloud(proto_cloud);
-  int out_size = out_msg.ByteSize();
-  memset(output_buffer, 0, out_size * sizeof(char));
-  out_msg.SerializeToArray(output_buffer, out_size);
-  return out_size;
+  return out_msg.SerializeToString(&output_buffer);
 }
 
-int LidarMsgSerialization::FsSerialization(const float *fs, char *output_buffer) {
+bool MsgSerialization::FsSerialization(const float *fs, std::string &output_buffer) {
+  output_buffer = "";
   itd::communication::protobuf::Message out_msg;
   itd::communication::protobuf::Freespace *freespace = new itd::communication::protobuf::Freespace();
-
   for (int i = 0; i < 360; i++) {
     freespace->add_distance(fs[i]);
   }
 
   out_msg.set_type(itd::communication::protobuf::Message_MessageType_Freespace);
   out_msg.set_allocated_fs(freespace);
-  int out_size = out_msg.ByteSize();
-  memset(output_buffer, 0, out_size * sizeof(char));
-  out_msg.SerializeToArray(output_buffer, out_size);
-  return out_size;
+  return out_msg.SerializeToString(&output_buffer);
 }
 
 }  // namespace itd
