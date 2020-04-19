@@ -57,14 +57,12 @@ bool MsgSerialization::BridgeSerialization(const float &k,
                                            const float &b,
                                            const int &flag,
                                            std::string &output_buffer) {
-  printf("%f %f %d\n", k, b, flag);
   output_buffer = "";
   itd::communication::protobuf::Message out_msg;
   itd::communication::protobuf::Bridge *bridge = new itd::communication::protobuf::Bridge();
   bridge->set_k(k);
   bridge->set_b(b);
   bridge->set_flag(flag);
-
 
   out_msg.set_type(itd::communication::protobuf::Message_MessageType_Bridge);
   out_msg.set_allocated_bridge(bridge);
