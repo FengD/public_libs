@@ -22,12 +22,11 @@ class MqttSubscriber {
   MqttSubscriber(int32_t keep_alive,
                  std::string host,
                  int32_t port,
-                 std::string topic,
 	               std::string username = "",
 	               std::string password = "");
   ~MqttSubscriber();
-  void Subscribe();
-  void SetOnMessage(void (*on_message)(struct mosquitto *, void *, const struct mosquitto_message *));
+  void Subscribe(bool is_block, std::string topic,
+                 void (*on_message)(struct mosquitto *, void *, const struct mosquitto_message *));
   void SetOnSubscribe(void (*on_subscribe)(struct mosquitto *, void *, int, int, const int *));
   void SetOnLog(void (*on_log)(struct mosquitto *, void *, int, const char *));
   void SetOnUnsubscribe(void (*on_unsubscribe)(struct mosquitto *, void *, int));
@@ -35,7 +34,6 @@ class MqttSubscriber {
  private:
   struct mosquitto *mosq_;
   MqttClient *mqtt_client_;
-  std::string topic_;
 };
 
 }  // namespace communication

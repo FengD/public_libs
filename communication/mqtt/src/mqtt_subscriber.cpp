@@ -12,7 +12,6 @@ namespace communication {
 MqttSubscriber::MqttSubscriber(int32_t keep_alive,
                                std::string host,
                                int32_t port,
-                               std::string topic,
                                std::string username,
                                std::string password) {
   mqtt_client_ = new MqttClient();
@@ -27,7 +26,6 @@ MqttSubscriber::MqttSubscriber(int32_t keep_alive,
     printf("Error: client connect failed.\n");
     return;
   }
-  topic_ = topic;
 }
 
 MqttSubscriber::~MqttSubscriber() {
@@ -35,13 +33,15 @@ MqttSubscriber::~MqttSubscriber() {
   delete mqtt_client_;
 }
 
-void MqttSubscriber::Subscribe() {
-  mosquitto_subscribe(mosq_, NULL, topic_.c_str(), 0);
-  mosquitto_loop_forever(mosq_, -1, 1);
-}
-
-void MqttSubscriber::SetOnMessage(void (*on_message)(struct mosquitto *, void *, const struct mosquitto_message *)) {
+void MqttSubscriber::Subscribe(bool is_block, std::string topic,
+                               void (*on_message)(struct mosquitto *, void *, const struct mosquitto_message *)) {
   mosquitto_message_callback_set(mosq_, on_message);
+  mosquitto_subscribe(mosq_, NULL, topic.c_str(), 0);
+  if (is_block) {
+    mosquitto_loop_forever(mosq_, -1, 1);
+  } else {
+    mosquitto_loop_start(mosq_);
+  }
 }
 
 void MqttSubscriber::SetOnSubscribe(void (*on_subscribe)(struct mosquitto *, void *, int, int, const int *)) {
