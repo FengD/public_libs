@@ -6,7 +6,7 @@
 #include "handler.h"
 #include "msg.pb.h"
 
-#define HOST "192.168.8.202"
+#define HOST "192.168.8.224"
 #define PORT 1883
 
 void OnMessage(const itd::communication::protobuf::PointCloud &cloud) {

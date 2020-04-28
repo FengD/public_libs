@@ -19,19 +19,20 @@ namespace communication {
 
 class Handler {
  public:
+  Handler(mosq_config cfg);
   Handler(std::string host, int32_t port,
           std::string username = "", std::string password = "");
   ~Handler();
 
   template<class M>
-  Publisher advertise(const std::string &topic) {
-    return Publisher(cfg_, topic);
+  Publisher* advertise(const std::string &topic) {
+    return new Publisher(cfg_, topic);
   }
 
   template<class M>
-  Publisher advertise(const std::string &topic,
+  Publisher* advertise(const std::string &topic,
                       LogCallback on_log) {
-    return Publisher(cfg_, topic, on_log);
+    return new Publisher(cfg_, topic, on_log);
   }
 
   template<class M>

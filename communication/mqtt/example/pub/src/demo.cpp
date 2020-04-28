@@ -19,7 +19,7 @@ int main() {
   // if need username and password for mqtt server
   // itd::communication::Handler hander(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
   // if need a callback of log after publish
-  itd::communication::Publisher pub = hander.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
+  itd::communication::Publisher pub = *hander.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
   int i = 0;
   while(1) {
     itd::communication::protobuf::PointCloud msg;

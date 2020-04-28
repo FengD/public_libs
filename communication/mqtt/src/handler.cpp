@@ -8,6 +8,10 @@
 namespace itd {
 namespace communication {
 
+Handler::Handler(mosq_config cfg) {
+  cfg_ = cfg;
+}
+
 Handler::Handler(std::string host, int32_t port,
                  std::string username, std::string password) {
   cfg_.port = port;
