@@ -2,42 +2,31 @@
 #include <stdlib.h>
 #include <mosquitto.h>
 #include <string.h>
-#include "mqtt_publisher.h"
+#include "publisher.h"
+#include "handler.h"
+#include "msg.pb.h"
 
-#define HOST "192.168.8.210"
-#define PORT  1883
-#define KEEP_ALIVE 60
+#define HOST "192.168.8.224"
+#define PORT 1883
 
-void OnPublish(struct mosquitto *mosq, void *obj, int rc) {
-  (void)(obj);
-  (void)(rc);
-  (void)(mosq);
-  printf("Client publish.\n");
-}
-
-void OnLog(struct mosquitto *mosq, void *obj, int rc, const char *xx) {
-  (void)(obj);
-  (void)(rc);
-  (void)(mosq);
-  (void)(xx);
-  printf("Client log.\n");
+void OnLog(int level, const char *str) {
+  printf("Client log. %d %s\n", level, str);
 }
 
 int main() {
-  itd::communication::MqttPublisher *pub;
-  pub = new itd::communication::MqttPublisher(KEEP_ALIVE, HOST, PORT, "Test");
-  // if need
-  pub->SetOnPublish(OnPublish);
-  // if need
-  pub->SetOnLog(OnLog);
+  itd::communication::Handler hander(HOST, PORT);
+  // itd::communication::Publisher pub = hander.advertise<itd::communication::protobuf::PointCloud>("Test");
   // if need username and password for mqtt server
-  // pub = new itd::communication::MqttPublisher(KEEP_ALIVE, HOST, PORT, "Test", "hirain", "hirain123");
-
+  // itd::communication::Handler hander(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
+  // if need a callback of log after publish
+  itd::communication::Publisher pub = hander.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
+  int i = 0;
   while(1) {
-    printf("ds\n");
-    char msg[] = "hahahahahaha";
-    pub->Publish(msg, strlen(msg));
-    sleep(1);
+    itd::communication::protobuf::PointCloud msg;
+    msg.set_height(10);
+    msg.set_width(i++);
+    pub.Publish(msg);
+    usleep(10000);
   }
   return 0;
 }
