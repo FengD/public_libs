@@ -23,7 +23,7 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_APP = mosquitto_sub
+ARM_APP = sub
 
 ##############################################################################
 # mosquitto_sub.elf
@@ -33,8 +33,11 @@ ARM_APP_SRCS += demo.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../../../include/
+ARM_INCS += -I../../../../protobuf/include/
 
 ##############################################################################
 
 ARM_APP_LIBS += ../../../$(ODIR)/libCommunicationMqtt.a
+ARM_APP_LIBS += ../../../../protobuf/$(ODIR)/libCommunicationProtobuf.a
 ARM_LDOPTS += -lmosquitto
+ARM_LDOPTS += -lprotobuf
