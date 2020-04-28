@@ -9,19 +9,28 @@
 namespace itd {
 namespace communication {
 
-MqttSubscriber::MqttSubscriber(int32_t keep_alive,
-                               std::string host,
-                               int32_t port,
-                               std::string username,
-                               std::string password) {
-  mqtt_client_ = new MqttClient();
-  mqtt_client_->SetHost(host);
-  mqtt_client_->SetPort(port);
-  mqtt_client_->SetKeepAlive(keep_alive);
-  mqtt_client_->SetUserName(username);
-  mqtt_client_->SetPassword(password);
+// MqttSubscriber::MqttSubscriber() {}
+
+MqttSubscriber::MqttSubscriber(std::string host, int32_t port,
+                               std::string username, std::string password) {
+  cfg_.port = port;
+  cfg_.host = host;
+  cfg_.username = username;
+  cfg_.password = password;
+  mqtt_client_ = new MqttClient(cfg_);
   mosquitto_lib_init();
-  mosq_ = mosquitto_new(NULL, true, NULL);
+  mosq_ = mosquitto_new(NULL, true, this);
+  if (mqtt_client_->ConnectClient(mosq_) < 0) {
+    printf("Error: client connect failed.\n");
+    return;
+  }
+}
+
+MqttSubscriber::MqttSubscriber(struct mosq_config cfg) {
+  cfg_ = cfg;
+  mqtt_client_ = new MqttClient(cfg_);
+  mosquitto_lib_init();
+  mosq_ = mosquitto_new(NULL, true, this);
   if (mqtt_client_->ConnectClient(mosq_) < 0) {
     printf("Error: client connect failed.\n");
     return;
@@ -33,27 +42,61 @@ MqttSubscriber::~MqttSubscriber() {
   delete mqtt_client_;
 }
 
-void MqttSubscriber::Subscribe(bool is_block, std::string topic,
-                               void (*on_message)(struct mosquitto *, void *, const struct mosquitto_message *)) {
-  mosquitto_message_callback_set(mosq_, on_message);
+void MqttSubscriber::Subscribe(std::string topic) {
   mosquitto_subscribe(mosq_, NULL, topic.c_str(), 0);
-  if (is_block) {
-    mosquitto_loop_forever(mosq_, -1, 1);
-  } else {
-    mosquitto_loop_start(mosq_);
-  }
 }
 
-void MqttSubscriber::SetOnSubscribe(void (*on_subscribe)(struct mosquitto *, void *, int, int, const int *)) {
-  mosquitto_subscribe_callback_set(mosq_, on_subscribe);
+void MqttSubscriber::Spin() {
+  mosquitto_loop_forever(mosq_, -1, 1);
 }
 
-void MqttSubscriber::SetOnLog(void (*on_log)(struct mosquitto *, void *, int, const char *)) {
-  mosquitto_log_callback_set(mosq_, on_log);
+void MqttSubscriber::NotSpin() {
+  mosquitto_loop_start(mosq_);
 }
 
-void MqttSubscriber::SetOnUnsubscribe(void (*on_unsubscribe)(struct mosquitto *, void *, int)) {
-  mosquitto_unsubscribe_callback_set(mosq_, on_unsubscribe);
+void MqttSubscriber::SetOnMessage(MessageCallback mcb) {
+  mcb_ = mcb;
+  mosquitto_message_callback_set(mosq_, OnMessage);
+}
+
+void MqttSubscriber::SetOnSubscribe(SubscribeCallback scb) {
+  scb_ = scb;
+  mosquitto_subscribe_callback_set(mosq_, OnSubscribe);
+}
+
+void MqttSubscriber::SetOnLog(LogCallback lcb) {
+  lcb_ = lcb;
+  mosquitto_log_callback_set(mosq_, OnLog);
+}
+
+void MqttSubscriber::SetOnUnsubscribe(UnsubscribeCallback ucb) {
+  ucb_ = ucb;
+  mosquitto_unsubscribe_callback_set(mosq_, OnUnsubscribe);
+}
+
+void MqttSubscriber::OnMessage(struct mosquitto *mosq, void *obj, const struct mosquitto_message *message) {
+  (void) mosq;
+  MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
+  self->mcb_(message->payloadlen, message->payload);
+}
+
+void MqttSubscriber::OnSubscribe(struct mosquitto *mosq, void *obj, int mid, int qos_count, const int *granted_qos) {
+  (void) mosq;
+  (void) granted_qos;
+  MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
+  self->scb_(mid, qos_count);
+}
+
+void MqttSubscriber::OnLog(struct mosquitto *mosq, void *obj, int level, const char *str) {
+  (void) mosq;
+  MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
+  self->lcb_(level, str);
+}
+
+void MqttSubscriber::OnUnsubscribe(struct mosquitto *mosq, void *obj, int mid) {
+  (void) mosq;
+  MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
+  self->ucb_(mid);
 }
 
 

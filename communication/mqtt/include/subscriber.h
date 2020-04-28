@@ -1,0 +1,54 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: This file used to define the mqtt publisher
+
+#ifndef _ITD_IPD_LIBS_COMMUNICATION_MQTT_SUBSCRIBER_H_
+#define _ITD_IPD_LIBS_COMMUNICATION_MQTT_SUBSCRIBER_H_
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <string>
+#include "mqtt_config.h"
+#include "mqtt_subscriber.h"
+
+namespace itd {
+namespace communication {
+
+// The Subscriber should always be created through a call to hander::subscribe(),
+// or copied from one that was.
+class Subscriber {
+ public:
+  Subscriber();
+
+  Subscriber(struct mosq_config cfg, std::string topic);
+
+  Subscriber(struct mosq_config cfg, std::string topic, LogCallback on_log);
+
+  // One of Spin ot Nospin should be used.
+  // Spin is to create a thread and block
+  // Notspin is to create a thread but still going on
+  void Spin();
+
+  void NotSpin();
+
+  ~Subscriber();
+
+  template<typename M>
+  void Subscribe(void (*on_message)(const M&)) {
+     MessageCallback mcb = [=](int payloadlen, const void *payload) {
+       M message;
+       message.ParseFromArray((char *)payload, payloadlen);
+       on_message(message);
+     };
+     mqtt_subscriber_->SetOnMessage(mcb);
+  }
+
+ private:
+  MqttSubscriber *mqtt_subscriber_;
+};
+
+}  // namespace communication
+}  // namespace itd
+
+#endif  // _ITD_IPD_LIBS_COMMUNICATION_MQTT_SUBSCRIBER_H_

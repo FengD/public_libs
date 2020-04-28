@@ -9,20 +9,20 @@
 namespace itd {
 namespace communication {
 
-MqttPublisher::MqttPublisher(int32_t keep_alive,
-                             std::string host,
-                             int32_t port,
-                             std::string topic,
-                             std::string username,
-                             std::string password) {
-  mqtt_client_ = new MqttClient();
-  mqtt_client_->SetHost(host);
-  mqtt_client_->SetPort(port);
-  mqtt_client_->SetKeepAlive(keep_alive);
-  mqtt_client_->SetUserName(username);
-  mqtt_client_->SetPassword(password);
+MqttPublisher::MqttPublisher(std::string host, int32_t port, std::string topic,
+                             std::string username, std::string password) {
+  cfg_.port = port;
+  cfg_.host = host;
+  cfg_.username = username;
+  cfg_.password = password;
+  MqttPublisher(cfg_, topic);
+}
+
+MqttPublisher::MqttPublisher(struct mosq_config cfg, std::string topic) {
+  cfg_ = cfg;
+  mqtt_client_ = new MqttClient(cfg_);
   mosquitto_lib_init();
-  mosq_ = mosquitto_new(NULL, true, NULL);
+  mosq_ = mosquitto_new(NULL, true, this);
   if (mqtt_client_->ConnectClient(mosq_) < 0) {
     printf("Error: client connect failed.\n");
     return;
@@ -40,12 +40,26 @@ void MqttPublisher::Publish(const void *payload, const int32_t &payloadlen) {
   mosquitto_publish(mosq_, NULL, topic_.c_str(), payloadlen, payload, 0, 0);
 }
 
-void MqttPublisher::SetOnPublish(void (*on_publish)(struct mosquitto *, void *, int)) {
-  mosquitto_publish_callback_set(mosq_, on_publish);
+void MqttPublisher::SetOnPublish(PublishCallback pcb) {
+  pcb_ = pcb;
+  mosquitto_publish_callback_set(mosq_, OnPublish);
 }
 
-void MqttPublisher::SetOnLog(void (*on_log)(struct mosquitto *, void *, int, const char *)) {
-  mosquitto_log_callback_set(mosq_, on_log);
+void MqttPublisher::SetOnLog(LogCallback lcb) {
+  lcb_ = lcb;
+  mosquitto_log_callback_set(mosq_, OnLog);
+}
+
+void MqttPublisher::OnPublish(struct mosquitto *mosq, void *obj, int mid) {
+  (void) mosq;
+  MqttPublisher *self = static_cast<MqttPublisher*>(obj);
+  self->pcb_(mid);
+}
+
+void MqttPublisher::OnLog(struct mosquitto *mosq, void *obj, int level, const char *str) {
+  (void) mosq;
+  MqttPublisher *self = static_cast<MqttPublisher*>(obj);
+  self->lcb_(level, str);
 }
 
 }  // namespace communication

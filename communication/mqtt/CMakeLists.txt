@@ -17,24 +17,24 @@ include_directories(
 
 add_library(module_communication_mqtt ${SRCS})
 
-add_executable(mqtt_sub_example example/sub/src/demo.cpp)
+add_executable(sub_example example/sub/src/demo.cpp)
 
-add_dependencies(mqtt_sub_example
+add_dependencies(sub_example
   module_communication_mqtt
 )
 
-target_link_libraries(mqtt_sub_example
+target_link_libraries(sub_example
   module_communication_mqtt
   mosquitto
 )
 
-add_executable(mqtt_pub_example example/pub/src/demo.cpp)
+add_executable(pub_example example/pub/src/demo.cpp)
 
-add_dependencies(mqtt_pub_example
+add_dependencies(pub_example
   module_communication_mqtt
 )
 
-target_link_libraries(mqtt_pub_example
+target_link_libraries(pub_example
   module_communication_mqtt
   mosquitto
 )

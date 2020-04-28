@@ -32,6 +32,9 @@ ARM_LIB = libCommunicationMqtt.a
 ARM_LIB_SRCS += mqtt_client.cpp
 ARM_LIB_SRCS += mqtt_publisher.cpp
 ARM_LIB_SRCS += mqtt_subscriber.cpp
+ARM_LIB_SRCS += publisher.cpp
+ARM_LIB_SRCS += subscriber.cpp
+ARM_LIB_SRCS += handler.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include
 ARM_INCS += -I../include
