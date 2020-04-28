@@ -7,16 +7,15 @@
 #include <string.h>
 #include <functional>
 #include "error_code.h"
+// This value defines the period that the broker send a ping message if the
+// client do not receive any message.
+#define KEEP_ALIVE 60
 
 namespace itd {
 namespace communication {
 
-MqttClient::MqttClient() {
-  cfg_.port = -1;
-  cfg_.keep_alive = 60;
-  cfg_.host = "";
-  cfg_.username = "";
-  cfg_.password = "";
+MqttClient::MqttClient(struct mosq_config cfg) {
+  cfg_ = cfg;
 }
 
 MqttClient::~MqttClient() = default;
@@ -30,7 +29,7 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq) {
     return ERR_MQTT_INIT;
   }
 
-  if (mosquitto_connect(mosq, cfg_.host.c_str(), cfg_.port, cfg_.keep_alive)) {
+  if (mosquitto_connect(mosq, cfg_.host.c_str(), cfg_.port, KEEP_ALIVE)) {
     printf("Error: Unable to connect.\n");
     mosquitto_lib_cleanup();
     return ERR_MQTT_CONNECT;
@@ -51,37 +50,17 @@ void MqttClient::DisconnectClient(struct mosquitto *mosq) {
   mosquitto_lib_cleanup();
 }
 
-void MqttClient::SetHost(const std::string &host) {
-  cfg_.host = host;
-}
-
-void MqttClient::SetPort(const int32_t &port) {
-  cfg_.port = port;
-}
-
-void MqttClient::SetKeepAlive(const int32_t &keep_alive) {
-  cfg_.keep_alive = keep_alive;
-}
-
-void MqttClient::SetUserName(const std::string &username) {
-  cfg_.username = username;
-}
-
-void MqttClient::SetPassword(const std::string &password) {
-  cfg_.password = password;
-}
-
-void MqttClient::OnConnect(struct mosquitto *mosq, void *obj, int rc) {
+void MqttClient::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
   (void)obj;
-  (void)(rc);
-  (void)(mosq);
+  (void)mid;
+  (void)mosq;
   printf("Client Connected.\n");
 }
 
-void MqttClient::OnDisconnect(struct mosquitto *mosq, void *obj, int rc) {
-  (void)(obj);
-  (void)(rc);
-  (void)(mosq);
+void MqttClient::OnDisconnect(struct mosquitto *mosq, void *obj, int mid) {
+  (void)obj;
+  (void)mid;
+  (void)mosq;
   printf("Client Disconnected.\n");
 }
 
