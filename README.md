@@ -17,11 +17,12 @@
 | Version | Update | Contractor | Description | Remark |
 | ------ | ------- | :----: | --------| --------- |
 | V1.0.0 | 2020/03/02 |  丁丰  | 创建 | |
+| V2.0.0 | 2020/04/25 |  丁丰  | 更新了mqtt和protobuf模块，支撑感知3.0的开发 | |
 
 ## 怎样使用
 
 * 公共模块使用submodule的形式使用，`切勿复制粘提`
 
-1. 使用 `git submodule add http://itdipdhmi.hirain.com:9990/feng.ding/itd_ipd_libs.git`将公共模块作为子模块添加进你的工程
+1. 使用 `git submodule add http://10.10.173.78:9990/feng.ding/itd_ipd_libs.git`将公共模块作为子模块添加进你的工程
 2. clone 包含子模块的工程可使用 `git submodule update --init --recursive` 指令
 3. `git submodule foreach "git pull origin master"` 可用于所有子模块更新
