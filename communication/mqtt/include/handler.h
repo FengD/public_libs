@@ -36,16 +36,30 @@ class Handler {
   }
 
   template<class M>
-  Subscriber subscribe(const std::string &topic, void (*on_message)(const M&)) {
-    Subscriber sub(cfg_, topic);
-    sub.Subscribe(on_message);
+  Subscriber* subscribe(const std::string &topic, void (*on_message)(const M&)) {
+    Subscriber *sub = new Subscriber(cfg_, topic);
+    sub->Subscribe(on_message);
     return sub;
   }
 
   template<class M>
-  Subscriber subscribe(const std::string &topic, void (*on_message)(const M&), LogCallback on_log) {
-    Subscriber sub(cfg_, topic, on_log);
-    sub.Subscribe(on_message);
+  Subscriber* subscribe(const std::string &topic, std::function<void(const M&)> on_message) {
+    Subscriber *sub = new Subscriber(cfg_, topic);
+    sub->Subscribe(on_message);
+    return sub;
+  }
+
+  template<class M>
+  Subscriber* subscribe(const std::string &topic, void (*on_message)(const M&), LogCallback on_log) {
+    Subscriber *sub = new Subscriber(cfg_, topic, on_log);
+    sub->Subscribe(on_message);
+    return sub;
+  }
+
+  template<class M>
+  Subscriber* subscribe(const std::string &topic, std::function<void(const M&)> on_message, LogCallback on_log) {
+    Subscriber *sub = new Subscriber(cfg_, topic, on_log);
+    sub->Subscribe(on_message);
     return sub;
   }
  private:

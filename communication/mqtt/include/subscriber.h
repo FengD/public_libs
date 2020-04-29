@@ -34,8 +34,18 @@ class Subscriber {
 
   ~Subscriber();
 
-  template<typename M>
+  template<class M>
   void Subscribe(void (*on_message)(const M&)) {
+     MessageCallback mcb = [=](int payloadlen, const void *payload) {
+       M message;
+       message.ParseFromArray((char *)payload, payloadlen);
+       on_message(message);
+     };
+     mqtt_subscriber_->SetOnMessage(mcb);
+  }
+
+  template<class M>
+  void Subscribe(std::function<void(const M&)> on_message) {
      MessageCallback mcb = [=](int payloadlen, const void *payload) {
        M message;
        message.ParseFromArray((char *)payload, payloadlen);
