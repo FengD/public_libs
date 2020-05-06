@@ -118,5 +118,31 @@ void MsgTransformer::ToItdBridge(const float &k, const float &b, const int &flag
   bridge_out.set_flag(flag);
 }
 
+void MsgTransformer::ToItdBoundary(const float &k, const float &b, const int &flag,
+                                 itd::communication::protobuf::Boundary &boundary_out) {
+  boundary_out.Clear();
+  boundary_out.set_k(k);
+  boundary_out.set_b(b);
+  boundary_out.set_flag(flag);
+}
+
+void MsgTransformer::ToItdSignboard(const float &k, const float &b, const float &x, const float &y,
+                                    const int &type, itd::communication::protobuf::Signboard &signboard_out) {
+  signboard_out.Clear();
+  signboard_out.set_k(k);
+  signboard_out.set_b(b);
+  signboard_out.set_x(x);
+  signboard_out.set_y(y);
+  signboard_out.set_type(type);
+}
+
+void MsgTransformer::ToItdTrailer(const float &k, const float &b, const int &flag,
+                                 itd::communication::protobuf::Trailer &trailer_out) {
+  trailer_out.Clear();
+  trailer_out.set_k(k);
+  trailer_out.set_b(b);
+  trailer_out.set_flag(flag);
+}
+
 }  // namespace itd
 }  // namespace communication

@@ -37,7 +37,7 @@ namespace protobuf_msg_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[10];
+  static const ::google::protobuf::internal::ParseTable schema[12];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -53,14 +53,18 @@ void InitDefaultsTrailerImpl();
 void InitDefaultsTrailer();
 void InitDefaultsBridgeImpl();
 void InitDefaultsBridge();
-void InitDefaultsBoundryImpl();
-void InitDefaultsBoundry();
+void InitDefaultsBoundaryImpl();
+void InitDefaultsBoundary();
 void InitDefaultsContainerImpl();
 void InitDefaultsContainer();
 void InitDefaultsSignboardImpl();
 void InitDefaultsSignboard();
 void InitDefaultsLidarStatusImpl();
 void InitDefaultsLidarStatus();
+void InitDefaultsBoundingBoxImpl();
+void InitDefaultsBoundingBox();
+void InitDefaultsCanSignalImpl();
+void InitDefaultsCanSignal();
 void InitDefaultsMessageImpl();
 void InitDefaultsMessage();
 inline void InitDefaults() {
@@ -69,22 +73,30 @@ inline void InitDefaults() {
   InitDefaultsFreespace();
   InitDefaultsTrailer();
   InitDefaultsBridge();
-  InitDefaultsBoundry();
+  InitDefaultsBoundary();
   InitDefaultsContainer();
   InitDefaultsSignboard();
   InitDefaultsLidarStatus();
+  InitDefaultsBoundingBox();
+  InitDefaultsCanSignal();
   InitDefaultsMessage();
 }
 }  // namespace protobuf_msg_2eproto
 namespace itd {
 namespace communication {
 namespace protobuf {
-class Boundry;
-class BoundryDefaultTypeInternal;
-extern BoundryDefaultTypeInternal _Boundry_default_instance_;
+class Boundary;
+class BoundaryDefaultTypeInternal;
+extern BoundaryDefaultTypeInternal _Boundary_default_instance_;
+class BoundingBox;
+class BoundingBoxDefaultTypeInternal;
+extern BoundingBoxDefaultTypeInternal _BoundingBox_default_instance_;
 class Bridge;
 class BridgeDefaultTypeInternal;
 extern BridgeDefaultTypeInternal _Bridge_default_instance_;
+class CanSignal;
+class CanSignalDefaultTypeInternal;
+extern CanSignalDefaultTypeInternal _CanSignal_default_instance_;
 class Container;
 class ContainerDefaultTypeInternal;
 extern ContainerDefaultTypeInternal _Container_default_instance_;
@@ -121,16 +133,18 @@ enum Message_MessageType {
   Message_MessageType_Freespace = 1,
   Message_MessageType_Trailer = 2,
   Message_MessageType_Bridge = 3,
-  Message_MessageType_Boundry = 4,
+  Message_MessageType_Boundary = 4,
   Message_MessageType_Container = 5,
   Message_MessageType_Signboard = 6,
   Message_MessageType_LidarStatus = 7,
+  Message_MessageType_BoundingBox = 8,
+  Message_MessageType_CanSignal = 9,
   Message_MessageType_Message_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   Message_MessageType_Message_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Message_MessageType_IsValid(int value);
 const Message_MessageType Message_MessageType_MessageType_MIN = Message_MessageType_PointCloud;
-const Message_MessageType Message_MessageType_MessageType_MAX = Message_MessageType_LidarStatus;
+const Message_MessageType Message_MessageType_MessageType_MAX = Message_MessageType_CanSignal;
 const int Message_MessageType_MessageType_ARRAYSIZE = Message_MessageType_MessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Message_MessageType_descriptor();
@@ -978,24 +992,24 @@ class Bridge : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 };
 // -------------------------------------------------------------------
 
-class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Boundry) */ {
+class Boundary : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Boundary) */ {
  public:
-  Boundry();
-  virtual ~Boundry();
+  Boundary();
+  virtual ~Boundary();
 
-  Boundry(const Boundry& from);
+  Boundary(const Boundary& from);
 
-  inline Boundry& operator=(const Boundry& from) {
+  inline Boundary& operator=(const Boundary& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  Boundry(Boundry&& from) noexcept
-    : Boundry() {
+  Boundary(Boundary&& from) noexcept
+    : Boundary() {
     *this = ::std::move(from);
   }
 
-  inline Boundry& operator=(Boundry&& from) noexcept {
+  inline Boundary& operator=(Boundary&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1011,31 +1025,31 @@ class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     return MaybeArenaPtr();
   }
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Boundry& default_instance();
+  static const Boundary& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Boundry* internal_default_instance() {
-    return reinterpret_cast<const Boundry*>(
-               &_Boundry_default_instance_);
+  static inline const Boundary* internal_default_instance() {
+    return reinterpret_cast<const Boundary*>(
+               &_Boundary_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     5;
 
-  void UnsafeArenaSwap(Boundry* other);
-  void Swap(Boundry* other);
-  friend void swap(Boundry& a, Boundry& b) {
+  void UnsafeArenaSwap(Boundary* other);
+  void Swap(Boundary* other);
+  friend void swap(Boundary& a, Boundary& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline Boundry* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Boundary* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  Boundry* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Boundary* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const Boundry& from);
-  void MergeFrom(const Boundry& from);
+  void CopyFrom(const Boundary& from);
+  void MergeFrom(const Boundary& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1051,9 +1065,9 @@ class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(Boundry* other);
+  void InternalSwap(Boundary* other);
   protected:
-  explicit Boundry(::google::protobuf::Arena* arena);
+  explicit Boundary(::google::protobuf::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
@@ -1105,7 +1119,7 @@ class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::int32 flag() const;
   void set_flag(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Boundry)
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Boundary)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1118,7 +1132,7 @@ class Boundry : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::int32 flag_;
   mutable int _cached_size_;
   friend struct ::protobuf_msg_2eproto::TableStruct;
-  friend void ::protobuf_msg_2eproto::InitDefaultsBoundryImpl();
+  friend void ::protobuf_msg_2eproto::InitDefaultsBoundaryImpl();
 };
 // -------------------------------------------------------------------
 
@@ -1368,23 +1382,35 @@ class Signboard : public ::google::protobuf::Message /* @@protoc_insertion_point
       ::itd::communication::protobuf::Header* header);
   ::itd::communication::protobuf::Header* unsafe_arena_release_header();
 
-  // float x = 2;
+  // float k = 2;
+  void clear_k();
+  static const int kKFieldNumber = 2;
+  float k() const;
+  void set_k(float value);
+
+  // float b = 3;
+  void clear_b();
+  static const int kBFieldNumber = 3;
+  float b() const;
+  void set_b(float value);
+
+  // float x = 4;
   void clear_x();
-  static const int kXFieldNumber = 2;
+  static const int kXFieldNumber = 4;
   float x() const;
   void set_x(float value);
 
-  // float y = 3;
+  // float y = 5;
   void clear_y();
-  static const int kYFieldNumber = 3;
+  static const int kYFieldNumber = 5;
   float y() const;
   void set_y(float value);
 
-  // float angle = 4;
-  void clear_angle();
-  static const int kAngleFieldNumber = 4;
-  float angle() const;
-  void set_angle(float value);
+  // int32 type = 6;
+  void clear_type();
+  static const int kTypeFieldNumber = 6;
+  ::google::protobuf::int32 type() const;
+  void set_type(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Signboard)
  private:
@@ -1394,9 +1420,11 @@ class Signboard : public ::google::protobuf::Message /* @@protoc_insertion_point
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::itd::communication::protobuf::Header* header_;
+  float k_;
+  float b_;
   float x_;
   float y_;
-  float angle_;
+  ::google::protobuf::int32 type_;
   mutable int _cached_size_;
   friend struct ::protobuf_msg_2eproto::TableStruct;
   friend void ::protobuf_msg_2eproto::InitDefaultsSignboardImpl();
@@ -1554,6 +1582,392 @@ class LidarStatus : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
+class BoundingBox : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.BoundingBox) */ {
+ public:
+  BoundingBox();
+  virtual ~BoundingBox();
+
+  BoundingBox(const BoundingBox& from);
+
+  inline BoundingBox& operator=(const BoundingBox& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BoundingBox(BoundingBox&& from) noexcept
+    : BoundingBox() {
+    *this = ::std::move(from);
+  }
+
+  inline BoundingBox& operator=(BoundingBox&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BoundingBox& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BoundingBox* internal_default_instance() {
+    return reinterpret_cast<const BoundingBox*>(
+               &_BoundingBox_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void UnsafeArenaSwap(BoundingBox* other);
+  void Swap(BoundingBox* other);
+  friend void swap(BoundingBox& a, BoundingBox& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BoundingBox* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BoundingBox* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BoundingBox& from);
+  void MergeFrom(const BoundingBox& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BoundingBox* other);
+  protected:
+  explicit BoundingBox(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated float head_angle = 3;
+  int head_angle_size() const;
+  void clear_head_angle();
+  static const int kHeadAngleFieldNumber = 3;
+  float head_angle(int index) const;
+  void set_head_angle(int index, float value);
+  void add_head_angle(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      head_angle() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_head_angle();
+
+  // repeated float length_obj = 4;
+  int length_obj_size() const;
+  void clear_length_obj();
+  static const int kLengthObjFieldNumber = 4;
+  float length_obj(int index) const;
+  void set_length_obj(int index, float value);
+  void add_length_obj(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      length_obj() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_length_obj();
+
+  // repeated float width_obj = 5;
+  int width_obj_size() const;
+  void clear_width_obj();
+  static const int kWidthObjFieldNumber = 5;
+  float width_obj(int index) const;
+  void set_width_obj(int index, float value);
+  void add_width_obj(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      width_obj() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_width_obj();
+
+  // repeated float track_id = 6;
+  int track_id_size() const;
+  void clear_track_id();
+  static const int kTrackIdFieldNumber = 6;
+  float track_id(int index) const;
+  void set_track_id(int index, float value);
+  void add_track_id(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      track_id() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_track_id();
+
+  // repeated float vx = 7;
+  int vx_size() const;
+  void clear_vx();
+  static const int kVxFieldNumber = 7;
+  float vx(int index) const;
+  void set_vx(int index, float value);
+  void add_vx(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      vx() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_vx();
+
+  // repeated float vy = 8;
+  int vy_size() const;
+  void clear_vy();
+  static const int kVyFieldNumber = 8;
+  float vy(int index) const;
+  void set_vy(int index, float value);
+  void add_vy(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      vy() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_vy();
+
+  // repeated float x = 9;
+  int x_size() const;
+  void clear_x();
+  static const int kXFieldNumber = 9;
+  float x(int index) const;
+  void set_x(int index, float value);
+  void add_x(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      x() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_x();
+
+  // repeated float y = 10;
+  int y_size() const;
+  void clear_y();
+  static const int kYFieldNumber = 10;
+  float y(int index) const;
+  void set_y(int index, float value);
+  void add_y(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      y() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_y();
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // int32 number = 2;
+  void clear_number();
+  static const int kNumberFieldNumber = 2;
+  ::google::protobuf::int32 number() const;
+  void set_number(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.BoundingBox)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::google::protobuf::RepeatedField< float > head_angle_;
+  mutable int _head_angle_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > length_obj_;
+  mutable int _length_obj_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > width_obj_;
+  mutable int _width_obj_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > track_id_;
+  mutable int _track_id_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > vx_;
+  mutable int _vx_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > vy_;
+  mutable int _vy_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > x_;
+  mutable int _x_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > y_;
+  mutable int _y_cached_byte_size_;
+  ::itd::communication::protobuf::Header* header_;
+  ::google::protobuf::int32 number_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsBoundingBoxImpl();
+};
+// -------------------------------------------------------------------
+
+class CanSignal : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.CanSignal) */ {
+ public:
+  CanSignal();
+  virtual ~CanSignal();
+
+  CanSignal(const CanSignal& from);
+
+  inline CanSignal& operator=(const CanSignal& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CanSignal(CanSignal&& from) noexcept
+    : CanSignal() {
+    *this = ::std::move(from);
+  }
+
+  inline CanSignal& operator=(CanSignal&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CanSignal& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CanSignal* internal_default_instance() {
+    return reinterpret_cast<const CanSignal*>(
+               &_CanSignal_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void UnsafeArenaSwap(CanSignal* other);
+  void Swap(CanSignal* other);
+  friend void swap(CanSignal& a, CanSignal& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CanSignal* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  CanSignal* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const CanSignal& from);
+  void MergeFrom(const CanSignal& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(CanSignal* other);
+  protected:
+  explicit CanSignal(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated double signal = 3;
+  int signal_size() const;
+  void clear_signal();
+  static const int kSignalFieldNumber = 3;
+  double signal(int index) const;
+  void set_signal(int index, double value);
+  void add_signal(double value);
+  const ::google::protobuf::RepeatedField< double >&
+      signal() const;
+  ::google::protobuf::RepeatedField< double >*
+      mutable_signal();
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // int32 nb_signal = 2;
+  void clear_nb_signal();
+  static const int kNbSignalFieldNumber = 2;
+  ::google::protobuf::int32 nb_signal() const;
+  void set_nb_signal(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.CanSignal)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::google::protobuf::RepeatedField< double > signal_;
+  mutable int _signal_cached_byte_size_;
+  ::itd::communication::protobuf::Header* header_;
+  ::google::protobuf::int32 nb_signal_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_msg_2eproto::TableStruct;
+  friend void ::protobuf_msg_2eproto::InitDefaultsCanSignalImpl();
+};
+// -------------------------------------------------------------------
+
 class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.Message) */ {
  public:
   Message();
@@ -1590,14 +2004,16 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   static const Message& default_instance();
 
   enum MsgCase {
-    kCloud = 9,
-    kFs = 10,
-    kTrailer = 11,
-    kBridge = 12,
-    kBoundry = 13,
-    kContainer = 14,
-    kSignboard = 15,
-    kLidarStatus = 16,
+    kCloud = 11,
+    kFs = 12,
+    kTrailer = 13,
+    kBridge = 14,
+    kBoundary = 15,
+    kContainer = 16,
+    kSignboard = 17,
+    kLidarStatus = 18,
+    kBoundingBox = 19,
+    kCanSignal = 20,
     MSG_NOT_SET = 0,
   };
 
@@ -1607,7 +2023,7 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_Message_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    11;
 
   void UnsafeArenaSwap(Message* other);
   void Swap(Message* other);
@@ -1667,14 +2083,18 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     Message_MessageType_Trailer;
   static const MessageType Bridge =
     Message_MessageType_Bridge;
-  static const MessageType Boundry =
-    Message_MessageType_Boundry;
+  static const MessageType Boundary =
+    Message_MessageType_Boundary;
   static const MessageType Container =
     Message_MessageType_Container;
   static const MessageType Signboard =
     Message_MessageType_Signboard;
   static const MessageType LidarStatus =
     Message_MessageType_LidarStatus;
+  static const MessageType BoundingBox =
+    Message_MessageType_BoundingBox;
+  static const MessageType CanSignal =
+    Message_MessageType_CanSignal;
   static inline bool MessageType_IsValid(int value) {
     return Message_MessageType_IsValid(value);
   }
@@ -1698,16 +2118,16 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .itd.communication.protobuf.Message.MessageType type = 8;
+  // .itd.communication.protobuf.Message.MessageType type = 10;
   void clear_type();
-  static const int kTypeFieldNumber = 8;
+  static const int kTypeFieldNumber = 10;
   ::itd::communication::protobuf::Message_MessageType type() const;
   void set_type(::itd::communication::protobuf::Message_MessageType value);
 
-  // .itd.communication.protobuf.PointCloud cloud = 9;
+  // .itd.communication.protobuf.PointCloud cloud = 11;
   bool has_cloud() const;
   void clear_cloud();
-  static const int kCloudFieldNumber = 9;
+  static const int kCloudFieldNumber = 11;
   private:
   void _slow_mutable_cloud();
   public:
@@ -1719,10 +2139,10 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::PointCloud* cloud);
   ::itd::communication::protobuf::PointCloud* unsafe_arena_release_cloud();
 
-  // .itd.communication.protobuf.Freespace fs = 10;
+  // .itd.communication.protobuf.Freespace fs = 12;
   bool has_fs() const;
   void clear_fs();
-  static const int kFsFieldNumber = 10;
+  static const int kFsFieldNumber = 12;
   private:
   void _slow_mutable_fs();
   public:
@@ -1734,10 +2154,10 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::Freespace* fs);
   ::itd::communication::protobuf::Freespace* unsafe_arena_release_fs();
 
-  // .itd.communication.protobuf.Trailer trailer = 11;
+  // .itd.communication.protobuf.Trailer trailer = 13;
   bool has_trailer() const;
   void clear_trailer();
-  static const int kTrailerFieldNumber = 11;
+  static const int kTrailerFieldNumber = 13;
   private:
   void _slow_mutable_trailer();
   public:
@@ -1749,10 +2169,10 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::Trailer* trailer);
   ::itd::communication::protobuf::Trailer* unsafe_arena_release_trailer();
 
-  // .itd.communication.protobuf.Bridge bridge = 12;
+  // .itd.communication.protobuf.Bridge bridge = 14;
   bool has_bridge() const;
   void clear_bridge();
-  static const int kBridgeFieldNumber = 12;
+  static const int kBridgeFieldNumber = 14;
   private:
   void _slow_mutable_bridge();
   public:
@@ -1764,25 +2184,25 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::Bridge* bridge);
   ::itd::communication::protobuf::Bridge* unsafe_arena_release_bridge();
 
-  // .itd.communication.protobuf.Boundry boundry = 13;
-  bool has_boundry() const;
-  void clear_boundry();
-  static const int kBoundryFieldNumber = 13;
+  // .itd.communication.protobuf.Boundary boundary = 15;
+  bool has_boundary() const;
+  void clear_boundary();
+  static const int kBoundaryFieldNumber = 15;
   private:
-  void _slow_mutable_boundry();
+  void _slow_mutable_boundary();
   public:
-  const ::itd::communication::protobuf::Boundry& boundry() const;
-  ::itd::communication::protobuf::Boundry* release_boundry();
-  ::itd::communication::protobuf::Boundry* mutable_boundry();
-  void set_allocated_boundry(::itd::communication::protobuf::Boundry* boundry);
-  void unsafe_arena_set_allocated_boundry(
-      ::itd::communication::protobuf::Boundry* boundry);
-  ::itd::communication::protobuf::Boundry* unsafe_arena_release_boundry();
+  const ::itd::communication::protobuf::Boundary& boundary() const;
+  ::itd::communication::protobuf::Boundary* release_boundary();
+  ::itd::communication::protobuf::Boundary* mutable_boundary();
+  void set_allocated_boundary(::itd::communication::protobuf::Boundary* boundary);
+  void unsafe_arena_set_allocated_boundary(
+      ::itd::communication::protobuf::Boundary* boundary);
+  ::itd::communication::protobuf::Boundary* unsafe_arena_release_boundary();
 
-  // .itd.communication.protobuf.Container container = 14;
+  // .itd.communication.protobuf.Container container = 16;
   bool has_container() const;
   void clear_container();
-  static const int kContainerFieldNumber = 14;
+  static const int kContainerFieldNumber = 16;
   private:
   void _slow_mutable_container();
   public:
@@ -1794,10 +2214,10 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::Container* container);
   ::itd::communication::protobuf::Container* unsafe_arena_release_container();
 
-  // .itd.communication.protobuf.Signboard signboard = 15;
+  // .itd.communication.protobuf.Signboard signboard = 17;
   bool has_signboard() const;
   void clear_signboard();
-  static const int kSignboardFieldNumber = 15;
+  static const int kSignboardFieldNumber = 17;
   private:
   void _slow_mutable_signboard();
   public:
@@ -1809,10 +2229,10 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::Signboard* signboard);
   ::itd::communication::protobuf::Signboard* unsafe_arena_release_signboard();
 
-  // .itd.communication.protobuf.LidarStatus lidar_status = 16;
+  // .itd.communication.protobuf.LidarStatus lidar_status = 18;
   bool has_lidar_status() const;
   void clear_lidar_status();
-  static const int kLidarStatusFieldNumber = 16;
+  static const int kLidarStatusFieldNumber = 18;
   private:
   void _slow_mutable_lidar_status();
   public:
@@ -1824,6 +2244,36 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
       ::itd::communication::protobuf::LidarStatus* lidar_status);
   ::itd::communication::protobuf::LidarStatus* unsafe_arena_release_lidar_status();
 
+  // .itd.communication.protobuf.BoundingBox boundingBox = 19;
+  bool has_boundingbox() const;
+  void clear_boundingbox();
+  static const int kBoundingBoxFieldNumber = 19;
+  private:
+  void _slow_mutable_boundingbox();
+  public:
+  const ::itd::communication::protobuf::BoundingBox& boundingbox() const;
+  ::itd::communication::protobuf::BoundingBox* release_boundingbox();
+  ::itd::communication::protobuf::BoundingBox* mutable_boundingbox();
+  void set_allocated_boundingbox(::itd::communication::protobuf::BoundingBox* boundingbox);
+  void unsafe_arena_set_allocated_boundingbox(
+      ::itd::communication::protobuf::BoundingBox* boundingbox);
+  ::itd::communication::protobuf::BoundingBox* unsafe_arena_release_boundingbox();
+
+  // .itd.communication.protobuf.CanSignal can_signal = 20;
+  bool has_can_signal() const;
+  void clear_can_signal();
+  static const int kCanSignalFieldNumber = 20;
+  private:
+  void _slow_mutable_can_signal();
+  public:
+  const ::itd::communication::protobuf::CanSignal& can_signal() const;
+  ::itd::communication::protobuf::CanSignal* release_can_signal();
+  ::itd::communication::protobuf::CanSignal* mutable_can_signal();
+  void set_allocated_can_signal(::itd::communication::protobuf::CanSignal* can_signal);
+  void unsafe_arena_set_allocated_can_signal(
+      ::itd::communication::protobuf::CanSignal* can_signal);
+  ::itd::communication::protobuf::CanSignal* unsafe_arena_release_can_signal();
+
   MsgCase msg_case() const;
   // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Message)
  private:
@@ -1831,10 +2281,12 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void set_has_fs();
   void set_has_trailer();
   void set_has_bridge();
-  void set_has_boundry();
+  void set_has_boundary();
   void set_has_container();
   void set_has_signboard();
   void set_has_lidar_status();
+  void set_has_boundingbox();
+  void set_has_can_signal();
 
   inline bool has_msg() const;
   void clear_msg();
@@ -1851,10 +2303,12 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ::itd::communication::protobuf::Freespace* fs_;
     ::itd::communication::protobuf::Trailer* trailer_;
     ::itd::communication::protobuf::Bridge* bridge_;
-    ::itd::communication::protobuf::Boundry* boundry_;
+    ::itd::communication::protobuf::Boundary* boundary_;
     ::itd::communication::protobuf::Container* container_;
     ::itd::communication::protobuf::Signboard* signboard_;
     ::itd::communication::protobuf::LidarStatus* lidar_status_;
+    ::itd::communication::protobuf::BoundingBox* boundingbox_;
+    ::itd::communication::protobuf::CanSignal* can_signal_;
   } msg_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -2650,26 +3104,26 @@ inline void Bridge::set_flag(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// Boundry
+// Boundary
 
 // .itd.communication.protobuf.Header header = 1;
-inline bool Boundry::has_header() const {
+inline bool Boundary::has_header() const {
   return this != internal_default_instance() && header_ != NULL;
 }
-inline void Boundry::clear_header() {
+inline void Boundary::clear_header() {
   if (GetArenaNoVirtual() == NULL && header_ != NULL) {
     delete header_;
   }
   header_ = NULL;
 }
-inline const ::itd::communication::protobuf::Header& Boundry::header() const {
+inline const ::itd::communication::protobuf::Header& Boundary::header() const {
   const ::itd::communication::protobuf::Header* p = header_;
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.header)
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundary.header)
   return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
       &::itd::communication::protobuf::_Header_default_instance_);
 }
-inline ::itd::communication::protobuf::Header* Boundry::release_header() {
-  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Boundry.header)
+inline ::itd::communication::protobuf::Header* Boundary::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Boundary.header)
   
   ::itd::communication::protobuf::Header* temp = header_;
   if (GetArenaNoVirtual() != NULL) {
@@ -2678,22 +3132,22 @@ inline ::itd::communication::protobuf::Header* Boundry::release_header() {
   header_ = NULL;
   return temp;
 }
-inline ::itd::communication::protobuf::Header* Boundry::unsafe_arena_release_header() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Boundry.header)
+inline ::itd::communication::protobuf::Header* Boundary::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Boundary.header)
   
   ::itd::communication::protobuf::Header* temp = header_;
   header_ = NULL;
   return temp;
 }
-inline ::itd::communication::protobuf::Header* Boundry::mutable_header() {
+inline ::itd::communication::protobuf::Header* Boundary::mutable_header() {
   
   if (header_ == NULL) {
     _slow_mutable_header();
   }
-  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Boundry.header)
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Boundary.header)
   return header_;
 }
-inline void Boundry::set_allocated_header(::itd::communication::protobuf::Header* header) {
+inline void Boundary::set_allocated_header(::itd::communication::protobuf::Header* header) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete header_;
@@ -2710,49 +3164,49 @@ inline void Boundry::set_allocated_header(::itd::communication::protobuf::Header
     
   }
   header_ = header;
-  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Boundry.header)
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Boundary.header)
 }
 
 // float k = 2;
-inline void Boundry::clear_k() {
+inline void Boundary::clear_k() {
   k_ = 0;
 }
-inline float Boundry::k() const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.k)
+inline float Boundary::k() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundary.k)
   return k_;
 }
-inline void Boundry::set_k(float value) {
+inline void Boundary::set_k(float value) {
   
   k_ = value;
-  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.k)
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundary.k)
 }
 
 // float b = 3;
-inline void Boundry::clear_b() {
+inline void Boundary::clear_b() {
   b_ = 0;
 }
-inline float Boundry::b() const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.b)
+inline float Boundary::b() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundary.b)
   return b_;
 }
-inline void Boundry::set_b(float value) {
+inline void Boundary::set_b(float value) {
   
   b_ = value;
-  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.b)
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundary.b)
 }
 
 // int32 flag = 4;
-inline void Boundry::clear_flag() {
+inline void Boundary::clear_flag() {
   flag_ = 0;
 }
-inline ::google::protobuf::int32 Boundry::flag() const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundry.flag)
+inline ::google::protobuf::int32 Boundary::flag() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Boundary.flag)
   return flag_;
 }
-inline void Boundry::set_flag(::google::protobuf::int32 value) {
+inline void Boundary::set_flag(::google::protobuf::int32 value) {
   
   flag_ = value;
-  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundry.flag)
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Boundary.flag)
 }
 
 // -------------------------------------------------------------------
@@ -2913,7 +3367,35 @@ inline void Signboard::set_allocated_header(::itd::communication::protobuf::Head
   // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Signboard.header)
 }
 
-// float x = 2;
+// float k = 2;
+inline void Signboard::clear_k() {
+  k_ = 0;
+}
+inline float Signboard::k() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.k)
+  return k_;
+}
+inline void Signboard::set_k(float value) {
+  
+  k_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.k)
+}
+
+// float b = 3;
+inline void Signboard::clear_b() {
+  b_ = 0;
+}
+inline float Signboard::b() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.b)
+  return b_;
+}
+inline void Signboard::set_b(float value) {
+  
+  b_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.b)
+}
+
+// float x = 4;
 inline void Signboard::clear_x() {
   x_ = 0;
 }
@@ -2927,7 +3409,7 @@ inline void Signboard::set_x(float value) {
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.x)
 }
 
-// float y = 3;
+// float y = 5;
 inline void Signboard::clear_y() {
   y_ = 0;
 }
@@ -2941,18 +3423,18 @@ inline void Signboard::set_y(float value) {
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.y)
 }
 
-// float angle = 4;
-inline void Signboard::clear_angle() {
-  angle_ = 0;
+// int32 type = 6;
+inline void Signboard::clear_type() {
+  type_ = 0;
 }
-inline float Signboard::angle() const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.angle)
-  return angle_;
+inline ::google::protobuf::int32 Signboard::type() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Signboard.type)
+  return type_;
 }
-inline void Signboard::set_angle(float value) {
+inline void Signboard::set_type(::google::protobuf::int32 value) {
   
-  angle_ = value;
-  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.angle)
+  type_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Signboard.type)
 }
 
 // -------------------------------------------------------------------
@@ -3078,9 +3560,437 @@ inline void LidarStatus::set_single(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
+// BoundingBox
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool BoundingBox::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void BoundingBox::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& BoundingBox::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.BoundingBox.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.BoundingBox.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.BoundingBox.header)
+  return header_;
+}
+inline void BoundingBox::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.BoundingBox.header)
+}
+
+// int32 number = 2;
+inline void BoundingBox::clear_number() {
+  number_ = 0;
+}
+inline ::google::protobuf::int32 BoundingBox::number() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.number)
+  return number_;
+}
+inline void BoundingBox::set_number(::google::protobuf::int32 value) {
+  
+  number_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.number)
+}
+
+// repeated float head_angle = 3;
+inline int BoundingBox::head_angle_size() const {
+  return head_angle_.size();
+}
+inline void BoundingBox::clear_head_angle() {
+  head_angle_.Clear();
+}
+inline float BoundingBox::head_angle(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.head_angle)
+  return head_angle_.Get(index);
+}
+inline void BoundingBox::set_head_angle(int index, float value) {
+  head_angle_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.head_angle)
+}
+inline void BoundingBox::add_head_angle(float value) {
+  head_angle_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.head_angle)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::head_angle() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.head_angle)
+  return head_angle_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_head_angle() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.head_angle)
+  return &head_angle_;
+}
+
+// repeated float length_obj = 4;
+inline int BoundingBox::length_obj_size() const {
+  return length_obj_.size();
+}
+inline void BoundingBox::clear_length_obj() {
+  length_obj_.Clear();
+}
+inline float BoundingBox::length_obj(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.length_obj)
+  return length_obj_.Get(index);
+}
+inline void BoundingBox::set_length_obj(int index, float value) {
+  length_obj_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.length_obj)
+}
+inline void BoundingBox::add_length_obj(float value) {
+  length_obj_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.length_obj)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::length_obj() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.length_obj)
+  return length_obj_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_length_obj() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.length_obj)
+  return &length_obj_;
+}
+
+// repeated float width_obj = 5;
+inline int BoundingBox::width_obj_size() const {
+  return width_obj_.size();
+}
+inline void BoundingBox::clear_width_obj() {
+  width_obj_.Clear();
+}
+inline float BoundingBox::width_obj(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.width_obj)
+  return width_obj_.Get(index);
+}
+inline void BoundingBox::set_width_obj(int index, float value) {
+  width_obj_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.width_obj)
+}
+inline void BoundingBox::add_width_obj(float value) {
+  width_obj_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.width_obj)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::width_obj() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.width_obj)
+  return width_obj_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_width_obj() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.width_obj)
+  return &width_obj_;
+}
+
+// repeated float track_id = 6;
+inline int BoundingBox::track_id_size() const {
+  return track_id_.size();
+}
+inline void BoundingBox::clear_track_id() {
+  track_id_.Clear();
+}
+inline float BoundingBox::track_id(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.track_id)
+  return track_id_.Get(index);
+}
+inline void BoundingBox::set_track_id(int index, float value) {
+  track_id_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.track_id)
+}
+inline void BoundingBox::add_track_id(float value) {
+  track_id_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.track_id)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::track_id() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.track_id)
+  return track_id_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_track_id() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.track_id)
+  return &track_id_;
+}
+
+// repeated float vx = 7;
+inline int BoundingBox::vx_size() const {
+  return vx_.size();
+}
+inline void BoundingBox::clear_vx() {
+  vx_.Clear();
+}
+inline float BoundingBox::vx(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.vx)
+  return vx_.Get(index);
+}
+inline void BoundingBox::set_vx(int index, float value) {
+  vx_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.vx)
+}
+inline void BoundingBox::add_vx(float value) {
+  vx_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.vx)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::vx() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.vx)
+  return vx_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_vx() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.vx)
+  return &vx_;
+}
+
+// repeated float vy = 8;
+inline int BoundingBox::vy_size() const {
+  return vy_.size();
+}
+inline void BoundingBox::clear_vy() {
+  vy_.Clear();
+}
+inline float BoundingBox::vy(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.vy)
+  return vy_.Get(index);
+}
+inline void BoundingBox::set_vy(int index, float value) {
+  vy_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.vy)
+}
+inline void BoundingBox::add_vy(float value) {
+  vy_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.vy)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::vy() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.vy)
+  return vy_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_vy() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.vy)
+  return &vy_;
+}
+
+// repeated float x = 9;
+inline int BoundingBox::x_size() const {
+  return x_.size();
+}
+inline void BoundingBox::clear_x() {
+  x_.Clear();
+}
+inline float BoundingBox::x(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.x)
+  return x_.Get(index);
+}
+inline void BoundingBox::set_x(int index, float value) {
+  x_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.x)
+}
+inline void BoundingBox::add_x(float value) {
+  x_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.x)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::x() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.x)
+  return x_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_x() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.x)
+  return &x_;
+}
+
+// repeated float y = 10;
+inline int BoundingBox::y_size() const {
+  return y_.size();
+}
+inline void BoundingBox::clear_y() {
+  y_.Clear();
+}
+inline float BoundingBox::y(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.y)
+  return y_.Get(index);
+}
+inline void BoundingBox::set_y(int index, float value) {
+  y_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.y)
+}
+inline void BoundingBox::add_y(float value) {
+  y_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBox.y)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBox::y() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBox.y)
+  return y_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBox::mutable_y() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBox.y)
+  return &y_;
+}
+
+// -------------------------------------------------------------------
+
+// CanSignal
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool CanSignal::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline void CanSignal::clear_header() {
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+}
+inline const ::itd::communication::protobuf::Header& CanSignal::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.CanSignal.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* CanSignal::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.CanSignal.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* CanSignal::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.CanSignal.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* CanSignal::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.CanSignal.header)
+  return header_;
+}
+inline void CanSignal::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete header_;
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::GetArena(header);
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.CanSignal.header)
+}
+
+// int32 nb_signal = 2;
+inline void CanSignal::clear_nb_signal() {
+  nb_signal_ = 0;
+}
+inline ::google::protobuf::int32 CanSignal::nb_signal() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.CanSignal.nb_signal)
+  return nb_signal_;
+}
+inline void CanSignal::set_nb_signal(::google::protobuf::int32 value) {
+  
+  nb_signal_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.CanSignal.nb_signal)
+}
+
+// repeated double signal = 3;
+inline int CanSignal::signal_size() const {
+  return signal_.size();
+}
+inline void CanSignal::clear_signal() {
+  signal_.Clear();
+}
+inline double CanSignal::signal(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.CanSignal.signal)
+  return signal_.Get(index);
+}
+inline void CanSignal::set_signal(int index, double value) {
+  signal_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.CanSignal.signal)
+}
+inline void CanSignal::add_signal(double value) {
+  signal_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.CanSignal.signal)
+}
+inline const ::google::protobuf::RepeatedField< double >&
+CanSignal::signal() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.CanSignal.signal)
+  return signal_;
+}
+inline ::google::protobuf::RepeatedField< double >*
+CanSignal::mutable_signal() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.CanSignal.signal)
+  return &signal_;
+}
+
+// -------------------------------------------------------------------
+
 // Message
 
-// .itd.communication.protobuf.Message.MessageType type = 8;
+// .itd.communication.protobuf.Message.MessageType type = 10;
 inline void Message::clear_type() {
   type_ = 0;
 }
@@ -3094,7 +4004,7 @@ inline void Message::set_type(::itd::communication::protobuf::Message_MessageTyp
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.Message.type)
 }
 
-// .itd.communication.protobuf.PointCloud cloud = 9;
+// .itd.communication.protobuf.PointCloud cloud = 11;
 inline bool Message::has_cloud() const {
   return msg_case() == kCloud;
 }
@@ -3160,7 +4070,7 @@ inline ::itd::communication::protobuf::PointCloud* Message::mutable_cloud() {
   return msg_.cloud_;
 }
 
-// .itd.communication.protobuf.Freespace fs = 10;
+// .itd.communication.protobuf.Freespace fs = 12;
 inline bool Message::has_fs() const {
   return msg_case() == kFs;
 }
@@ -3226,7 +4136,7 @@ inline ::itd::communication::protobuf::Freespace* Message::mutable_fs() {
   return msg_.fs_;
 }
 
-// .itd.communication.protobuf.Trailer trailer = 11;
+// .itd.communication.protobuf.Trailer trailer = 13;
 inline bool Message::has_trailer() const {
   return msg_case() == kTrailer;
 }
@@ -3292,7 +4202,7 @@ inline ::itd::communication::protobuf::Trailer* Message::mutable_trailer() {
   return msg_.trailer_;
 }
 
-// .itd.communication.protobuf.Bridge bridge = 12;
+// .itd.communication.protobuf.Bridge bridge = 14;
 inline bool Message::has_bridge() const {
   return msg_case() == kBridge;
 }
@@ -3358,73 +4268,73 @@ inline ::itd::communication::protobuf::Bridge* Message::mutable_bridge() {
   return msg_.bridge_;
 }
 
-// .itd.communication.protobuf.Boundry boundry = 13;
-inline bool Message::has_boundry() const {
-  return msg_case() == kBoundry;
+// .itd.communication.protobuf.Boundary boundary = 15;
+inline bool Message::has_boundary() const {
+  return msg_case() == kBoundary;
 }
-inline void Message::set_has_boundry() {
-  _oneof_case_[0] = kBoundry;
+inline void Message::set_has_boundary() {
+  _oneof_case_[0] = kBoundary;
 }
-inline void Message::clear_boundry() {
-  if (has_boundry()) {
+inline void Message::clear_boundary() {
+  if (has_boundary()) {
     if (GetArenaNoVirtual() == NULL) {
-      delete msg_.boundry_;
+      delete msg_.boundary_;
     }
     clear_has_msg();
   }
 }
-inline ::itd::communication::protobuf::Boundry* Message::release_boundry() {
-  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.boundry)
-  if (has_boundry()) {
+inline ::itd::communication::protobuf::Boundary* Message::release_boundary() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.boundary)
+  if (has_boundary()) {
     clear_has_msg();
-      ::itd::communication::protobuf::Boundry* temp = msg_.boundry_;
+      ::itd::communication::protobuf::Boundary* temp = msg_.boundary_;
     if (GetArenaNoVirtual() != NULL) {
       temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
     }
-    msg_.boundry_ = NULL;
+    msg_.boundary_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::itd::communication::protobuf::Boundry& Message::boundry() const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.boundry)
-  return has_boundry()
-      ? *msg_.boundry_
-      : *reinterpret_cast< ::itd::communication::protobuf::Boundry*>(&::itd::communication::protobuf::_Boundry_default_instance_);
+inline const ::itd::communication::protobuf::Boundary& Message::boundary() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.boundary)
+  return has_boundary()
+      ? *msg_.boundary_
+      : *reinterpret_cast< ::itd::communication::protobuf::Boundary*>(&::itd::communication::protobuf::_Boundary_default_instance_);
 }
-inline ::itd::communication::protobuf::Boundry* Message::unsafe_arena_release_boundry() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.boundry)
-  if (has_boundry()) {
+inline ::itd::communication::protobuf::Boundary* Message::unsafe_arena_release_boundary() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.boundary)
+  if (has_boundary()) {
     clear_has_msg();
-    ::itd::communication::protobuf::Boundry* temp = msg_.boundry_;
-    msg_.boundry_ = NULL;
+    ::itd::communication::protobuf::Boundary* temp = msg_.boundary_;
+    msg_.boundary_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline void Message::unsafe_arena_set_allocated_boundry(::itd::communication::protobuf::Boundry* boundry) {
+inline void Message::unsafe_arena_set_allocated_boundary(::itd::communication::protobuf::Boundary* boundary) {
   clear_msg();
-  if (boundry) {
-    set_has_boundry();
-    msg_.boundry_ = boundry;
+  if (boundary) {
+    set_has_boundary();
+    msg_.boundary_ = boundary;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.boundry)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.boundary)
 }
-inline ::itd::communication::protobuf::Boundry* Message::mutable_boundry() {
-  if (!has_boundry()) {
+inline ::itd::communication::protobuf::Boundary* Message::mutable_boundary() {
+  if (!has_boundary()) {
     clear_msg();
-    set_has_boundry();
-    msg_.boundry_ = 
-      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Boundry >(
+    set_has_boundary();
+    msg_.boundary_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Boundary >(
       GetArenaNoVirtual());
   }
-  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.boundry)
-  return msg_.boundry_;
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.boundary)
+  return msg_.boundary_;
 }
 
-// .itd.communication.protobuf.Container container = 14;
+// .itd.communication.protobuf.Container container = 16;
 inline bool Message::has_container() const {
   return msg_case() == kContainer;
 }
@@ -3490,7 +4400,7 @@ inline ::itd::communication::protobuf::Container* Message::mutable_container() {
   return msg_.container_;
 }
 
-// .itd.communication.protobuf.Signboard signboard = 15;
+// .itd.communication.protobuf.Signboard signboard = 17;
 inline bool Message::has_signboard() const {
   return msg_case() == kSignboard;
 }
@@ -3556,7 +4466,7 @@ inline ::itd::communication::protobuf::Signboard* Message::mutable_signboard() {
   return msg_.signboard_;
 }
 
-// .itd.communication.protobuf.LidarStatus lidar_status = 16;
+// .itd.communication.protobuf.LidarStatus lidar_status = 18;
 inline bool Message::has_lidar_status() const {
   return msg_case() == kLidarStatus;
 }
@@ -3622,6 +4532,138 @@ inline ::itd::communication::protobuf::LidarStatus* Message::mutable_lidar_statu
   return msg_.lidar_status_;
 }
 
+// .itd.communication.protobuf.BoundingBox boundingBox = 19;
+inline bool Message::has_boundingbox() const {
+  return msg_case() == kBoundingBox;
+}
+inline void Message::set_has_boundingbox() {
+  _oneof_case_[0] = kBoundingBox;
+}
+inline void Message::clear_boundingbox() {
+  if (has_boundingbox()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.boundingbox_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::BoundingBox* Message::release_boundingbox() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.boundingBox)
+  if (has_boundingbox()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::BoundingBox* temp = msg_.boundingbox_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.boundingbox_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::BoundingBox& Message::boundingbox() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.boundingBox)
+  return has_boundingbox()
+      ? *msg_.boundingbox_
+      : *reinterpret_cast< ::itd::communication::protobuf::BoundingBox*>(&::itd::communication::protobuf::_BoundingBox_default_instance_);
+}
+inline ::itd::communication::protobuf::BoundingBox* Message::unsafe_arena_release_boundingbox() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.boundingBox)
+  if (has_boundingbox()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::BoundingBox* temp = msg_.boundingbox_;
+    msg_.boundingbox_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_boundingbox(::itd::communication::protobuf::BoundingBox* boundingbox) {
+  clear_msg();
+  if (boundingbox) {
+    set_has_boundingbox();
+    msg_.boundingbox_ = boundingbox;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.boundingBox)
+}
+inline ::itd::communication::protobuf::BoundingBox* Message::mutable_boundingbox() {
+  if (!has_boundingbox()) {
+    clear_msg();
+    set_has_boundingbox();
+    msg_.boundingbox_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::BoundingBox >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.boundingBox)
+  return msg_.boundingbox_;
+}
+
+// .itd.communication.protobuf.CanSignal can_signal = 20;
+inline bool Message::has_can_signal() const {
+  return msg_case() == kCanSignal;
+}
+inline void Message::set_has_can_signal() {
+  _oneof_case_[0] = kCanSignal;
+}
+inline void Message::clear_can_signal() {
+  if (has_can_signal()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.can_signal_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::CanSignal* Message::release_can_signal() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Message.can_signal)
+  if (has_can_signal()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::CanSignal* temp = msg_.can_signal_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.can_signal_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::CanSignal& Message::can_signal() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Message.can_signal)
+  return has_can_signal()
+      ? *msg_.can_signal_
+      : *reinterpret_cast< ::itd::communication::protobuf::CanSignal*>(&::itd::communication::protobuf::_CanSignal_default_instance_);
+}
+inline ::itd::communication::protobuf::CanSignal* Message::unsafe_arena_release_can_signal() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Message.can_signal)
+  if (has_can_signal()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::CanSignal* temp = msg_.can_signal_;
+    msg_.can_signal_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void Message::unsafe_arena_set_allocated_can_signal(::itd::communication::protobuf::CanSignal* can_signal) {
+  clear_msg();
+  if (can_signal) {
+    set_has_can_signal();
+    msg_.can_signal_ = can_signal;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Message.can_signal)
+}
+inline ::itd::communication::protobuf::CanSignal* Message::mutable_can_signal() {
+  if (!has_can_signal()) {
+    clear_msg();
+    set_has_can_signal();
+    msg_.can_signal_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::CanSignal >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Message.can_signal)
+  return msg_.can_signal_;
+}
+
 inline bool Message::has_msg() const {
   return msg_case() != MSG_NOT_SET;
 }
@@ -3634,6 +4676,10 @@ inline Message::MsgCase Message::msg_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

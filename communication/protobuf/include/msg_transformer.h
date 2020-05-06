@@ -34,6 +34,15 @@ class MsgTransformer {
 
   static void ToItdFs(const float *fs_in, itd::communication::protobuf::Freespace &fs_out);
   //
+  static void ToItdBoundary(const float &k, const float &b, const int &flag,
+                            itd::communication::protobuf::Boundary &boundary_out);
+  //
+  static void ToItdSignboard(const float &k, const float &b, const float &x, const float &y, const int &type,
+                            itd::communication::protobuf::Signboard &signboard_out);
+  //
+  static void ToItdTrailer(const float &k, const float &b, const int &flag,
+                          itd::communication::protobuf::Trailer &trailer_out);
+  //
   static void ToItdBridge(const float &k, const float &b, const int &flag,
                           itd::communication::protobuf::Bridge &bridge_out);
 };
