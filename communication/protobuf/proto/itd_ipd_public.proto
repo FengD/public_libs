@@ -1,0 +1,14 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+package itd.communication.message.public;
+
+message Time {
+  uint32 sec = 1;
+  uint32 nsec = 2;
+}
+
+message Header {
+  uint32 seq = 1;
+  Time stamp = 2;
+  string frame_id = 3;
+}
