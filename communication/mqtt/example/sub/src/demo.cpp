@@ -18,12 +18,12 @@ void OnLog(int level, const char *str) {
 }
 
 int main() {
-  itd::communication::Handler hander(HOST, PORT);
-  itd::communication::Subscriber sub = hander.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage);
+  itd::communication::Handler handler(HOST, PORT);
+  itd::communication::Subscriber *sub = handler.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage);
   // if need username and password for mqtt server
-  // itd::communication::Handler hander(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
+  // itd::communication::Handler handler(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
   // if need a callback of log after subscribe
-  // itd::communication::Subscriber pub = hander.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage, OnLog);
-  sub.Spin();
+  // itd::communication::Subscriber sub = handler.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage, OnLog);
+  sub->Spin();
   return 0;
 }

@@ -14,18 +14,18 @@ void OnLog(int level, const char *str) {
 }
 
 int main() {
-  itd::communication::Handler hander(HOST, PORT);
-  // itd::communication::Publisher pub = hander.advertise<itd::communication::protobuf::PointCloud>("Test");
+  itd::communication::Handler handler(HOST, PORT);
+  // itd::communication::Publisher pub = handler.advertise<itd::communication::protobuf::PointCloud>("Test");
   // if need username and password for mqtt server
-  // itd::communication::Handler hander(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
+  // itd::communication::Handler handler(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
   // if need a callback of log after publish
-  itd::communication::Publisher pub = *hander.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
+  itd::communication::Publisher *pub = handler.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
   int i = 0;
   while(1) {
     itd::communication::protobuf::PointCloud msg;
     msg.set_height(10);
     msg.set_width(i++);
-    pub.Publish(msg);
+    pub->Publish(msg);
     usleep(10000);
   }
   return 0;
