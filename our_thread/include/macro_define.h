@@ -5,6 +5,7 @@
 
 #ifndef _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
 #define _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
+#include "hlog.h"
 
 // thread start and detach
 #define SDT(switch, thread)\
