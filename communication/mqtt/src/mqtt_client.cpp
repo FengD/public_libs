@@ -20,8 +20,12 @@ MqttClient::MqttClient(struct mosq_config cfg) {
 
 MqttClient::~MqttClient() = default;
 
-int32_t MqttClient::ConnectClient(struct mosquitto *mosq) {
-  mosquitto_connect_callback_set(mosq, OnConnect);
+int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(struct mosquitto *, void *, int)) {
+  if (on_connect != nullptr) {
+    mosquitto_connect_callback_set(mosq, on_connect);
+  } else {
+    mosquitto_connect_callback_set(mosq, OnConnect);
+  }
   mosquitto_disconnect_callback_set(mosq, OnDisconnect);
   if (!mosq) {
     printf("Error: Create client failed.\n");

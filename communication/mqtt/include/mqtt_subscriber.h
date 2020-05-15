@@ -18,11 +18,11 @@ namespace communication {
 class MqttClient;
 class MqttSubscriber {
  public:
-  MqttSubscriber(std::string host, int32_t port,
+  MqttSubscriber(std::string host, int32_t port, std::string topic,
 	             std::string username = "", std::string password = "");
-  MqttSubscriber(struct mosq_config cfg);
+  MqttSubscriber(struct mosq_config cfg, std::string topic);
   ~MqttSubscriber();
-  void Subscribe(std::string topic);
+
   void SetOnMessage(MessageCallback mcb);
   void SetOnSubscribe(SubscribeCallback scb);
   void SetOnLog(LogCallback lcb);
@@ -39,11 +39,13 @@ class MqttSubscriber {
   SubscribeCallback scb_;
   LogCallback lcb_;
   UnsubscribeCallback ucb_;
-
+  std::string topic_;
+  void Subscribe();
   static void OnMessage(struct mosquitto *mosq, void *obj, const struct mosquitto_message *message);
   static void OnSubscribe(struct mosquitto *mosq, void *obj, int mid, int qos_count, const int *granted_qos);
   static void OnLog(struct mosquitto *mosq, void *obj, int level, const char *str);
   static void OnUnsubscribe(struct mosquitto *mosq, void *obj, int mid);
+  static void OnConnect(struct mosquitto *mosq, void *obj, int mid);
 };
 
 }  // namespace communication

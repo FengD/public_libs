@@ -20,7 +20,7 @@ class MqttClient {
  public:
   MqttClient(struct mosq_config cfg);
   ~MqttClient();
-  int32_t ConnectClient(struct mosquitto *mosq);
+  int32_t ConnectClient(struct mosquitto *mosq, void (*on_connect)(struct mosquitto *, void *, int) = NULL);
   void DisconnectClient(struct mosquitto *mosq);
 
  private:
