@@ -45,22 +45,14 @@ class MsgTransformer {
   //
   static void ToItdBridge(const float &k, const float &b, const int &flag,
                           itd::communication::protobuf::Bridge &bridge_out);
-<<<<<<< fc83cc9c09a9c37f3e384485860768cc6e5db197
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> <feat>(msg_transform):add grabber and container
 
   static void ToItdGrabber(const int &grabber_left_angle, const float &grabber_left_obstacle_dis,
                            const int &grabber_right_angle, const float &grabber_right_obstacle_dis,
                            itd::communication::protobuf::Grabber &grabber_out);
-<<<<<<< fc83cc9c09a9c37f3e384485860768cc6e5db197
-=======
 
   static void ToItdContainer(const int &front_container_flag, const float &front_container_dis,
                                   itd::communication::protobuf::Container &container_out);
->>>>>>> Stashed changes
->>>>>>> <feat>(msg_transform):add grabber and container
+
 };
 
 }  // namespace itd
