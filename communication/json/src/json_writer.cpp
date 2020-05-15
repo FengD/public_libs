@@ -387,7 +387,7 @@ void FastWriter::writeValue(const Value& value) {
     document_ += valueToString(value.asLargestUInt());
     break;
   case realValue:
-    document_ += valueToString(value.asDouble());
+    document_ += valueToString(value.asDouble(), false, 10, decimalPlaces);
     break;
   case stringValue: {
     // Is NULL possible for value.string_? No.
