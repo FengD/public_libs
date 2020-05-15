@@ -30,7 +30,7 @@ class ThreadPeriod : public ThreadBase {
   void Run();
   int64_t getElapsedTimeUs();
   virtual void RunInPeriod() = 0;
-  virtual void SetParam(YAML::Node config) = 0;
+  // virtual void SetParam(YAML::Node config);
 
 };
 }  // namespace itd
