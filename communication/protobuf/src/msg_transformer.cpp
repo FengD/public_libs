@@ -144,5 +144,23 @@ void MsgTransformer::ToItdTrailer(const float &k, const float &b, const int &fla
   trailer_out.set_flag(flag);
 }
 
+void MsgTransformer::ToItdGrabber(const int &grabber_left_angle, const float &grabber_left_obstacle_dis,
+                                  const int &grabber_right_angle, const float &grabber_right_obstacle_dis,
+                                  itd::communication::protobuf::Grabber &grabber_out) {
+  grabber_out.Clear();
+  grabber_out.set_left_angle(grabber_left_angle);
+  grabber_out.set_left_obstacle_dis(grabber_left_obstacle_dis);
+  grabber_out.set_right_angle(grabber_right_angle);
+  grabber_out.set_right_obstacle_dis(grabber_right_obstacle_dis);
+
+}
+
+void MsgTransformer::ToItdContainer(const int &front_container_flag, const float &front_container_dis,
+                                  itd::communication::protobuf::Container &container_out) {
+  container_out.Clear();
+  container_out.set_flag(front_container_flag);
+  container_out.set_distance(front_container_dis);
+}
+
 }  // namespace itd
 }  // namespace communication

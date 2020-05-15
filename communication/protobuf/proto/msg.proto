@@ -64,6 +64,14 @@ message Signboard {
   int32 type = 6;
 }
 
+message Grabber {
+  Header header = 1;
+  int32 left_angle = 2;
+  int32 right_angle = 3;
+  float left_obstacle_dis = 4;
+  float right_obstacle_dis = 5;
+}
+
 message LidarStatus {
   Header header = 1;
   int32 left = 2;

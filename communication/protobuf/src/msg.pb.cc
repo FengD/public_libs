@@ -62,6 +62,11 @@ class SignboardDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<Signboard>
       _instance;
 } _Signboard_default_instance_;
+class GrabberDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Grabber>
+      _instance;
+} _Grabber_default_instance_;
 class LidarStatusDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<LidarStatus>
@@ -271,6 +276,28 @@ void InitDefaultsSignboard() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsSignboardImpl);
 }
 
+void InitDefaultsGrabberImpl() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_msg_2eproto::InitDefaultsHeader();
+  {
+    void* ptr = &::itd::communication::protobuf::_Grabber_default_instance_;
+    new (ptr) ::itd::communication::protobuf::Grabber();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::itd::communication::protobuf::Grabber::InitAsDefaultInstance();
+}
+
+void InitDefaultsGrabber() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsGrabberImpl);
+}
+
 void InitDefaultsLidarStatusImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -368,7 +395,7 @@ void InitDefaultsMessage() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsMessageImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[12];
+::google::protobuf::Metadata file_level_metadata[13];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -451,6 +478,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Signboard, y_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Signboard, type_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, header_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, left_angle_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, right_angle_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, left_obstacle_dis_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::Grabber, right_obstacle_dis_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::LidarStatus, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -510,10 +547,11 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 50, -1, sizeof(::itd::communication::protobuf::Boundary)},
   { 59, -1, sizeof(::itd::communication::protobuf::Container)},
   { 67, -1, sizeof(::itd::communication::protobuf::Signboard)},
-  { 78, -1, sizeof(::itd::communication::protobuf::LidarStatus)},
-  { 88, -1, sizeof(::itd::communication::protobuf::BoundingBox)},
-  { 103, -1, sizeof(::itd::communication::protobuf::CanSignal)},
-  { 111, -1, sizeof(::itd::communication::protobuf::Message)},
+  { 78, -1, sizeof(::itd::communication::protobuf::Grabber)},
+  { 88, -1, sizeof(::itd::communication::protobuf::LidarStatus)},
+  { 98, -1, sizeof(::itd::communication::protobuf::BoundingBox)},
+  { 113, -1, sizeof(::itd::communication::protobuf::CanSignal)},
+  { 121, -1, sizeof(::itd::communication::protobuf::Message)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -525,6 +563,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Boundary_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Container_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Signboard_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Grabber_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_LidarStatus_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_BoundingBox_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_CanSignal_default_instance_),
@@ -547,7 +586,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 12);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 13);
 }
 
 void AddDescriptorsImpl() {
@@ -576,7 +615,11 @@ void AddDescriptorsImpl() {
       "\003 \001(\005\"y\n\tSignboard\0222\n\006header\030\001 \001(\0132\".itd"
       ".communication.protobuf.Header\022\t\n\001k\030\002 \001("
       "\002\022\t\n\001b\030\003 \001(\002\022\t\n\001x\030\004 \001(\002\022\t\n\001y\030\005 \001(\002\022\014\n\004ty"
-      "pe\030\006 \001(\005\"{\n\013LidarStatus\0222\n\006header\030\001 \001(\0132"
+      "pe\030\006 \001(\005\"\235\001\n\007Grabber\0222\n\006header\030\001 \001(\0132\".i"
+      "td.communication.protobuf.Header\022\022\n\nleft"
+      "_angle\030\002 \001(\005\022\023\n\013right_angle\030\003 \001(\005\022\031\n\021lef"
+      "t_obstacle_dis\030\004 \001(\002\022\032\n\022right_obstacle_d"
+      "is\030\005 \001(\002\"{\n\013LidarStatus\0222\n\006header\030\001 \001(\0132"
       "\".itd.communication.protobuf.Header\022\014\n\004l"
       "eft\030\002 \001(\005\022\r\n\005right\030\003 \001(\005\022\013\n\003top\030\004 \001(\005\022\016\n"
       "\006single\030\005 \001(\005\"\314\001\n\013BoundingBox\0222\n\006header\030"
@@ -611,7 +654,7 @@ void AddDescriptorsImpl() {
       "b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2208);
+      descriptor, 2368);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg.proto", &protobuf_RegisterTypes);
 }
@@ -4374,6 +4417,446 @@ void Signboard::InternalSwap(Signboard* other) {
 }
 
 ::google::protobuf::Metadata Signboard::GetMetadata() const {
+  protobuf_msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_msg_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Grabber::InitAsDefaultInstance() {
+  ::itd::communication::protobuf::_Grabber_default_instance_._instance.get_mutable()->header_ = const_cast< ::itd::communication::protobuf::Header*>(
+      ::itd::communication::protobuf::Header::internal_default_instance());
+}
+void Grabber::_slow_mutable_header() {
+  header_ = ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Header >(
+      GetArenaNoVirtual());
+}
+void Grabber::unsafe_arena_set_allocated_header(
+    ::itd::communication::protobuf::Header* header) {
+  if (GetArenaNoVirtual() == NULL) {
+    delete header_;
+  }
+  header_ = header;
+  if (header) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.Grabber.header)
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Grabber::kHeaderFieldNumber;
+const int Grabber::kLeftAngleFieldNumber;
+const int Grabber::kRightAngleFieldNumber;
+const int Grabber::kLeftObstacleDisFieldNumber;
+const int Grabber::kRightObstacleDisFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Grabber::Grabber()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_msg_2eproto::InitDefaultsGrabber();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:itd.communication.protobuf.Grabber)
+}
+Grabber::Grabber(::google::protobuf::Arena* arena)
+  : ::google::protobuf::Message(),
+  _internal_metadata_(arena) {
+  ::protobuf_msg_2eproto::InitDefaultsGrabber();
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:itd.communication.protobuf.Grabber)
+}
+Grabber::Grabber(const Grabber& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_header()) {
+    header_ = new ::itd::communication::protobuf::Header(*from.header_);
+  } else {
+    header_ = NULL;
+  }
+  ::memcpy(&left_angle_, &from.left_angle_,
+    static_cast<size_t>(reinterpret_cast<char*>(&right_obstacle_dis_) -
+    reinterpret_cast<char*>(&left_angle_)) + sizeof(right_obstacle_dis_));
+  // @@protoc_insertion_point(copy_constructor:itd.communication.protobuf.Grabber)
+}
+
+void Grabber::SharedCtor() {
+  ::memset(&header_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&right_obstacle_dis_) -
+      reinterpret_cast<char*>(&header_)) + sizeof(right_obstacle_dis_));
+  _cached_size_ = 0;
+}
+
+Grabber::~Grabber() {
+  // @@protoc_insertion_point(destructor:itd.communication.protobuf.Grabber)
+  SharedDtor();
+}
+
+void Grabber::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaNoVirtual() == NULL);
+  if (this != internal_default_instance()) delete header_;
+}
+
+void Grabber::ArenaDtor(void* object) {
+  Grabber* _this = reinterpret_cast< Grabber* >(object);
+  (void)_this;
+}
+void Grabber::RegisterArenaDtor(::google::protobuf::Arena* arena) {
+}
+void Grabber::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Grabber::descriptor() {
+  ::protobuf_msg_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_msg_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const Grabber& Grabber::default_instance() {
+  ::protobuf_msg_2eproto::InitDefaultsGrabber();
+  return *internal_default_instance();
+}
+
+Grabber* Grabber::New(::google::protobuf::Arena* arena) const {
+  return ::google::protobuf::Arena::CreateMessage<Grabber>(arena);
+}
+
+void Grabber::Clear() {
+// @@protoc_insertion_point(message_clear_start:itd.communication.protobuf.Grabber)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
+    delete header_;
+  }
+  header_ = NULL;
+  ::memset(&left_angle_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&right_obstacle_dis_) -
+      reinterpret_cast<char*>(&left_angle_)) + sizeof(right_obstacle_dis_));
+  _internal_metadata_.Clear();
+}
+
+bool Grabber::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:itd.communication.protobuf.Grabber)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .itd.communication.protobuf.Header header = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_header()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 left_angle = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &left_angle_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 right_angle = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &right_angle_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // float left_obstacle_dis = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &left_obstacle_dis_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // float right_obstacle_dis = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &right_obstacle_dis_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:itd.communication.protobuf.Grabber)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:itd.communication.protobuf.Grabber)
+  return false;
+#undef DO_
+}
+
+void Grabber::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:itd.communication.protobuf.Grabber)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .itd.communication.protobuf.Header header = 1;
+  if (this->has_header()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->header_, output);
+  }
+
+  // int32 left_angle = 2;
+  if (this->left_angle() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->left_angle(), output);
+  }
+
+  // int32 right_angle = 3;
+  if (this->right_angle() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->right_angle(), output);
+  }
+
+  // float left_obstacle_dis = 4;
+  if (this->left_obstacle_dis() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->left_obstacle_dis(), output);
+  }
+
+  // float right_obstacle_dis = 5;
+  if (this->right_obstacle_dis() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->right_obstacle_dis(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:itd.communication.protobuf.Grabber)
+}
+
+::google::protobuf::uint8* Grabber::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:itd.communication.protobuf.Grabber)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .itd.communication.protobuf.Header header = 1;
+  if (this->has_header()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, *this->header_, deterministic, target);
+  }
+
+  // int32 left_angle = 2;
+  if (this->left_angle() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->left_angle(), target);
+  }
+
+  // int32 right_angle = 3;
+  if (this->right_angle() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->right_angle(), target);
+  }
+
+  // float left_obstacle_dis = 4;
+  if (this->left_obstacle_dis() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->left_obstacle_dis(), target);
+  }
+
+  // float right_obstacle_dis = 5;
+  if (this->right_obstacle_dis() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->right_obstacle_dis(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:itd.communication.protobuf.Grabber)
+  return target;
+}
+
+size_t Grabber::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:itd.communication.protobuf.Grabber)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // .itd.communication.protobuf.Header header = 1;
+  if (this->has_header()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *this->header_);
+  }
+
+  // int32 left_angle = 2;
+  if (this->left_angle() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->left_angle());
+  }
+
+  // int32 right_angle = 3;
+  if (this->right_angle() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->right_angle());
+  }
+
+  // float left_obstacle_dis = 4;
+  if (this->left_obstacle_dis() != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float right_obstacle_dis = 5;
+  if (this->right_obstacle_dis() != 0) {
+    total_size += 1 + 4;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Grabber::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:itd.communication.protobuf.Grabber)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Grabber* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Grabber>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:itd.communication.protobuf.Grabber)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:itd.communication.protobuf.Grabber)
+    MergeFrom(*source);
+  }
+}
+
+void Grabber::MergeFrom(const Grabber& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:itd.communication.protobuf.Grabber)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_header()) {
+    mutable_header()->::itd::communication::protobuf::Header::MergeFrom(from.header());
+  }
+  if (from.left_angle() != 0) {
+    set_left_angle(from.left_angle());
+  }
+  if (from.right_angle() != 0) {
+    set_right_angle(from.right_angle());
+  }
+  if (from.left_obstacle_dis() != 0) {
+    set_left_obstacle_dis(from.left_obstacle_dis());
+  }
+  if (from.right_obstacle_dis() != 0) {
+    set_right_obstacle_dis(from.right_obstacle_dis());
+  }
+}
+
+void Grabber::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:itd.communication.protobuf.Grabber)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Grabber::CopyFrom(const Grabber& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:itd.communication.protobuf.Grabber)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Grabber::IsInitialized() const {
+  return true;
+}
+
+void Grabber::Swap(Grabber* other) {
+  if (other == this) return;
+  if (GetArenaNoVirtual() == other->GetArenaNoVirtual()) {
+    InternalSwap(other);
+  } else {
+    Grabber* temp = New(GetArenaNoVirtual());
+    temp->MergeFrom(*other);
+    other->CopyFrom(*this);
+    InternalSwap(temp);
+    if (GetArenaNoVirtual() == NULL) {
+      delete temp;
+    }
+  }
+}
+void Grabber::UnsafeArenaSwap(Grabber* other) {
+  if (other == this) return;
+  GOOGLE_DCHECK(GetArenaNoVirtual() == other->GetArenaNoVirtual());
+  InternalSwap(other);
+}
+void Grabber::InternalSwap(Grabber* other) {
+  using std::swap;
+  swap(header_, other->header_);
+  swap(left_angle_, other->left_angle_);
+  swap(right_angle_, other->right_angle_);
+  swap(left_obstacle_dis_, other->left_obstacle_dis_);
+  swap(right_obstacle_dis_, other->right_obstacle_dis_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Grabber::GetMetadata() const {
   protobuf_msg_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_msg_2eproto::file_level_metadata[kIndexInFileMessages];
 }
