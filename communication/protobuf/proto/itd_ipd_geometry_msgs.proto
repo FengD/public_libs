@@ -1,6 +1,6 @@
 syntax="proto3";
 option cc_enable_arenas = true;
-import "itd_ipd_standard_msg.proto";
+import public "itd_ipd_std_msgs.proto";
 package itd.communication.protobuf;
 
 message Geometry {
@@ -58,7 +58,7 @@ message Poses {
   repeated Pose pose = 2;
 }
 
-message Message {
+message MessageGeometry {
   enum MessageType {
     Point = 0;
     Points = 1;

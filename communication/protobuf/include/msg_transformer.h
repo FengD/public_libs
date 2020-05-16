@@ -8,7 +8,10 @@
 
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
-#include "msg.pb.h"
+#include "itd_ipd_geometry_msgs.pb.h"
+#include "itd_ipd_std_msgs.pb.h"
+#include "itd_ipd_sensor_msgs.pb.h"
+
 
 namespace itd {
 namespace communication {

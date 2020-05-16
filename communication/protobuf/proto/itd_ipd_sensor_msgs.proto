@@ -1,6 +1,6 @@
 syntax="proto3";
 option cc_enable_arenas = true;
-import "itd_ipd_standard_msg.proto";
+import public "itd_ipd_std_msgs.proto";
 package itd.communication.protobuf;
 
 message PointCloud {
@@ -95,7 +95,7 @@ message CanSignal {
   repeated double signal = 4;
 }
 
-message Message {
+message MessageSensor {
   enum MessageType {
     PointCloud = 0;
     Freespace = 1;
