@@ -1,0 +1,77 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+package itd.communication.protobuf;
+
+message Header {
+  uint32 seq = 1;
+  uint64 stamp = 2;
+  string frame_id = 3;
+}
+
+message Bool {
+  bool data = 1;
+}
+
+message Bytes {
+  bytes data = 1;
+}
+
+message String {
+  string data = 1;
+}
+
+message Int32 {
+  sint32 data = 1;
+}
+
+message Int32Array {
+  repeated sint32 data = 1;
+}
+
+message Uint32 {
+  uint32 data = 1;
+}
+
+message Uint32Array {
+  repeated uint32 data = 1;
+}
+
+message Int64 {
+  sint64 data = 1;
+}
+
+message Int64Array {
+  repeated sint64 data = 1;
+}
+
+message Uint64 {
+  uint64 data = 1;
+}
+
+message Uint64Array {
+  repeated uint64 data = 1;
+}
+
+message Float32 {
+  float data = 1;
+}
+
+message Float32Array {
+  repeated float data = 1;
+}
+
+message Float64 {
+  double data = 1;
+}
+
+message Float64Array {
+  repeated double data = 1;
+}
+
+message GeneralFree {
+  Header header = 1;
+  Int32Array data_i32 = 2;
+  Int64Array data_i64 = 3;
+  Float32Array data_float32 = 4;
+  Float64Array data_float64 = 5;
+}

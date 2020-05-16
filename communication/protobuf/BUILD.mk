@@ -29,7 +29,9 @@ ARM_LIB = libCommunicationProtobuf.a
 # libCommunicationProtobuf.a
 ##############################################################################
 
-ARM_LIB_SRCS += msg.pb.cc
+ARM_LIB_SRCS += itd_ipd_geometry_msg.pb.cc
+ARM_LIB_SRCS += itd_ipd_sensor_msg.pb.cc
+ARM_LIB_SRCS += itd_ipd_standard_msg.pb.cc
 ARM_LIB_SRCS += msg_serialization.cpp
 ARM_LIB_SRCS += msg_deserialization.cpp
 ARM_LIB_SRCS += msg_transformer.cpp

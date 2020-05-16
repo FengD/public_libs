@@ -1,0 +1,84 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+import "itd_ipd_standard_msg.proto";
+package itd.communication.protobuf;
+
+message Geometry {
+  int32 count = 1;
+  repeated float x = 2;
+  repeated float y = 3;
+  repeated float z = 4;
+}
+
+message Point {
+  Header header = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+}
+
+message Points {
+  Header header = 1;
+  Geometry geometry = 2;
+}
+
+message Line {
+  Header header = 1;
+  Geometry geometry = 2;
+}
+
+message Lines {
+  int32 number_lines = 1;
+  repeated Line line = 2;
+}
+
+message Polygon {
+  Header header = 1;
+  Geometry geometry = 2;
+}
+
+message Polygons {
+  Header header = 1;
+  int32 number_polygons = 2;
+  repeated Polygon polygon = 3;
+}
+
+message Pose {
+  Header header = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+  float roll = 5;
+  float pitch = 6;
+  float yaw = 7;
+}
+
+message Poses {
+  Header header = 1;
+  repeated Pose pose = 2;
+}
+
+message Message {
+  enum MessageType {
+    Point = 0;
+    Points = 1;
+    Line = 2;
+    Lines = 3;
+    Polygon = 4;
+    Polygons = 5;
+    Pose = 6;
+    Poses = 7;
+  }
+
+  MessageType type = 8;
+  oneof msg {
+    Point point = 9;
+    Points points = 10;
+    Line line = 11;
+    Lines lines = 12;
+    Polygon polygon = 13;
+    Polygons polygons = 14;
+    Pose pose = 15;
+    Poses poses = 16;
+  }
+}

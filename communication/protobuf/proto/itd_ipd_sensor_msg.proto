@@ -1,12 +1,7 @@
 syntax="proto3";
 option cc_enable_arenas = true;
+import "itd_ipd_standard_msg.proto";
 package itd.communication.protobuf;
-
-message Header {
-  uint32 seq = 1;
-  int32 stamp = 2;
-  string frame_id = 3;
-}
 
 message PointCloud {
   Header header = 1;
@@ -95,8 +90,9 @@ message BoundingBox {
 
 message CanSignal {
   Header header = 1;
-  int32 nb_signal = 2;
-  repeated double signal = 3;
+  uint64 id = 2;
+  uint32 nb_signal = 3;
+  repeated double signal = 4;
 }
 
 message Message {
@@ -124,6 +120,6 @@ message Message {
     Signboard signboard = 17;
     LidarStatus lidar_status = 18;
     BoundingBox boundingBox = 19;
-    CanSignal can_signal = 20; 
+    CanSignal can_signal = 20;
   }
 }
