@@ -69,7 +69,7 @@ void MsgTransformer::FromItdPointCloud(const itd::communication::protobuf::Point
 }
 
 void MsgTransformer::FromItdPointCloudXYZ(const itd::communication::protobuf::PointCloud &cloud_in,
-                                          pcl::PointCloud<pcl::PointXYZI> &cloud_out) {
+                                          pcl::PointCloud<pcl::PointXYZ> &cloud_out) {
   cloud_out.clear();
   cloud_out.header.seq = cloud_in.header().seq();
   cloud_out.header.stamp = cloud_in.header().stamp();
@@ -77,7 +77,7 @@ void MsgTransformer::FromItdPointCloudXYZ(const itd::communication::protobuf::Po
   int cloud_size = cloud_in.width();
 
   for (int i = 0; i < cloud_size; i++) {
-    pcl::PointXYZI p;
+    pcl::PointXYZ p;
     p.x = cloud_in.x()[i];
     p.y = cloud_in.y()[i];
     p.z = cloud_in.z()[i];

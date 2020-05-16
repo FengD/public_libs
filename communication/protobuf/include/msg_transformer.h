@@ -27,7 +27,7 @@ class MsgTransformer {
                                 pcl::PointCloud<pcl::PointXYZI> &cloud_out);
 
   static void FromItdPointCloudXYZ(const itd::communication::protobuf::PointCloud &cloud_in,
-                                   pcl::PointCloud<pcl::PointXYZI> &cloud_out);
+                                   pcl::PointCloud<pcl::PointXYZ> &cloud_out);
 
   static void FromItdPointCloudXYZI(const itd::communication::protobuf::PointCloud &cloud_in,
                                     pcl::PointCloud<pcl::PointXYZI> &cloud_out);
