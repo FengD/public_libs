@@ -75,19 +75,6 @@ message LidarStatus {
   int32 single = 5;
 }
 
-message BoundingBox {
-  Header header = 1;
-  int32 number = 2;
-  repeated float head_angle = 3;
-	repeated float length_obj = 4;
-	repeated float width_obj = 5;
-  repeated float track_id = 6;
-	repeated float vx = 7;
-	repeated float vy = 8;
-  repeated float x = 9;
-  repeated float y = 10;
-}
-
 message CanSignal {
   Header header = 1;
   uint64 id = 2;
@@ -105,21 +92,19 @@ message MessageSensor {
     Container = 5;
     Signboard = 6;
     LidarStatus = 7;
-    BoundingBox = 8;
-    CanSignal = 9;
+    CanSignal = 8;
   }
 
-  MessageType type = 10;
+  MessageType type = 9;
   oneof msg {
-    PointCloud cloud = 11;
-    Freespace fs = 12;
-    Trailer trailer = 13;
-    Bridge bridge = 14;
-    Boundary boundary = 15;
-    Container container = 16;
-    Signboard signboard = 17;
-    LidarStatus lidar_status = 18;
-    BoundingBox boundingBox = 19;
-    CanSignal can_signal = 20;
+    PointCloud cloud = 10;
+    Freespace fs = 11;
+    Trailer trailer = 12;
+    Bridge bridge = 13;
+    Boundary boundary = 14;
+    Container container = 15;
+    Signboard signboard = 16;
+    LidarStatus lidar_status = 17;
+    CanSignal can_signal = 18;
   }
 }

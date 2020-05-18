@@ -38,7 +38,7 @@ namespace protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[10];
+  static const ::google::protobuf::internal::ParseTable schema[12];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -62,6 +62,10 @@ void InitDefaultsPoseImpl();
 void InitDefaultsPose();
 void InitDefaultsPosesImpl();
 void InitDefaultsPoses();
+void InitDefaultsBoundingBoxImpl();
+void InitDefaultsBoundingBox();
+void InitDefaultsBoundingBoxesImpl();
+void InitDefaultsBoundingBoxes();
 void InitDefaultsMessageGeometryImpl();
 void InitDefaultsMessageGeometry();
 inline void InitDefaults() {
@@ -74,12 +78,20 @@ inline void InitDefaults() {
   InitDefaultsPolygons();
   InitDefaultsPose();
   InitDefaultsPoses();
+  InitDefaultsBoundingBox();
+  InitDefaultsBoundingBoxes();
   InitDefaultsMessageGeometry();
 }
 }  // namespace protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto
 namespace itd {
 namespace communication {
 namespace protobuf {
+class BoundingBox;
+class BoundingBoxDefaultTypeInternal;
+extern BoundingBoxDefaultTypeInternal _BoundingBox_default_instance_;
+class BoundingBoxes;
+class BoundingBoxesDefaultTypeInternal;
+extern BoundingBoxesDefaultTypeInternal _BoundingBoxes_default_instance_;
 class Geometry;
 class GeometryDefaultTypeInternal;
 extern GeometryDefaultTypeInternal _Geometry_default_instance_;
@@ -126,12 +138,14 @@ enum MessageGeometry_MessageType {
   MessageGeometry_MessageType_Polygons = 5,
   MessageGeometry_MessageType_Pose = 6,
   MessageGeometry_MessageType_Poses = 7,
+  MessageGeometry_MessageType_BoundingBox = 8,
+  MessageGeometry_MessageType_BoundingBoxes = 9,
   MessageGeometry_MessageType_MessageGeometry_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   MessageGeometry_MessageType_MessageGeometry_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool MessageGeometry_MessageType_IsValid(int value);
 const MessageGeometry_MessageType MessageGeometry_MessageType_MessageType_MIN = MessageGeometry_MessageType_Point;
-const MessageGeometry_MessageType MessageGeometry_MessageType_MessageType_MAX = MessageGeometry_MessageType_Poses;
+const MessageGeometry_MessageType MessageGeometry_MessageType_MessageType_MAX = MessageGeometry_MessageType_BoundingBoxes;
 const int MessageGeometry_MessageType_MessageType_ARRAYSIZE = MessageGeometry_MessageType_MessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* MessageGeometry_MessageType_descriptor();
@@ -818,10 +832,10 @@ class Lines : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 
   // accessors -------------------------------------------------------
 
-  // repeated .itd.communication.protobuf.Line line = 2;
+  // repeated .itd.communication.protobuf.Line line = 3;
   int line_size() const;
   void clear_line();
-  static const int kLineFieldNumber = 2;
+  static const int kLineFieldNumber = 3;
   const ::itd::communication::protobuf::Line& line(int index) const;
   ::itd::communication::protobuf::Line* mutable_line(int index);
   ::itd::communication::protobuf::Line* add_line();
@@ -830,9 +844,24 @@ class Lines : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   const ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Line >&
       line() const;
 
-  // int32 number_lines = 1;
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // int32 number_lines = 2;
   void clear_number_lines();
-  static const int kNumberLinesFieldNumber = 1;
+  static const int kNumberLinesFieldNumber = 2;
   ::google::protobuf::int32 number_lines() const;
   void set_number_lines(::google::protobuf::int32 value);
 
@@ -844,6 +873,7 @@ class Lines : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Line > line_;
+  ::itd::communication::protobuf::Header* header_;
   ::google::protobuf::int32 number_lines_;
   mutable int _cached_size_;
   friend struct ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::TableStruct;
@@ -1392,17 +1422,77 @@ class Poses : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 
   // accessors -------------------------------------------------------
 
-  // repeated .itd.communication.protobuf.Pose pose = 2;
-  int pose_size() const;
-  void clear_pose();
-  static const int kPoseFieldNumber = 2;
-  const ::itd::communication::protobuf::Pose& pose(int index) const;
-  ::itd::communication::protobuf::Pose* mutable_pose(int index);
-  ::itd::communication::protobuf::Pose* add_pose();
-  ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Pose >*
-      mutable_pose();
-  const ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Pose >&
-      pose() const;
+  // repeated float x = 3;
+  int x_size() const;
+  void clear_x();
+  static const int kXFieldNumber = 3;
+  float x(int index) const;
+  void set_x(int index, float value);
+  void add_x(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      x() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_x();
+
+  // repeated float y = 4;
+  int y_size() const;
+  void clear_y();
+  static const int kYFieldNumber = 4;
+  float y(int index) const;
+  void set_y(int index, float value);
+  void add_y(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      y() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_y();
+
+  // repeated float z = 5;
+  int z_size() const;
+  void clear_z();
+  static const int kZFieldNumber = 5;
+  float z(int index) const;
+  void set_z(int index, float value);
+  void add_z(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      z() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_z();
+
+  // repeated float roll = 6;
+  int roll_size() const;
+  void clear_roll();
+  static const int kRollFieldNumber = 6;
+  float roll(int index) const;
+  void set_roll(int index, float value);
+  void add_roll(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      roll() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_roll();
+
+  // repeated float pitch = 7;
+  int pitch_size() const;
+  void clear_pitch();
+  static const int kPitchFieldNumber = 7;
+  float pitch(int index) const;
+  void set_pitch(int index, float value);
+  void add_pitch(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      pitch() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_pitch();
+
+  // repeated float yaw = 8;
+  int yaw_size() const;
+  void clear_yaw();
+  static const int kYawFieldNumber = 8;
+  float yaw(int index) const;
+  void set_yaw(int index, float value);
+  void add_yaw(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      yaw() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_yaw();
 
   // .itd.communication.protobuf.Header header = 1;
   bool has_header() const;
@@ -1419,6 +1509,12 @@ class Poses : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
       ::itd::communication::protobuf::Header* header);
   ::itd::communication::protobuf::Header* unsafe_arena_release_header();
 
+  // int32 number = 2;
+  void clear_number();
+  static const int kNumberFieldNumber = 2;
+  ::google::protobuf::int32 number() const;
+  void set_number(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:itd.communication.protobuf.Poses)
  private:
 
@@ -1426,11 +1522,528 @@ class Poses : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Pose > pose_;
+  ::google::protobuf::RepeatedField< float > x_;
+  mutable int _x_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > y_;
+  mutable int _y_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > z_;
+  mutable int _z_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > roll_;
+  mutable int _roll_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > pitch_;
+  mutable int _pitch_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > yaw_;
+  mutable int _yaw_cached_byte_size_;
   ::itd::communication::protobuf::Header* header_;
+  ::google::protobuf::int32 number_;
   mutable int _cached_size_;
   friend struct ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::TableStruct;
   friend void ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::InitDefaultsPosesImpl();
+};
+// -------------------------------------------------------------------
+
+class BoundingBox : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.BoundingBox) */ {
+ public:
+  BoundingBox();
+  virtual ~BoundingBox();
+
+  BoundingBox(const BoundingBox& from);
+
+  inline BoundingBox& operator=(const BoundingBox& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BoundingBox(BoundingBox&& from) noexcept
+    : BoundingBox() {
+    *this = ::std::move(from);
+  }
+
+  inline BoundingBox& operator=(BoundingBox&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BoundingBox& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BoundingBox* internal_default_instance() {
+    return reinterpret_cast<const BoundingBox*>(
+               &_BoundingBox_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void UnsafeArenaSwap(BoundingBox* other);
+  void Swap(BoundingBox* other);
+  friend void swap(BoundingBox& a, BoundingBox& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BoundingBox* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BoundingBox* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BoundingBox& from);
+  void MergeFrom(const BoundingBox& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BoundingBox* other);
+  protected:
+  explicit BoundingBox(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // float x = 2;
+  void clear_x();
+  static const int kXFieldNumber = 2;
+  float x() const;
+  void set_x(float value);
+
+  // float y = 3;
+  void clear_y();
+  static const int kYFieldNumber = 3;
+  float y() const;
+  void set_y(float value);
+
+  // float z = 4;
+  void clear_z();
+  static const int kZFieldNumber = 4;
+  float z() const;
+  void set_z(float value);
+
+  // float roll = 5;
+  void clear_roll();
+  static const int kRollFieldNumber = 5;
+  float roll() const;
+  void set_roll(float value);
+
+  // float pitch = 6;
+  void clear_pitch();
+  static const int kPitchFieldNumber = 6;
+  float pitch() const;
+  void set_pitch(float value);
+
+  // float yaw = 7;
+  void clear_yaw();
+  static const int kYawFieldNumber = 7;
+  float yaw() const;
+  void set_yaw(float value);
+
+  // float l = 8;
+  void clear_l();
+  static const int kLFieldNumber = 8;
+  float l() const;
+  void set_l(float value);
+
+  // float w = 9;
+  void clear_w();
+  static const int kWFieldNumber = 9;
+  float w() const;
+  void set_w(float value);
+
+  // float h = 10;
+  void clear_h();
+  static const int kHFieldNumber = 10;
+  float h() const;
+  void set_h(float value);
+
+  // int32 id = 11;
+  void clear_id();
+  static const int kIdFieldNumber = 11;
+  ::google::protobuf::int32 id() const;
+  void set_id(::google::protobuf::int32 value);
+
+  // float data_reserver1 = 12;
+  void clear_data_reserver1();
+  static const int kDataReserver1FieldNumber = 12;
+  float data_reserver1() const;
+  void set_data_reserver1(float value);
+
+  // float data_reserver2 = 13;
+  void clear_data_reserver2();
+  static const int kDataReserver2FieldNumber = 13;
+  float data_reserver2() const;
+  void set_data_reserver2(float value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.BoundingBox)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::itd::communication::protobuf::Header* header_;
+  float x_;
+  float y_;
+  float z_;
+  float roll_;
+  float pitch_;
+  float yaw_;
+  float l_;
+  float w_;
+  float h_;
+  ::google::protobuf::int32 id_;
+  float data_reserver1_;
+  float data_reserver2_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::TableStruct;
+  friend void ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::InitDefaultsBoundingBoxImpl();
+};
+// -------------------------------------------------------------------
+
+class BoundingBoxes : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:itd.communication.protobuf.BoundingBoxes) */ {
+ public:
+  BoundingBoxes();
+  virtual ~BoundingBoxes();
+
+  BoundingBoxes(const BoundingBoxes& from);
+
+  inline BoundingBoxes& operator=(const BoundingBoxes& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BoundingBoxes(BoundingBoxes&& from) noexcept
+    : BoundingBoxes() {
+    *this = ::std::move(from);
+  }
+
+  inline BoundingBoxes& operator=(BoundingBoxes&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline ::google::protobuf::Arena* GetArena() const PROTOBUF_FINAL {
+    return GetArenaNoVirtual();
+  }
+  inline void* GetMaybeArenaPointer() const PROTOBUF_FINAL {
+    return MaybeArenaPtr();
+  }
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BoundingBoxes& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BoundingBoxes* internal_default_instance() {
+    return reinterpret_cast<const BoundingBoxes*>(
+               &_BoundingBoxes_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    10;
+
+  void UnsafeArenaSwap(BoundingBoxes* other);
+  void Swap(BoundingBoxes* other);
+  friend void swap(BoundingBoxes& a, BoundingBoxes& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BoundingBoxes* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  BoundingBoxes* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const BoundingBoxes& from);
+  void MergeFrom(const BoundingBoxes& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(BoundingBoxes* other);
+  protected:
+  explicit BoundingBoxes(::google::protobuf::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::google::protobuf::Arena* arena);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated float x = 3;
+  int x_size() const;
+  void clear_x();
+  static const int kXFieldNumber = 3;
+  float x(int index) const;
+  void set_x(int index, float value);
+  void add_x(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      x() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_x();
+
+  // repeated float y = 4;
+  int y_size() const;
+  void clear_y();
+  static const int kYFieldNumber = 4;
+  float y(int index) const;
+  void set_y(int index, float value);
+  void add_y(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      y() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_y();
+
+  // repeated float z = 5;
+  int z_size() const;
+  void clear_z();
+  static const int kZFieldNumber = 5;
+  float z(int index) const;
+  void set_z(int index, float value);
+  void add_z(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      z() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_z();
+
+  // repeated float roll = 6;
+  int roll_size() const;
+  void clear_roll();
+  static const int kRollFieldNumber = 6;
+  float roll(int index) const;
+  void set_roll(int index, float value);
+  void add_roll(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      roll() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_roll();
+
+  // repeated float pitch = 7;
+  int pitch_size() const;
+  void clear_pitch();
+  static const int kPitchFieldNumber = 7;
+  float pitch(int index) const;
+  void set_pitch(int index, float value);
+  void add_pitch(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      pitch() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_pitch();
+
+  // repeated float yaw = 8;
+  int yaw_size() const;
+  void clear_yaw();
+  static const int kYawFieldNumber = 8;
+  float yaw(int index) const;
+  void set_yaw(int index, float value);
+  void add_yaw(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      yaw() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_yaw();
+
+  // repeated float l = 9;
+  int l_size() const;
+  void clear_l();
+  static const int kLFieldNumber = 9;
+  float l(int index) const;
+  void set_l(int index, float value);
+  void add_l(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      l() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_l();
+
+  // repeated float w = 10;
+  int w_size() const;
+  void clear_w();
+  static const int kWFieldNumber = 10;
+  float w(int index) const;
+  void set_w(int index, float value);
+  void add_w(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      w() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_w();
+
+  // repeated float h = 11;
+  int h_size() const;
+  void clear_h();
+  static const int kHFieldNumber = 11;
+  float h(int index) const;
+  void set_h(int index, float value);
+  void add_h(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      h() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_h();
+
+  // repeated int32 id = 12;
+  int id_size() const;
+  void clear_id();
+  static const int kIdFieldNumber = 12;
+  ::google::protobuf::int32 id(int index) const;
+  void set_id(int index, ::google::protobuf::int32 value);
+  void add_id(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      id() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_id();
+
+  // repeated float data_reserver1 = 13;
+  int data_reserver1_size() const;
+  void clear_data_reserver1();
+  static const int kDataReserver1FieldNumber = 13;
+  float data_reserver1(int index) const;
+  void set_data_reserver1(int index, float value);
+  void add_data_reserver1(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      data_reserver1() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_data_reserver1();
+
+  // repeated float data_reserver2 = 14;
+  int data_reserver2_size() const;
+  void clear_data_reserver2();
+  static const int kDataReserver2FieldNumber = 14;
+  float data_reserver2(int index) const;
+  void set_data_reserver2(int index, float value);
+  void add_data_reserver2(float value);
+  const ::google::protobuf::RepeatedField< float >&
+      data_reserver2() const;
+  ::google::protobuf::RepeatedField< float >*
+      mutable_data_reserver2();
+
+  // .itd.communication.protobuf.Header header = 1;
+  bool has_header() const;
+  void clear_header();
+  static const int kHeaderFieldNumber = 1;
+  private:
+  void _slow_mutable_header();
+  public:
+  const ::itd::communication::protobuf::Header& header() const;
+  ::itd::communication::protobuf::Header* release_header();
+  ::itd::communication::protobuf::Header* mutable_header();
+  void set_allocated_header(::itd::communication::protobuf::Header* header);
+  void unsafe_arena_set_allocated_header(
+      ::itd::communication::protobuf::Header* header);
+  ::itd::communication::protobuf::Header* unsafe_arena_release_header();
+
+  // int32 number = 2;
+  void clear_number();
+  static const int kNumberFieldNumber = 2;
+  ::google::protobuf::int32 number() const;
+  void set_number(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:itd.communication.protobuf.BoundingBoxes)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::google::protobuf::RepeatedField< float > x_;
+  mutable int _x_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > y_;
+  mutable int _y_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > z_;
+  mutable int _z_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > roll_;
+  mutable int _roll_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > pitch_;
+  mutable int _pitch_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > yaw_;
+  mutable int _yaw_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > l_;
+  mutable int _l_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > w_;
+  mutable int _w_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > h_;
+  mutable int _h_cached_byte_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > id_;
+  mutable int _id_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > data_reserver1_;
+  mutable int _data_reserver1_cached_byte_size_;
+  ::google::protobuf::RepeatedField< float > data_reserver2_;
+  mutable int _data_reserver2_cached_byte_size_;
+  ::itd::communication::protobuf::Header* header_;
+  ::google::protobuf::int32 number_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::TableStruct;
+  friend void ::protobuf_itd_5fipd_5fgeometry_5fmsgs_2eproto::InitDefaultsBoundingBoxesImpl();
 };
 // -------------------------------------------------------------------
 
@@ -1470,14 +2083,16 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
   static const MessageGeometry& default_instance();
 
   enum MsgCase {
-    kPoint = 9,
-    kPoints = 10,
-    kLine = 11,
-    kLines = 12,
-    kPolygon = 13,
-    kPolygons = 14,
-    kPose = 15,
-    kPoses = 16,
+    kPoint = 11,
+    kPoints = 12,
+    kLine = 13,
+    kLines = 14,
+    kPolygon = 15,
+    kPolygons = 16,
+    kPose = 17,
+    kPoses = 18,
+    kBoundingbox = 19,
+    kBoundingboxes = 20,
     MSG_NOT_SET = 0,
   };
 
@@ -1487,7 +2102,7 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
                &_MessageGeometry_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    11;
 
   void UnsafeArenaSwap(MessageGeometry* other);
   void Swap(MessageGeometry* other);
@@ -1555,6 +2170,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
     MessageGeometry_MessageType_Pose;
   static const MessageType Poses =
     MessageGeometry_MessageType_Poses;
+  static const MessageType BoundingBox =
+    MessageGeometry_MessageType_BoundingBox;
+  static const MessageType BoundingBoxes =
+    MessageGeometry_MessageType_BoundingBoxes;
   static inline bool MessageType_IsValid(int value) {
     return MessageGeometry_MessageType_IsValid(value);
   }
@@ -1578,16 +2197,16 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // .itd.communication.protobuf.MessageGeometry.MessageType type = 8;
+  // .itd.communication.protobuf.MessageGeometry.MessageType type = 10;
   void clear_type();
-  static const int kTypeFieldNumber = 8;
+  static const int kTypeFieldNumber = 10;
   ::itd::communication::protobuf::MessageGeometry_MessageType type() const;
   void set_type(::itd::communication::protobuf::MessageGeometry_MessageType value);
 
-  // .itd.communication.protobuf.Point point = 9;
+  // .itd.communication.protobuf.Point point = 11;
   bool has_point() const;
   void clear_point();
-  static const int kPointFieldNumber = 9;
+  static const int kPointFieldNumber = 11;
   private:
   void _slow_mutable_point();
   public:
@@ -1599,10 +2218,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Point* point);
   ::itd::communication::protobuf::Point* unsafe_arena_release_point();
 
-  // .itd.communication.protobuf.Points points = 10;
+  // .itd.communication.protobuf.Points points = 12;
   bool has_points() const;
   void clear_points();
-  static const int kPointsFieldNumber = 10;
+  static const int kPointsFieldNumber = 12;
   private:
   void _slow_mutable_points();
   public:
@@ -1614,10 +2233,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Points* points);
   ::itd::communication::protobuf::Points* unsafe_arena_release_points();
 
-  // .itd.communication.protobuf.Line line = 11;
+  // .itd.communication.protobuf.Line line = 13;
   bool has_line() const;
   void clear_line();
-  static const int kLineFieldNumber = 11;
+  static const int kLineFieldNumber = 13;
   private:
   void _slow_mutable_line();
   public:
@@ -1629,10 +2248,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Line* line);
   ::itd::communication::protobuf::Line* unsafe_arena_release_line();
 
-  // .itd.communication.protobuf.Lines lines = 12;
+  // .itd.communication.protobuf.Lines lines = 14;
   bool has_lines() const;
   void clear_lines();
-  static const int kLinesFieldNumber = 12;
+  static const int kLinesFieldNumber = 14;
   private:
   void _slow_mutable_lines();
   public:
@@ -1644,10 +2263,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Lines* lines);
   ::itd::communication::protobuf::Lines* unsafe_arena_release_lines();
 
-  // .itd.communication.protobuf.Polygon polygon = 13;
+  // .itd.communication.protobuf.Polygon polygon = 15;
   bool has_polygon() const;
   void clear_polygon();
-  static const int kPolygonFieldNumber = 13;
+  static const int kPolygonFieldNumber = 15;
   private:
   void _slow_mutable_polygon();
   public:
@@ -1659,10 +2278,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Polygon* polygon);
   ::itd::communication::protobuf::Polygon* unsafe_arena_release_polygon();
 
-  // .itd.communication.protobuf.Polygons polygons = 14;
+  // .itd.communication.protobuf.Polygons polygons = 16;
   bool has_polygons() const;
   void clear_polygons();
-  static const int kPolygonsFieldNumber = 14;
+  static const int kPolygonsFieldNumber = 16;
   private:
   void _slow_mutable_polygons();
   public:
@@ -1674,10 +2293,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Polygons* polygons);
   ::itd::communication::protobuf::Polygons* unsafe_arena_release_polygons();
 
-  // .itd.communication.protobuf.Pose pose = 15;
+  // .itd.communication.protobuf.Pose pose = 17;
   bool has_pose() const;
   void clear_pose();
-  static const int kPoseFieldNumber = 15;
+  static const int kPoseFieldNumber = 17;
   private:
   void _slow_mutable_pose();
   public:
@@ -1689,10 +2308,10 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
       ::itd::communication::protobuf::Pose* pose);
   ::itd::communication::protobuf::Pose* unsafe_arena_release_pose();
 
-  // .itd.communication.protobuf.Poses poses = 16;
+  // .itd.communication.protobuf.Poses poses = 18;
   bool has_poses() const;
   void clear_poses();
-  static const int kPosesFieldNumber = 16;
+  static const int kPosesFieldNumber = 18;
   private:
   void _slow_mutable_poses();
   public:
@@ -1703,6 +2322,36 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
   void unsafe_arena_set_allocated_poses(
       ::itd::communication::protobuf::Poses* poses);
   ::itd::communication::protobuf::Poses* unsafe_arena_release_poses();
+
+  // .itd.communication.protobuf.BoundingBox boundingbox = 19;
+  bool has_boundingbox() const;
+  void clear_boundingbox();
+  static const int kBoundingboxFieldNumber = 19;
+  private:
+  void _slow_mutable_boundingbox();
+  public:
+  const ::itd::communication::protobuf::BoundingBox& boundingbox() const;
+  ::itd::communication::protobuf::BoundingBox* release_boundingbox();
+  ::itd::communication::protobuf::BoundingBox* mutable_boundingbox();
+  void set_allocated_boundingbox(::itd::communication::protobuf::BoundingBox* boundingbox);
+  void unsafe_arena_set_allocated_boundingbox(
+      ::itd::communication::protobuf::BoundingBox* boundingbox);
+  ::itd::communication::protobuf::BoundingBox* unsafe_arena_release_boundingbox();
+
+  // .itd.communication.protobuf.BoundingBoxes boundingboxes = 20;
+  bool has_boundingboxes() const;
+  void clear_boundingboxes();
+  static const int kBoundingboxesFieldNumber = 20;
+  private:
+  void _slow_mutable_boundingboxes();
+  public:
+  const ::itd::communication::protobuf::BoundingBoxes& boundingboxes() const;
+  ::itd::communication::protobuf::BoundingBoxes* release_boundingboxes();
+  ::itd::communication::protobuf::BoundingBoxes* mutable_boundingboxes();
+  void set_allocated_boundingboxes(::itd::communication::protobuf::BoundingBoxes* boundingboxes);
+  void unsafe_arena_set_allocated_boundingboxes(
+      ::itd::communication::protobuf::BoundingBoxes* boundingboxes);
+  ::itd::communication::protobuf::BoundingBoxes* unsafe_arena_release_boundingboxes();
 
   MsgCase msg_case() const;
   // @@protoc_insertion_point(class_scope:itd.communication.protobuf.MessageGeometry)
@@ -1715,6 +2364,8 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
   void set_has_polygons();
   void set_has_pose();
   void set_has_poses();
+  void set_has_boundingbox();
+  void set_has_boundingboxes();
 
   inline bool has_msg() const;
   void clear_msg();
@@ -1735,6 +2386,8 @@ class MessageGeometry : public ::google::protobuf::Message /* @@protoc_insertion
     ::itd::communication::protobuf::Polygons* polygons_;
     ::itd::communication::protobuf::Pose* pose_;
     ::itd::communication::protobuf::Poses* poses_;
+    ::itd::communication::protobuf::BoundingBox* boundingbox_;
+    ::itd::communication::protobuf::BoundingBoxes* boundingboxes_;
   } msg_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -2202,7 +2855,62 @@ inline void Line::set_allocated_geometry(::itd::communication::protobuf::Geometr
 
 // Lines
 
-// int32 number_lines = 1;
+// .itd.communication.protobuf.Header header = 1;
+inline bool Lines::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline const ::itd::communication::protobuf::Header& Lines::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Lines.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* Lines::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.Lines.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Lines::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.Lines.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* Lines::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Lines.header)
+  return header_;
+}
+inline void Lines::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(header_);
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      reinterpret_cast< ::google::protobuf::MessageLite*>(header)->GetArena();
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Lines.header)
+}
+
+// int32 number_lines = 2;
 inline void Lines::clear_number_lines() {
   number_lines_ = 0;
 }
@@ -2216,7 +2924,7 @@ inline void Lines::set_number_lines(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.Lines.number_lines)
 }
 
-// repeated .itd.communication.protobuf.Line line = 2;
+// repeated .itd.communication.protobuf.Line line = 3;
 inline int Lines::line_size() const {
   return line_.size();
 }
@@ -2671,41 +3379,865 @@ inline void Poses::set_allocated_header(::itd::communication::protobuf::Header* 
   // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.Poses.header)
 }
 
-// repeated .itd.communication.protobuf.Pose pose = 2;
-inline int Poses::pose_size() const {
-  return pose_.size();
+// int32 number = 2;
+inline void Poses::clear_number() {
+  number_ = 0;
 }
-inline void Poses::clear_pose() {
-  pose_.Clear();
+inline ::google::protobuf::int32 Poses::number() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.number)
+  return number_;
 }
-inline const ::itd::communication::protobuf::Pose& Poses::pose(int index) const {
-  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.pose)
-  return pose_.Get(index);
+inline void Poses::set_number(::google::protobuf::int32 value) {
+  
+  number_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.number)
 }
-inline ::itd::communication::protobuf::Pose* Poses::mutable_pose(int index) {
-  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.Poses.pose)
-  return pose_.Mutable(index);
+
+// repeated float x = 3;
+inline int Poses::x_size() const {
+  return x_.size();
 }
-inline ::itd::communication::protobuf::Pose* Poses::add_pose() {
-  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.pose)
-  return pose_.Add();
+inline void Poses::clear_x() {
+  x_.Clear();
 }
-inline ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Pose >*
-Poses::mutable_pose() {
-  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.pose)
-  return &pose_;
+inline float Poses::x(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.x)
+  return x_.Get(index);
 }
-inline const ::google::protobuf::RepeatedPtrField< ::itd::communication::protobuf::Pose >&
-Poses::pose() const {
-  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.pose)
-  return pose_;
+inline void Poses::set_x(int index, float value) {
+  x_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.x)
+}
+inline void Poses::add_x(float value) {
+  x_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.x)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::x() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.x)
+  return x_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_x() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.x)
+  return &x_;
+}
+
+// repeated float y = 4;
+inline int Poses::y_size() const {
+  return y_.size();
+}
+inline void Poses::clear_y() {
+  y_.Clear();
+}
+inline float Poses::y(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.y)
+  return y_.Get(index);
+}
+inline void Poses::set_y(int index, float value) {
+  y_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.y)
+}
+inline void Poses::add_y(float value) {
+  y_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.y)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::y() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.y)
+  return y_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_y() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.y)
+  return &y_;
+}
+
+// repeated float z = 5;
+inline int Poses::z_size() const {
+  return z_.size();
+}
+inline void Poses::clear_z() {
+  z_.Clear();
+}
+inline float Poses::z(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.z)
+  return z_.Get(index);
+}
+inline void Poses::set_z(int index, float value) {
+  z_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.z)
+}
+inline void Poses::add_z(float value) {
+  z_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.z)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::z() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.z)
+  return z_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_z() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.z)
+  return &z_;
+}
+
+// repeated float roll = 6;
+inline int Poses::roll_size() const {
+  return roll_.size();
+}
+inline void Poses::clear_roll() {
+  roll_.Clear();
+}
+inline float Poses::roll(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.roll)
+  return roll_.Get(index);
+}
+inline void Poses::set_roll(int index, float value) {
+  roll_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.roll)
+}
+inline void Poses::add_roll(float value) {
+  roll_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.roll)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::roll() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.roll)
+  return roll_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_roll() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.roll)
+  return &roll_;
+}
+
+// repeated float pitch = 7;
+inline int Poses::pitch_size() const {
+  return pitch_.size();
+}
+inline void Poses::clear_pitch() {
+  pitch_.Clear();
+}
+inline float Poses::pitch(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.pitch)
+  return pitch_.Get(index);
+}
+inline void Poses::set_pitch(int index, float value) {
+  pitch_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.pitch)
+}
+inline void Poses::add_pitch(float value) {
+  pitch_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.pitch)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::pitch() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.pitch)
+  return pitch_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_pitch() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.pitch)
+  return &pitch_;
+}
+
+// repeated float yaw = 8;
+inline int Poses::yaw_size() const {
+  return yaw_.size();
+}
+inline void Poses::clear_yaw() {
+  yaw_.Clear();
+}
+inline float Poses::yaw(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.Poses.yaw)
+  return yaw_.Get(index);
+}
+inline void Poses::set_yaw(int index, float value) {
+  yaw_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.Poses.yaw)
+}
+inline void Poses::add_yaw(float value) {
+  yaw_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.Poses.yaw)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Poses::yaw() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.Poses.yaw)
+  return yaw_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Poses::mutable_yaw() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.Poses.yaw)
+  return &yaw_;
+}
+
+// -------------------------------------------------------------------
+
+// BoundingBox
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool BoundingBox::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline const ::itd::communication::protobuf::Header& BoundingBox::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.BoundingBox.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.BoundingBox.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBox::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.BoundingBox.header)
+  return header_;
+}
+inline void BoundingBox::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(header_);
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      reinterpret_cast< ::google::protobuf::MessageLite*>(header)->GetArena();
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.BoundingBox.header)
+}
+
+// float x = 2;
+inline void BoundingBox::clear_x() {
+  x_ = 0;
+}
+inline float BoundingBox::x() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.x)
+  return x_;
+}
+inline void BoundingBox::set_x(float value) {
+  
+  x_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.x)
+}
+
+// float y = 3;
+inline void BoundingBox::clear_y() {
+  y_ = 0;
+}
+inline float BoundingBox::y() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.y)
+  return y_;
+}
+inline void BoundingBox::set_y(float value) {
+  
+  y_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.y)
+}
+
+// float z = 4;
+inline void BoundingBox::clear_z() {
+  z_ = 0;
+}
+inline float BoundingBox::z() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.z)
+  return z_;
+}
+inline void BoundingBox::set_z(float value) {
+  
+  z_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.z)
+}
+
+// float roll = 5;
+inline void BoundingBox::clear_roll() {
+  roll_ = 0;
+}
+inline float BoundingBox::roll() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.roll)
+  return roll_;
+}
+inline void BoundingBox::set_roll(float value) {
+  
+  roll_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.roll)
+}
+
+// float pitch = 6;
+inline void BoundingBox::clear_pitch() {
+  pitch_ = 0;
+}
+inline float BoundingBox::pitch() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.pitch)
+  return pitch_;
+}
+inline void BoundingBox::set_pitch(float value) {
+  
+  pitch_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.pitch)
+}
+
+// float yaw = 7;
+inline void BoundingBox::clear_yaw() {
+  yaw_ = 0;
+}
+inline float BoundingBox::yaw() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.yaw)
+  return yaw_;
+}
+inline void BoundingBox::set_yaw(float value) {
+  
+  yaw_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.yaw)
+}
+
+// float l = 8;
+inline void BoundingBox::clear_l() {
+  l_ = 0;
+}
+inline float BoundingBox::l() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.l)
+  return l_;
+}
+inline void BoundingBox::set_l(float value) {
+  
+  l_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.l)
+}
+
+// float w = 9;
+inline void BoundingBox::clear_w() {
+  w_ = 0;
+}
+inline float BoundingBox::w() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.w)
+  return w_;
+}
+inline void BoundingBox::set_w(float value) {
+  
+  w_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.w)
+}
+
+// float h = 10;
+inline void BoundingBox::clear_h() {
+  h_ = 0;
+}
+inline float BoundingBox::h() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.h)
+  return h_;
+}
+inline void BoundingBox::set_h(float value) {
+  
+  h_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.h)
+}
+
+// int32 id = 11;
+inline void BoundingBox::clear_id() {
+  id_ = 0;
+}
+inline ::google::protobuf::int32 BoundingBox::id() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.id)
+  return id_;
+}
+inline void BoundingBox::set_id(::google::protobuf::int32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.id)
+}
+
+// float data_reserver1 = 12;
+inline void BoundingBox::clear_data_reserver1() {
+  data_reserver1_ = 0;
+}
+inline float BoundingBox::data_reserver1() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.data_reserver1)
+  return data_reserver1_;
+}
+inline void BoundingBox::set_data_reserver1(float value) {
+  
+  data_reserver1_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.data_reserver1)
+}
+
+// float data_reserver2 = 13;
+inline void BoundingBox::clear_data_reserver2() {
+  data_reserver2_ = 0;
+}
+inline float BoundingBox::data_reserver2() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBox.data_reserver2)
+  return data_reserver2_;
+}
+inline void BoundingBox::set_data_reserver2(float value) {
+  
+  data_reserver2_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBox.data_reserver2)
+}
+
+// -------------------------------------------------------------------
+
+// BoundingBoxes
+
+// .itd.communication.protobuf.Header header = 1;
+inline bool BoundingBoxes::has_header() const {
+  return this != internal_default_instance() && header_ != NULL;
+}
+inline const ::itd::communication::protobuf::Header& BoundingBoxes::header() const {
+  const ::itd::communication::protobuf::Header* p = header_;
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::itd::communication::protobuf::Header*>(
+      &::itd::communication::protobuf::_Header_default_instance_);
+}
+inline ::itd::communication::protobuf::Header* BoundingBoxes::release_header() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.BoundingBoxes.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  if (GetArenaNoVirtual() != NULL) {
+    temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+  }
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBoxes::unsafe_arena_release_header() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.BoundingBoxes.header)
+  
+  ::itd::communication::protobuf::Header* temp = header_;
+  header_ = NULL;
+  return temp;
+}
+inline ::itd::communication::protobuf::Header* BoundingBoxes::mutable_header() {
+  
+  if (header_ == NULL) {
+    _slow_mutable_header();
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.BoundingBoxes.header)
+  return header_;
+}
+inline void BoundingBoxes::set_allocated_header(::itd::communication::protobuf::Header* header) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(header_);
+  }
+  if (header) {
+    ::google::protobuf::Arena* submessage_arena =
+      reinterpret_cast< ::google::protobuf::MessageLite*>(header)->GetArena();
+    if (message_arena != submessage_arena) {
+      header = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, header, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  header_ = header;
+  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.BoundingBoxes.header)
+}
+
+// int32 number = 2;
+inline void BoundingBoxes::clear_number() {
+  number_ = 0;
+}
+inline ::google::protobuf::int32 BoundingBoxes::number() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.number)
+  return number_;
+}
+inline void BoundingBoxes::set_number(::google::protobuf::int32 value) {
+  
+  number_ = value;
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.number)
+}
+
+// repeated float x = 3;
+inline int BoundingBoxes::x_size() const {
+  return x_.size();
+}
+inline void BoundingBoxes::clear_x() {
+  x_.Clear();
+}
+inline float BoundingBoxes::x(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.x)
+  return x_.Get(index);
+}
+inline void BoundingBoxes::set_x(int index, float value) {
+  x_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.x)
+}
+inline void BoundingBoxes::add_x(float value) {
+  x_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.x)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::x() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.x)
+  return x_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_x() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.x)
+  return &x_;
+}
+
+// repeated float y = 4;
+inline int BoundingBoxes::y_size() const {
+  return y_.size();
+}
+inline void BoundingBoxes::clear_y() {
+  y_.Clear();
+}
+inline float BoundingBoxes::y(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.y)
+  return y_.Get(index);
+}
+inline void BoundingBoxes::set_y(int index, float value) {
+  y_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.y)
+}
+inline void BoundingBoxes::add_y(float value) {
+  y_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.y)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::y() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.y)
+  return y_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_y() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.y)
+  return &y_;
+}
+
+// repeated float z = 5;
+inline int BoundingBoxes::z_size() const {
+  return z_.size();
+}
+inline void BoundingBoxes::clear_z() {
+  z_.Clear();
+}
+inline float BoundingBoxes::z(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.z)
+  return z_.Get(index);
+}
+inline void BoundingBoxes::set_z(int index, float value) {
+  z_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.z)
+}
+inline void BoundingBoxes::add_z(float value) {
+  z_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.z)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::z() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.z)
+  return z_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_z() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.z)
+  return &z_;
+}
+
+// repeated float roll = 6;
+inline int BoundingBoxes::roll_size() const {
+  return roll_.size();
+}
+inline void BoundingBoxes::clear_roll() {
+  roll_.Clear();
+}
+inline float BoundingBoxes::roll(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.roll)
+  return roll_.Get(index);
+}
+inline void BoundingBoxes::set_roll(int index, float value) {
+  roll_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.roll)
+}
+inline void BoundingBoxes::add_roll(float value) {
+  roll_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.roll)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::roll() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.roll)
+  return roll_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_roll() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.roll)
+  return &roll_;
+}
+
+// repeated float pitch = 7;
+inline int BoundingBoxes::pitch_size() const {
+  return pitch_.size();
+}
+inline void BoundingBoxes::clear_pitch() {
+  pitch_.Clear();
+}
+inline float BoundingBoxes::pitch(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.pitch)
+  return pitch_.Get(index);
+}
+inline void BoundingBoxes::set_pitch(int index, float value) {
+  pitch_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.pitch)
+}
+inline void BoundingBoxes::add_pitch(float value) {
+  pitch_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.pitch)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::pitch() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.pitch)
+  return pitch_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_pitch() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.pitch)
+  return &pitch_;
+}
+
+// repeated float yaw = 8;
+inline int BoundingBoxes::yaw_size() const {
+  return yaw_.size();
+}
+inline void BoundingBoxes::clear_yaw() {
+  yaw_.Clear();
+}
+inline float BoundingBoxes::yaw(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.yaw)
+  return yaw_.Get(index);
+}
+inline void BoundingBoxes::set_yaw(int index, float value) {
+  yaw_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.yaw)
+}
+inline void BoundingBoxes::add_yaw(float value) {
+  yaw_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.yaw)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::yaw() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.yaw)
+  return yaw_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_yaw() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.yaw)
+  return &yaw_;
+}
+
+// repeated float l = 9;
+inline int BoundingBoxes::l_size() const {
+  return l_.size();
+}
+inline void BoundingBoxes::clear_l() {
+  l_.Clear();
+}
+inline float BoundingBoxes::l(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.l)
+  return l_.Get(index);
+}
+inline void BoundingBoxes::set_l(int index, float value) {
+  l_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.l)
+}
+inline void BoundingBoxes::add_l(float value) {
+  l_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.l)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::l() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.l)
+  return l_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_l() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.l)
+  return &l_;
+}
+
+// repeated float w = 10;
+inline int BoundingBoxes::w_size() const {
+  return w_.size();
+}
+inline void BoundingBoxes::clear_w() {
+  w_.Clear();
+}
+inline float BoundingBoxes::w(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.w)
+  return w_.Get(index);
+}
+inline void BoundingBoxes::set_w(int index, float value) {
+  w_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.w)
+}
+inline void BoundingBoxes::add_w(float value) {
+  w_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.w)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::w() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.w)
+  return w_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_w() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.w)
+  return &w_;
+}
+
+// repeated float h = 11;
+inline int BoundingBoxes::h_size() const {
+  return h_.size();
+}
+inline void BoundingBoxes::clear_h() {
+  h_.Clear();
+}
+inline float BoundingBoxes::h(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.h)
+  return h_.Get(index);
+}
+inline void BoundingBoxes::set_h(int index, float value) {
+  h_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.h)
+}
+inline void BoundingBoxes::add_h(float value) {
+  h_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.h)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::h() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.h)
+  return h_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_h() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.h)
+  return &h_;
+}
+
+// repeated int32 id = 12;
+inline int BoundingBoxes::id_size() const {
+  return id_.size();
+}
+inline void BoundingBoxes::clear_id() {
+  id_.Clear();
+}
+inline ::google::protobuf::int32 BoundingBoxes::id(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.id)
+  return id_.Get(index);
+}
+inline void BoundingBoxes::set_id(int index, ::google::protobuf::int32 value) {
+  id_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.id)
+}
+inline void BoundingBoxes::add_id(::google::protobuf::int32 value) {
+  id_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.id)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+BoundingBoxes::id() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.id)
+  return id_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+BoundingBoxes::mutable_id() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.id)
+  return &id_;
+}
+
+// repeated float data_reserver1 = 13;
+inline int BoundingBoxes::data_reserver1_size() const {
+  return data_reserver1_.size();
+}
+inline void BoundingBoxes::clear_data_reserver1() {
+  data_reserver1_.Clear();
+}
+inline float BoundingBoxes::data_reserver1(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.data_reserver1)
+  return data_reserver1_.Get(index);
+}
+inline void BoundingBoxes::set_data_reserver1(int index, float value) {
+  data_reserver1_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.data_reserver1)
+}
+inline void BoundingBoxes::add_data_reserver1(float value) {
+  data_reserver1_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.data_reserver1)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::data_reserver1() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.data_reserver1)
+  return data_reserver1_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_data_reserver1() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.data_reserver1)
+  return &data_reserver1_;
+}
+
+// repeated float data_reserver2 = 14;
+inline int BoundingBoxes::data_reserver2_size() const {
+  return data_reserver2_.size();
+}
+inline void BoundingBoxes::clear_data_reserver2() {
+  data_reserver2_.Clear();
+}
+inline float BoundingBoxes::data_reserver2(int index) const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.BoundingBoxes.data_reserver2)
+  return data_reserver2_.Get(index);
+}
+inline void BoundingBoxes::set_data_reserver2(int index, float value) {
+  data_reserver2_.Set(index, value);
+  // @@protoc_insertion_point(field_set:itd.communication.protobuf.BoundingBoxes.data_reserver2)
+}
+inline void BoundingBoxes::add_data_reserver2(float value) {
+  data_reserver2_.Add(value);
+  // @@protoc_insertion_point(field_add:itd.communication.protobuf.BoundingBoxes.data_reserver2)
+}
+inline const ::google::protobuf::RepeatedField< float >&
+BoundingBoxes::data_reserver2() const {
+  // @@protoc_insertion_point(field_list:itd.communication.protobuf.BoundingBoxes.data_reserver2)
+  return data_reserver2_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+BoundingBoxes::mutable_data_reserver2() {
+  // @@protoc_insertion_point(field_mutable_list:itd.communication.protobuf.BoundingBoxes.data_reserver2)
+  return &data_reserver2_;
 }
 
 // -------------------------------------------------------------------
 
 // MessageGeometry
 
-// .itd.communication.protobuf.MessageGeometry.MessageType type = 8;
+// .itd.communication.protobuf.MessageGeometry.MessageType type = 10;
 inline void MessageGeometry::clear_type() {
   type_ = 0;
 }
@@ -2719,7 +4251,7 @@ inline void MessageGeometry::set_type(::itd::communication::protobuf::MessageGeo
   // @@protoc_insertion_point(field_set:itd.communication.protobuf.MessageGeometry.type)
 }
 
-// .itd.communication.protobuf.Point point = 9;
+// .itd.communication.protobuf.Point point = 11;
 inline bool MessageGeometry::has_point() const {
   return msg_case() == kPoint;
 }
@@ -2785,7 +4317,7 @@ inline ::itd::communication::protobuf::Point* MessageGeometry::mutable_point() {
   return msg_.point_;
 }
 
-// .itd.communication.protobuf.Points points = 10;
+// .itd.communication.protobuf.Points points = 12;
 inline bool MessageGeometry::has_points() const {
   return msg_case() == kPoints;
 }
@@ -2851,7 +4383,7 @@ inline ::itd::communication::protobuf::Points* MessageGeometry::mutable_points()
   return msg_.points_;
 }
 
-// .itd.communication.protobuf.Line line = 11;
+// .itd.communication.protobuf.Line line = 13;
 inline bool MessageGeometry::has_line() const {
   return msg_case() == kLine;
 }
@@ -2917,7 +4449,7 @@ inline ::itd::communication::protobuf::Line* MessageGeometry::mutable_line() {
   return msg_.line_;
 }
 
-// .itd.communication.protobuf.Lines lines = 12;
+// .itd.communication.protobuf.Lines lines = 14;
 inline bool MessageGeometry::has_lines() const {
   return msg_case() == kLines;
 }
@@ -2983,7 +4515,7 @@ inline ::itd::communication::protobuf::Lines* MessageGeometry::mutable_lines() {
   return msg_.lines_;
 }
 
-// .itd.communication.protobuf.Polygon polygon = 13;
+// .itd.communication.protobuf.Polygon polygon = 15;
 inline bool MessageGeometry::has_polygon() const {
   return msg_case() == kPolygon;
 }
@@ -3049,7 +4581,7 @@ inline ::itd::communication::protobuf::Polygon* MessageGeometry::mutable_polygon
   return msg_.polygon_;
 }
 
-// .itd.communication.protobuf.Polygons polygons = 14;
+// .itd.communication.protobuf.Polygons polygons = 16;
 inline bool MessageGeometry::has_polygons() const {
   return msg_case() == kPolygons;
 }
@@ -3115,7 +4647,7 @@ inline ::itd::communication::protobuf::Polygons* MessageGeometry::mutable_polygo
   return msg_.polygons_;
 }
 
-// .itd.communication.protobuf.Pose pose = 15;
+// .itd.communication.protobuf.Pose pose = 17;
 inline bool MessageGeometry::has_pose() const {
   return msg_case() == kPose;
 }
@@ -3181,7 +4713,7 @@ inline ::itd::communication::protobuf::Pose* MessageGeometry::mutable_pose() {
   return msg_.pose_;
 }
 
-// .itd.communication.protobuf.Poses poses = 16;
+// .itd.communication.protobuf.Poses poses = 18;
 inline bool MessageGeometry::has_poses() const {
   return msg_case() == kPoses;
 }
@@ -3247,6 +4779,138 @@ inline ::itd::communication::protobuf::Poses* MessageGeometry::mutable_poses() {
   return msg_.poses_;
 }
 
+// .itd.communication.protobuf.BoundingBox boundingbox = 19;
+inline bool MessageGeometry::has_boundingbox() const {
+  return msg_case() == kBoundingbox;
+}
+inline void MessageGeometry::set_has_boundingbox() {
+  _oneof_case_[0] = kBoundingbox;
+}
+inline void MessageGeometry::clear_boundingbox() {
+  if (has_boundingbox()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.boundingbox_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::BoundingBox* MessageGeometry::release_boundingbox() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.MessageGeometry.boundingbox)
+  if (has_boundingbox()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::BoundingBox* temp = msg_.boundingbox_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.boundingbox_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::BoundingBox& MessageGeometry::boundingbox() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.MessageGeometry.boundingbox)
+  return has_boundingbox()
+      ? *msg_.boundingbox_
+      : *reinterpret_cast< ::itd::communication::protobuf::BoundingBox*>(&::itd::communication::protobuf::_BoundingBox_default_instance_);
+}
+inline ::itd::communication::protobuf::BoundingBox* MessageGeometry::unsafe_arena_release_boundingbox() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.MessageGeometry.boundingbox)
+  if (has_boundingbox()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::BoundingBox* temp = msg_.boundingbox_;
+    msg_.boundingbox_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void MessageGeometry::unsafe_arena_set_allocated_boundingbox(::itd::communication::protobuf::BoundingBox* boundingbox) {
+  clear_msg();
+  if (boundingbox) {
+    set_has_boundingbox();
+    msg_.boundingbox_ = boundingbox;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.MessageGeometry.boundingbox)
+}
+inline ::itd::communication::protobuf::BoundingBox* MessageGeometry::mutable_boundingbox() {
+  if (!has_boundingbox()) {
+    clear_msg();
+    set_has_boundingbox();
+    msg_.boundingbox_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::BoundingBox >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.MessageGeometry.boundingbox)
+  return msg_.boundingbox_;
+}
+
+// .itd.communication.protobuf.BoundingBoxes boundingboxes = 20;
+inline bool MessageGeometry::has_boundingboxes() const {
+  return msg_case() == kBoundingboxes;
+}
+inline void MessageGeometry::set_has_boundingboxes() {
+  _oneof_case_[0] = kBoundingboxes;
+}
+inline void MessageGeometry::clear_boundingboxes() {
+  if (has_boundingboxes()) {
+    if (GetArenaNoVirtual() == NULL) {
+      delete msg_.boundingboxes_;
+    }
+    clear_has_msg();
+  }
+}
+inline ::itd::communication::protobuf::BoundingBoxes* MessageGeometry::release_boundingboxes() {
+  // @@protoc_insertion_point(field_release:itd.communication.protobuf.MessageGeometry.boundingboxes)
+  if (has_boundingboxes()) {
+    clear_has_msg();
+      ::itd::communication::protobuf::BoundingBoxes* temp = msg_.boundingboxes_;
+    if (GetArenaNoVirtual() != NULL) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp, NULL);
+    }
+    msg_.boundingboxes_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::itd::communication::protobuf::BoundingBoxes& MessageGeometry::boundingboxes() const {
+  // @@protoc_insertion_point(field_get:itd.communication.protobuf.MessageGeometry.boundingboxes)
+  return has_boundingboxes()
+      ? *msg_.boundingboxes_
+      : *reinterpret_cast< ::itd::communication::protobuf::BoundingBoxes*>(&::itd::communication::protobuf::_BoundingBoxes_default_instance_);
+}
+inline ::itd::communication::protobuf::BoundingBoxes* MessageGeometry::unsafe_arena_release_boundingboxes() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:itd.communication.protobuf.MessageGeometry.boundingboxes)
+  if (has_boundingboxes()) {
+    clear_has_msg();
+    ::itd::communication::protobuf::BoundingBoxes* temp = msg_.boundingboxes_;
+    msg_.boundingboxes_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline void MessageGeometry::unsafe_arena_set_allocated_boundingboxes(::itd::communication::protobuf::BoundingBoxes* boundingboxes) {
+  clear_msg();
+  if (boundingboxes) {
+    set_has_boundingboxes();
+    msg_.boundingboxes_ = boundingboxes;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.MessageGeometry.boundingboxes)
+}
+inline ::itd::communication::protobuf::BoundingBoxes* MessageGeometry::mutable_boundingboxes() {
+  if (!has_boundingboxes()) {
+    clear_msg();
+    set_has_boundingboxes();
+    msg_.boundingboxes_ = 
+      ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::BoundingBoxes >(
+      GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:itd.communication.protobuf.MessageGeometry.boundingboxes)
+  return msg_.boundingboxes_;
+}
+
 inline bool MessageGeometry::has_msg() const {
   return msg_case() != MSG_NOT_SET;
 }
@@ -3259,6 +4923,10 @@ inline MessageGeometry::MsgCase MessageGeometry::msg_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

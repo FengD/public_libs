@@ -28,8 +28,9 @@ message Line {
 }
 
 message Lines {
-  int32 number_lines = 1;
-  repeated Line line = 2;
+  Header header = 1;
+  int32 number_lines = 2;
+  repeated Line line = 3;
 }
 
 message Polygon {
@@ -55,7 +56,46 @@ message Pose {
 
 message Poses {
   Header header = 1;
-  repeated Pose pose = 2;
+  int32 number = 2;
+  repeated float x = 3;
+  repeated float y = 4;
+  repeated float z = 5;
+  repeated float roll = 6;
+  repeated float pitch = 7;
+  repeated float yaw = 8;
+}
+
+message BoundingBox {
+  Header header = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+  float roll = 5;
+  float pitch = 6;
+  float yaw = 7;
+  float l = 8;
+  float w = 9;
+  float h = 10;
+  int32 id = 11;
+  float data_reserver1 = 12;
+  float data_reserver2 = 13;
+}
+
+message BoundingBoxes {
+  Header header = 1;
+  int32 number = 2;
+  repeated float x = 3;
+  repeated float y = 4;
+  repeated float z = 5;
+  repeated float roll = 6;
+  repeated float pitch = 7;
+  repeated float yaw = 8;
+  repeated float l = 9;
+  repeated float w = 10;
+  repeated float h = 11;
+  repeated int32 id = 12;
+  repeated float data_reserver1 = 13;
+  repeated float data_reserver2 = 14;
 }
 
 message MessageGeometry {
@@ -68,17 +108,21 @@ message MessageGeometry {
     Polygons = 5;
     Pose = 6;
     Poses = 7;
+    BoundingBox = 8;
+    BoundingBoxes = 9;
   }
 
-  MessageType type = 8;
+  MessageType type = 10;
   oneof msg {
-    Point point = 9;
-    Points points = 10;
-    Line line = 11;
-    Lines lines = 12;
-    Polygon polygon = 13;
-    Polygons polygons = 14;
-    Pose pose = 15;
-    Poses poses = 16;
+    Point point = 11;
+    Points points = 12;
+    Line line = 13;
+    Lines lines = 14;
+    Polygon polygon = 15;
+    Polygons polygons = 16;
+    Pose pose = 17;
+    Poses poses = 18;
+    BoundingBox boundingbox = 19;
+    BoundingBoxes boundingboxes = 20;
   }
 }
