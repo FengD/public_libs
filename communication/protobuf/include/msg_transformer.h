@@ -55,6 +55,8 @@ class MsgTransformer {
 
   static void ToItdContainer(const int &front_container_flag, const float &front_container_dis,
                                   itd::communication::protobuf::Container &container_out);
+  static void ToItdCanMessage(const long &id, const double *value, const int &value_size,
+                                     itd::communication::protobuf::CanSignal &signal);
 
 };
 

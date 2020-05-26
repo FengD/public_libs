@@ -4,7 +4,7 @@
 #include <string.h>
 #include "publisher.h"
 #include "handler.h"
-#include "msg.pb.h"
+#include "itd_ipd_sensor_msgs.pb.h"
 
 #define HOST "192.168.8.224"
 #define PORT 1883
