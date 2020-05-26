@@ -119,7 +119,7 @@ void MsgTransformer::ToItdBridge(const float &k, const float &b, const int &flag
 }
 
 void MsgTransformer::ToItdBoundary(const float &k, const float &b, const int &flag,
-                                 itd::communication::protobuf::Boundary &boundary_out) {
+                                   itd::communication::protobuf::Boundary &boundary_out) {
   boundary_out.Clear();
   boundary_out.set_k(k);
   boundary_out.set_b(b);
@@ -137,7 +137,7 @@ void MsgTransformer::ToItdSignboard(const float &k, const float &b, const float 
 }
 
 void MsgTransformer::ToItdTrailer(const float &k, const float &b, const int &flag,
-                                 itd::communication::protobuf::Trailer &trailer_out) {
+                                  itd::communication::protobuf::Trailer &trailer_out) {
   trailer_out.Clear();
   trailer_out.set_k(k);
   trailer_out.set_b(b);
@@ -156,10 +156,20 @@ void MsgTransformer::ToItdGrabber(const int &grabber_left_angle, const float &gr
 }
 
 void MsgTransformer::ToItdContainer(const int &front_container_flag, const float &front_container_dis,
-                                  itd::communication::protobuf::Container &container_out) {
+                                    itd::communication::protobuf::Container &container_out) {
   container_out.Clear();
   container_out.set_flag(front_container_flag);
   container_out.set_distance(front_container_dis);
+}
+
+void MsgTransformer::ToItdCanMessage(const long &id, const double *value, const int &value_size,
+                                     itd::communication::protobuf::CanSignal &signal) {
+  signal.Clear();
+  signal.set_id(id);
+  signal.set_nb_signal(value_size);
+  for (int i = 0; i < value_size; i++) {
+    signal.add_signal(value[i]);
+  }
 }
 
 }  // namespace itd
