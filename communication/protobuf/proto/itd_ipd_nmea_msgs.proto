@@ -1,0 +1,14 @@
+syntax="proto3";
+option cc_enable_arenas = true;
+import public "itd_ipd_std_msgs.proto";
+package itd.communication.protobuf;
+
+message Gps84 {
+  Header header = 1;
+  string message_id = 2;
+  double latitude = 3;
+  double longitude = 4;
+  double altitude = 5;
+  float speed = 6;
+  double utc_sec = 7;
+}

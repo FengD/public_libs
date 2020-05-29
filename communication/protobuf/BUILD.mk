@@ -32,6 +32,7 @@ ARM_LIB = libCommunicationProtobuf.a
 ARM_LIB_SRCS += itd_ipd_geometry_msgs.pb.cc
 ARM_LIB_SRCS += itd_ipd_sensor_msgs.pb.cc
 ARM_LIB_SRCS += itd_ipd_std_msgs.pb.cc
+ARM_LIB_SRCS += itd_ipd_nmea_msgs.pb.cc
 ARM_LIB_SRCS += msg_transformer.cpp
 
 ARM_INCS += -I$(SDK_ROOT)/include

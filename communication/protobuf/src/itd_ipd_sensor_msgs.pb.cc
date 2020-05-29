@@ -67,11 +67,6 @@ class LidarStatusDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<LidarStatus>
       _instance;
 } _LidarStatus_default_instance_;
-class BoundingBoxDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BoundingBox>
-      _instance;
-} _BoundingBox_default_instance_;
 class CanSignalDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<CanSignal>
@@ -89,7 +84,6 @@ class MessageSensorDefaultTypeInternal {
   const ::itd::communication::protobuf::Container* container_;
   const ::itd::communication::protobuf::Signboard* signboard_;
   const ::itd::communication::protobuf::LidarStatus* lidar_status_;
-  const ::itd::communication::protobuf::BoundingBox* boundingbox_;
   const ::itd::communication::protobuf::CanSignal* can_signal_;
 } _MessageSensor_default_instance_;
 }  // namespace protobuf
@@ -294,28 +288,6 @@ void InitDefaultsLidarStatus() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsLidarStatusImpl);
 }
 
-void InitDefaultsBoundingBoxImpl() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
-#else
-  ::google::protobuf::internal::InitProtobufDefaults();
-#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-  protobuf_itd_5fipd_5fstd_5fmsgs_2eproto::InitDefaultsHeader();
-  {
-    void* ptr = &::itd::communication::protobuf::_BoundingBox_default_instance_;
-    new (ptr) ::itd::communication::protobuf::BoundingBox();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::itd::communication::protobuf::BoundingBox::InitAsDefaultInstance();
-}
-
-void InitDefaultsBoundingBox() {
-  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
-  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsBoundingBoxImpl);
-}
-
 void InitDefaultsCanSignalImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -354,7 +326,6 @@ void InitDefaultsMessageSensorImpl() {
   protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsContainer();
   protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsSignboard();
   protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsLidarStatus();
-  protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsBoundingBox();
   protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsCanSignal();
   {
     void* ptr = &::itd::communication::protobuf::_MessageSensor_default_instance_;
@@ -369,7 +340,7 @@ void InitDefaultsMessageSensor() {
   ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsMessageSensorImpl);
 }
 
-::google::protobuf::Metadata file_level_metadata[12];
+::google::protobuf::Metadata file_level_metadata[11];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -464,21 +435,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::LidarStatus, top_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::LidarStatus, single_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, header_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, number_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, head_angle_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, length_obj_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, width_obj_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, track_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, vx_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, vy_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::BoundingBox, y_),
-  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::CanSignal, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -501,7 +457,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   offsetof(::itd::communication::protobuf::MessageSensorDefaultTypeInternal, container_),
   offsetof(::itd::communication::protobuf::MessageSensorDefaultTypeInternal, signboard_),
   offsetof(::itd::communication::protobuf::MessageSensorDefaultTypeInternal, lidar_status_),
-  offsetof(::itd::communication::protobuf::MessageSensorDefaultTypeInternal, boundingbox_),
   offsetof(::itd::communication::protobuf::MessageSensorDefaultTypeInternal, can_signal_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::itd::communication::protobuf::MessageSensor, msg_),
 };
@@ -515,9 +470,8 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 59, -1, sizeof(::itd::communication::protobuf::Signboard)},
   { 70, -1, sizeof(::itd::communication::protobuf::Grabber)},
   { 80, -1, sizeof(::itd::communication::protobuf::LidarStatus)},
-  { 90, -1, sizeof(::itd::communication::protobuf::BoundingBox)},
-  { 105, -1, sizeof(::itd::communication::protobuf::CanSignal)},
-  { 114, -1, sizeof(::itd::communication::protobuf::MessageSensor)},
+  { 90, -1, sizeof(::itd::communication::protobuf::CanSignal)},
+  { 99, -1, sizeof(::itd::communication::protobuf::MessageSensor)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -530,7 +484,6 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Signboard_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_Grabber_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_LidarStatus_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_BoundingBox_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_CanSignal_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::itd::communication::protobuf::_MessageSensor_default_instance_),
 };
@@ -551,7 +504,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 12);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 11);
 }
 
 void AddDescriptorsImpl() {
@@ -586,40 +539,33 @@ void AddDescriptorsImpl() {
       " \001(\002\022\032\n\022right_obstacle_dis\030\005 \001(\002\"{\n\013Lida"
       "rStatus\0222\n\006header\030\001 \001(\0132\".itd.communicat"
       "ion.protobuf.Header\022\014\n\004left\030\002 \001(\005\022\r\n\005rig"
-      "ht\030\003 \001(\005\022\013\n\003top\030\004 \001(\005\022\016\n\006single\030\005 \001(\005\"\314\001"
-      "\n\013BoundingBox\0222\n\006header\030\001 \001(\0132\".itd.comm"
-      "unication.protobuf.Header\022\016\n\006number\030\002 \001("
-      "\005\022\022\n\nhead_angle\030\003 \003(\002\022\022\n\nlength_obj\030\004 \003("
-      "\002\022\021\n\twidth_obj\030\005 \003(\002\022\020\n\010track_id\030\006 \003(\002\022\n"
-      "\n\002vx\030\007 \003(\002\022\n\n\002vy\030\010 \003(\002\022\t\n\001x\030\t \003(\002\022\t\n\001y\030\n"
-      " \003(\002\"n\n\tCanSignal\0222\n\006header\030\001 \001(\0132\".itd."
-      "communication.protobuf.Header\022\n\n\002id\030\002 \001("
-      "\004\022\021\n\tnb_signal\030\003 \001(\r\022\016\n\006signal\030\004 \003(\001\"\314\006\n"
-      "\rMessageSensor\022C\n\004type\030\n \001(\01625.itd.commu"
-      "nication.protobuf.MessageSensor.MessageT"
-      "ype\0227\n\005cloud\030\013 \001(\0132&.itd.communication.p"
-      "rotobuf.PointCloudH\000\0223\n\002fs\030\014 \001(\0132%.itd.c"
-      "ommunication.protobuf.FreespaceH\000\0226\n\007tra"
-      "iler\030\r \001(\0132#.itd.communication.protobuf."
-      "TrailerH\000\0224\n\006bridge\030\016 \001(\0132\".itd.communic"
-      "ation.protobuf.BridgeH\000\0228\n\010boundary\030\017 \001("
-      "\0132$.itd.communication.protobuf.BoundaryH"
-      "\000\022:\n\tcontainer\030\020 \001(\0132%.itd.communication"
-      ".protobuf.ContainerH\000\022:\n\tsignboard\030\021 \001(\013"
-      "2%.itd.communication.protobuf.SignboardH"
-      "\000\022\?\n\014lidar_status\030\022 \001(\0132\'.itd.communicat"
-      "ion.protobuf.LidarStatusH\000\022>\n\013boundingBo"
-      "x\030\023 \001(\0132\'.itd.communication.protobuf.Bou"
-      "ndingBoxH\000\022;\n\ncan_signal\030\024 \001(\0132%.itd.com"
-      "munication.protobuf.CanSignalH\000\"\242\001\n\013Mess"
-      "ageType\022\016\n\nPointCloud\020\000\022\r\n\tFreespace\020\001\022\013"
-      "\n\007Trailer\020\002\022\n\n\006Bridge\020\003\022\014\n\010Boundary\020\004\022\r\n"
-      "\tContainer\020\005\022\r\n\tSignboard\020\006\022\017\n\013LidarStat"
-      "us\020\007\022\017\n\013BoundingBox\020\010\022\r\n\tCanSignal\020\tB\005\n\003"
-      "msgB\003\370\001\001P\000b\006proto3"
+      "ht\030\003 \001(\005\022\013\n\003top\030\004 \001(\005\022\016\n\006single\030\005 \001(\005\"n\n"
+      "\tCanSignal\0222\n\006header\030\001 \001(\0132\".itd.communi"
+      "cation.protobuf.Header\022\n\n\002id\030\002 \001(\004\022\021\n\tnb"
+      "_signal\030\003 \001(\r\022\016\n\006signal\030\004 \003(\001\"\373\005\n\rMessag"
+      "eSensor\022C\n\004type\030\t \001(\01625.itd.communicatio"
+      "n.protobuf.MessageSensor.MessageType\0227\n\005"
+      "cloud\030\n \001(\0132&.itd.communication.protobuf"
+      ".PointCloudH\000\0223\n\002fs\030\013 \001(\0132%.itd.communic"
+      "ation.protobuf.FreespaceH\000\0226\n\007trailer\030\014 "
+      "\001(\0132#.itd.communication.protobuf.Trailer"
+      "H\000\0224\n\006bridge\030\r \001(\0132\".itd.communication.p"
+      "rotobuf.BridgeH\000\0228\n\010boundary\030\016 \001(\0132$.itd"
+      ".communication.protobuf.BoundaryH\000\022:\n\tco"
+      "ntainer\030\017 \001(\0132%.itd.communication.protob"
+      "uf.ContainerH\000\022:\n\tsignboard\030\020 \001(\0132%.itd."
+      "communication.protobuf.SignboardH\000\022\?\n\014li"
+      "dar_status\030\021 \001(\0132\'.itd.communication.pro"
+      "tobuf.LidarStatusH\000\022;\n\ncan_signal\030\022 \001(\0132"
+      "%.itd.communication.protobuf.CanSignalH\000"
+      "\"\221\001\n\013MessageType\022\016\n\nPointCloud\020\000\022\r\n\tFree"
+      "space\020\001\022\013\n\007Trailer\020\002\022\n\n\006Bridge\020\003\022\014\n\010Boun"
+      "dary\020\004\022\r\n\tContainer\020\005\022\r\n\tSignboard\020\006\022\017\n\013"
+      "LidarStatus\020\007\022\r\n\tCanSignal\020\010B\005\n\003msgB\003\370\001\001"
+      "P\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2378);
+      descriptor, 2090);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "itd_ipd_sensor_msgs.proto", &protobuf_RegisterTypes);
   ::protobuf_itd_5fipd_5fstd_5fmsgs_2eproto::AddDescriptors();
@@ -654,7 +600,6 @@ bool MessageSensor_MessageType_IsValid(int value) {
     case 6:
     case 7:
     case 8:
-    case 9:
       return true;
     default:
       return false;
@@ -670,7 +615,6 @@ const MessageSensor_MessageType MessageSensor::Boundary;
 const MessageSensor_MessageType MessageSensor::Container;
 const MessageSensor_MessageType MessageSensor::Signboard;
 const MessageSensor_MessageType MessageSensor::LidarStatus;
-const MessageSensor_MessageType MessageSensor::BoundingBox;
 const MessageSensor_MessageType MessageSensor::CanSignal;
 const MessageSensor_MessageType MessageSensor::MessageType_MIN;
 const MessageSensor_MessageType MessageSensor::MessageType_MAX;
@@ -4965,848 +4909,6 @@ void LidarStatus::InternalSwap(LidarStatus* other) {
 
 // ===================================================================
 
-void BoundingBox::InitAsDefaultInstance() {
-  ::itd::communication::protobuf::_BoundingBox_default_instance_._instance.get_mutable()->header_ = const_cast< ::itd::communication::protobuf::Header*>(
-      ::itd::communication::protobuf::Header::internal_default_instance());
-}
-void BoundingBox::_slow_mutable_header() {
-  header_ = ::google::protobuf::Arena::CreateMessage< ::itd::communication::protobuf::Header >(
-      GetArenaNoVirtual());
-}
-void BoundingBox::unsafe_arena_set_allocated_header(
-    ::itd::communication::protobuf::Header* header) {
-  if (GetArenaNoVirtual() == NULL) {
-    delete header_;
-  }
-  header_ = header;
-  if (header) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:itd.communication.protobuf.BoundingBox.header)
-}
-void BoundingBox::clear_header() {
-  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
-    delete header_;
-  }
-  header_ = NULL;
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BoundingBox::kHeaderFieldNumber;
-const int BoundingBox::kNumberFieldNumber;
-const int BoundingBox::kHeadAngleFieldNumber;
-const int BoundingBox::kLengthObjFieldNumber;
-const int BoundingBox::kWidthObjFieldNumber;
-const int BoundingBox::kTrackIdFieldNumber;
-const int BoundingBox::kVxFieldNumber;
-const int BoundingBox::kVyFieldNumber;
-const int BoundingBox::kXFieldNumber;
-const int BoundingBox::kYFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BoundingBox::BoundingBox()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
-    ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsBoundingBox();
-  }
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:itd.communication.protobuf.BoundingBox)
-}
-BoundingBox::BoundingBox(::google::protobuf::Arena* arena)
-  : ::google::protobuf::Message(),
-  _internal_metadata_(arena),
-  head_angle_(arena),
-  length_obj_(arena),
-  width_obj_(arena),
-  track_id_(arena),
-  vx_(arena),
-  vy_(arena),
-  x_(arena),
-  y_(arena) {
-  ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsBoundingBox();
-  SharedCtor();
-  RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:itd.communication.protobuf.BoundingBox)
-}
-BoundingBox::BoundingBox(const BoundingBox& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      head_angle_(from.head_angle_),
-      length_obj_(from.length_obj_),
-      width_obj_(from.width_obj_),
-      track_id_(from.track_id_),
-      vx_(from.vx_),
-      vy_(from.vy_),
-      x_(from.x_),
-      y_(from.y_),
-      _cached_size_(0) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_header()) {
-    header_ = new ::itd::communication::protobuf::Header(*from.header_);
-  } else {
-    header_ = NULL;
-  }
-  number_ = from.number_;
-  // @@protoc_insertion_point(copy_constructor:itd.communication.protobuf.BoundingBox)
-}
-
-void BoundingBox::SharedCtor() {
-  ::memset(&header_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&number_) -
-      reinterpret_cast<char*>(&header_)) + sizeof(number_));
-  _cached_size_ = 0;
-}
-
-BoundingBox::~BoundingBox() {
-  // @@protoc_insertion_point(destructor:itd.communication.protobuf.BoundingBox)
-  SharedDtor();
-}
-
-void BoundingBox::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaNoVirtual() == NULL);
-  if (this != internal_default_instance()) delete header_;
-}
-
-void BoundingBox::ArenaDtor(void* object) {
-  BoundingBox* _this = reinterpret_cast< BoundingBox* >(object);
-  (void)_this;
-}
-void BoundingBox::RegisterArenaDtor(::google::protobuf::Arena* arena) {
-}
-void BoundingBox::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* BoundingBox::descriptor() {
-  ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const BoundingBox& BoundingBox::default_instance() {
-  ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::InitDefaultsBoundingBox();
-  return *internal_default_instance();
-}
-
-BoundingBox* BoundingBox::New(::google::protobuf::Arena* arena) const {
-  return ::google::protobuf::Arena::CreateMessage<BoundingBox>(arena);
-}
-
-void BoundingBox::Clear() {
-// @@protoc_insertion_point(message_clear_start:itd.communication.protobuf.BoundingBox)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  head_angle_.Clear();
-  length_obj_.Clear();
-  width_obj_.Clear();
-  track_id_.Clear();
-  vx_.Clear();
-  vy_.Clear();
-  x_.Clear();
-  y_.Clear();
-  if (GetArenaNoVirtual() == NULL && header_ != NULL) {
-    delete header_;
-  }
-  header_ = NULL;
-  number_ = 0;
-  _internal_metadata_.Clear();
-}
-
-bool BoundingBox::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:itd.communication.protobuf.BoundingBox)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .itd.communication.protobuf.Header header = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_header()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 number = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &number_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float head_angle = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_head_angle())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 26u, input, this->mutable_head_angle())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float length_obj = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_length_obj())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 34u, input, this->mutable_length_obj())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float width_obj = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_width_obj())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 42u, input, this->mutable_width_obj())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float track_id = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_track_id())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 50u, input, this->mutable_track_id())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float vx = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_vx())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(61u /* 61 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 58u, input, this->mutable_vx())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float vy = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_vy())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(69u /* 69 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 66u, input, this->mutable_vy())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float x = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_x())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(77u /* 77 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 74u, input, this->mutable_x())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float y = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_y())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(85u /* 85 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 82u, input, this->mutable_y())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:itd.communication.protobuf.BoundingBox)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:itd.communication.protobuf.BoundingBox)
-  return false;
-#undef DO_
-}
-
-void BoundingBox::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:itd.communication.protobuf.BoundingBox)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .itd.communication.protobuf.Header header = 1;
-  if (this->has_header()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *this->header_, output);
-  }
-
-  // int32 number = 2;
-  if (this->number() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->number(), output);
-  }
-
-  // repeated float head_angle = 3;
-  if (this->head_angle_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _head_angle_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->head_angle().data(), this->head_angle_size(), output);
-  }
-
-  // repeated float length_obj = 4;
-  if (this->length_obj_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _length_obj_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->length_obj().data(), this->length_obj_size(), output);
-  }
-
-  // repeated float width_obj = 5;
-  if (this->width_obj_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(5, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _width_obj_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->width_obj().data(), this->width_obj_size(), output);
-  }
-
-  // repeated float track_id = 6;
-  if (this->track_id_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(6, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _track_id_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->track_id().data(), this->track_id_size(), output);
-  }
-
-  // repeated float vx = 7;
-  if (this->vx_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(7, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _vx_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->vx().data(), this->vx_size(), output);
-  }
-
-  // repeated float vy = 8;
-  if (this->vy_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(8, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _vy_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->vy().data(), this->vy_size(), output);
-  }
-
-  // repeated float x = 9;
-  if (this->x_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(9, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _x_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->x().data(), this->x_size(), output);
-  }
-
-  // repeated float y = 10;
-  if (this->y_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(10, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _y_cached_byte_size_));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->y().data(), this->y_size(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:itd.communication.protobuf.BoundingBox)
-}
-
-::google::protobuf::uint8* BoundingBox::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:itd.communication.protobuf.BoundingBox)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // .itd.communication.protobuf.Header header = 1;
-  if (this->has_header()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, *this->header_, deterministic, target);
-  }
-
-  // int32 number = 2;
-  if (this->number() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->number(), target);
-  }
-
-  // repeated float head_angle = 3;
-  if (this->head_angle_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _head_angle_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->head_angle_, target);
-  }
-
-  // repeated float length_obj = 4;
-  if (this->length_obj_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      4,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _length_obj_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->length_obj_, target);
-  }
-
-  // repeated float width_obj = 5;
-  if (this->width_obj_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      5,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _width_obj_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->width_obj_, target);
-  }
-
-  // repeated float track_id = 6;
-  if (this->track_id_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      6,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _track_id_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->track_id_, target);
-  }
-
-  // repeated float vx = 7;
-  if (this->vx_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      7,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _vx_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->vx_, target);
-  }
-
-  // repeated float vy = 8;
-  if (this->vy_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      8,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _vy_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->vy_, target);
-  }
-
-  // repeated float x = 9;
-  if (this->x_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      9,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _x_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->x_, target);
-  }
-
-  // repeated float y = 10;
-  if (this->y_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      10,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _y_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->y_, target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:itd.communication.protobuf.BoundingBox)
-  return target;
-}
-
-size_t BoundingBox::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:itd.communication.protobuf.BoundingBox)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated float head_angle = 3;
-  {
-    unsigned int count = static_cast<unsigned int>(this->head_angle_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _head_angle_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float length_obj = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->length_obj_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _length_obj_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float width_obj = 5;
-  {
-    unsigned int count = static_cast<unsigned int>(this->width_obj_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _width_obj_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float track_id = 6;
-  {
-    unsigned int count = static_cast<unsigned int>(this->track_id_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _track_id_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float vx = 7;
-  {
-    unsigned int count = static_cast<unsigned int>(this->vx_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _vx_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float vy = 8;
-  {
-    unsigned int count = static_cast<unsigned int>(this->vy_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _vy_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float x = 9;
-  {
-    unsigned int count = static_cast<unsigned int>(this->x_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _x_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float y = 10;
-  {
-    unsigned int count = static_cast<unsigned int>(this->y_size());
-    size_t data_size = 4UL * count;
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _y_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // .itd.communication.protobuf.Header header = 1;
-  if (this->has_header()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *this->header_);
-  }
-
-  // int32 number = 2;
-  if (this->number() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->number());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = cached_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void BoundingBox::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:itd.communication.protobuf.BoundingBox)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BoundingBox* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const BoundingBox>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:itd.communication.protobuf.BoundingBox)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:itd.communication.protobuf.BoundingBox)
-    MergeFrom(*source);
-  }
-}
-
-void BoundingBox::MergeFrom(const BoundingBox& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:itd.communication.protobuf.BoundingBox)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  head_angle_.MergeFrom(from.head_angle_);
-  length_obj_.MergeFrom(from.length_obj_);
-  width_obj_.MergeFrom(from.width_obj_);
-  track_id_.MergeFrom(from.track_id_);
-  vx_.MergeFrom(from.vx_);
-  vy_.MergeFrom(from.vy_);
-  x_.MergeFrom(from.x_);
-  y_.MergeFrom(from.y_);
-  if (from.has_header()) {
-    mutable_header()->::itd::communication::protobuf::Header::MergeFrom(from.header());
-  }
-  if (from.number() != 0) {
-    set_number(from.number());
-  }
-}
-
-void BoundingBox::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:itd.communication.protobuf.BoundingBox)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void BoundingBox::CopyFrom(const BoundingBox& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:itd.communication.protobuf.BoundingBox)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool BoundingBox::IsInitialized() const {
-  return true;
-}
-
-void BoundingBox::Swap(BoundingBox* other) {
-  if (other == this) return;
-  if (GetArenaNoVirtual() == other->GetArenaNoVirtual()) {
-    InternalSwap(other);
-  } else {
-    BoundingBox* temp = New(GetArenaNoVirtual());
-    temp->MergeFrom(*other);
-    other->CopyFrom(*this);
-    InternalSwap(temp);
-    if (GetArenaNoVirtual() == NULL) {
-      delete temp;
-    }
-  }
-}
-void BoundingBox::UnsafeArenaSwap(BoundingBox* other) {
-  if (other == this) return;
-  GOOGLE_DCHECK(GetArenaNoVirtual() == other->GetArenaNoVirtual());
-  InternalSwap(other);
-}
-void BoundingBox::InternalSwap(BoundingBox* other) {
-  using std::swap;
-  head_angle_.InternalSwap(&other->head_angle_);
-  length_obj_.InternalSwap(&other->length_obj_);
-  width_obj_.InternalSwap(&other->width_obj_);
-  track_id_.InternalSwap(&other->track_id_);
-  vx_.InternalSwap(&other->vx_);
-  vy_.InternalSwap(&other->vy_);
-  x_.InternalSwap(&other->x_);
-  y_.InternalSwap(&other->y_);
-  swap(header_, other->header_);
-  swap(number_, other->number_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata BoundingBox::GetMetadata() const {
-  protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_itd_5fipd_5fsensor_5fmsgs_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void CanSignal::InitAsDefaultInstance() {
   ::itd::communication::protobuf::_CanSignal_default_instance_._instance.get_mutable()->header_ = const_cast< ::itd::communication::protobuf::Header*>(
       ::itd::communication::protobuf::Header::internal_default_instance());
@@ -6265,8 +5367,6 @@ void MessageSensor::InitAsDefaultInstance() {
       ::itd::communication::protobuf::Signboard::internal_default_instance());
   ::itd::communication::protobuf::_MessageSensor_default_instance_.lidar_status_ = const_cast< ::itd::communication::protobuf::LidarStatus*>(
       ::itd::communication::protobuf::LidarStatus::internal_default_instance());
-  ::itd::communication::protobuf::_MessageSensor_default_instance_.boundingbox_ = const_cast< ::itd::communication::protobuf::BoundingBox*>(
-      ::itd::communication::protobuf::BoundingBox::internal_default_instance());
   ::itd::communication::protobuf::_MessageSensor_default_instance_.can_signal_ = const_cast< ::itd::communication::protobuf::CanSignal*>(
       ::itd::communication::protobuf::CanSignal::internal_default_instance());
 }
@@ -6390,21 +5490,6 @@ void MessageSensor::set_allocated_lidar_status(::itd::communication::protobuf::L
   }
   // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.MessageSensor.lidar_status)
 }
-void MessageSensor::set_allocated_boundingbox(::itd::communication::protobuf::BoundingBox* boundingbox) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  clear_msg();
-  if (boundingbox) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::GetArena(boundingbox);
-    if (message_arena != submessage_arena) {
-      boundingbox = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, boundingbox, submessage_arena);
-    }
-    set_has_boundingbox();
-    msg_.boundingbox_ = boundingbox;
-  }
-  // @@protoc_insertion_point(field_set_allocated:itd.communication.protobuf.MessageSensor.boundingBox)
-}
 void MessageSensor::set_allocated_can_signal(::itd::communication::protobuf::CanSignal* can_signal) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   clear_msg();
@@ -6430,7 +5515,6 @@ const int MessageSensor::kBoundaryFieldNumber;
 const int MessageSensor::kContainerFieldNumber;
 const int MessageSensor::kSignboardFieldNumber;
 const int MessageSensor::kLidarStatusFieldNumber;
-const int MessageSensor::kBoundingBoxFieldNumber;
 const int MessageSensor::kCanSignalFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -6488,10 +5572,6 @@ MessageSensor::MessageSensor(const MessageSensor& from)
     }
     case kLidarStatus: {
       mutable_lidar_status()->::itd::communication::protobuf::LidarStatus::MergeFrom(from.lidar_status());
-      break;
-    }
-    case kBoundingBox: {
-      mutable_boundingbox()->::itd::communication::protobuf::BoundingBox::MergeFrom(from.boundingbox());
       break;
     }
     case kCanSignal: {
@@ -6599,12 +5679,6 @@ void MessageSensor::clear_msg() {
       }
       break;
     }
-    case kBoundingBox: {
-      if (GetArenaNoVirtual() == NULL) {
-        delete msg_.boundingbox_;
-      }
-      break;
-    }
     case kCanSignal: {
       if (GetArenaNoVirtual() == NULL) {
         delete msg_.can_signal_;
@@ -6640,10 +5714,10 @@ bool MessageSensor::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .itd.communication.protobuf.MessageSensor.MessageType type = 10;
-      case 10: {
+      // .itd.communication.protobuf.MessageSensor.MessageType type = 9;
+      case 9: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(80u /* 80 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -6655,10 +5729,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.PointCloud cloud = 11;
-      case 11: {
+      // .itd.communication.protobuf.PointCloud cloud = 10;
+      case 10: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(90u /* 90 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_cloud()));
         } else {
@@ -6667,10 +5741,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Freespace fs = 12;
-      case 12: {
+      // .itd.communication.protobuf.Freespace fs = 11;
+      case 11: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(98u /* 98 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(90u /* 90 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_fs()));
         } else {
@@ -6679,10 +5753,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Trailer trailer = 13;
-      case 13: {
+      // .itd.communication.protobuf.Trailer trailer = 12;
+      case 12: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(106u /* 106 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(98u /* 98 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_trailer()));
         } else {
@@ -6691,10 +5765,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Bridge bridge = 14;
-      case 14: {
+      // .itd.communication.protobuf.Bridge bridge = 13;
+      case 13: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(114u /* 114 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(106u /* 106 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_bridge()));
         } else {
@@ -6703,10 +5777,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Boundary boundary = 15;
-      case 15: {
+      // .itd.communication.protobuf.Boundary boundary = 14;
+      case 14: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(122u /* 122 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(114u /* 114 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_boundary()));
         } else {
@@ -6715,10 +5789,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Container container = 16;
-      case 16: {
+      // .itd.communication.protobuf.Container container = 15;
+      case 15: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(130u /* 130 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(122u /* 122 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_container()));
         } else {
@@ -6727,10 +5801,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.Signboard signboard = 17;
-      case 17: {
+      // .itd.communication.protobuf.Signboard signboard = 16;
+      case 16: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(138u /* 138 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(130u /* 130 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_signboard()));
         } else {
@@ -6739,10 +5813,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.LidarStatus lidar_status = 18;
-      case 18: {
+      // .itd.communication.protobuf.LidarStatus lidar_status = 17;
+      case 17: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(146u /* 146 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(138u /* 138 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_lidar_status()));
         } else {
@@ -6751,22 +5825,10 @@ bool MessageSensor::MergePartialFromCodedStream(
         break;
       }
 
-      // .itd.communication.protobuf.BoundingBox boundingBox = 19;
-      case 19: {
+      // .itd.communication.protobuf.CanSignal can_signal = 18;
+      case 18: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(154u /* 154 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_boundingbox()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .itd.communication.protobuf.CanSignal can_signal = 20;
-      case 20: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(162u /* 162 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(146u /* 146 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_can_signal()));
         } else {
@@ -6801,70 +5863,64 @@ void MessageSensor::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .itd.communication.protobuf.MessageSensor.MessageType type = 10;
+  // .itd.communication.protobuf.MessageSensor.MessageType type = 9;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      10, this->type(), output);
+      9, this->type(), output);
   }
 
-  // .itd.communication.protobuf.PointCloud cloud = 11;
+  // .itd.communication.protobuf.PointCloud cloud = 10;
   if (has_cloud()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      11, *msg_.cloud_, output);
+      10, *msg_.cloud_, output);
   }
 
-  // .itd.communication.protobuf.Freespace fs = 12;
+  // .itd.communication.protobuf.Freespace fs = 11;
   if (has_fs()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      12, *msg_.fs_, output);
+      11, *msg_.fs_, output);
   }
 
-  // .itd.communication.protobuf.Trailer trailer = 13;
+  // .itd.communication.protobuf.Trailer trailer = 12;
   if (has_trailer()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      13, *msg_.trailer_, output);
+      12, *msg_.trailer_, output);
   }
 
-  // .itd.communication.protobuf.Bridge bridge = 14;
+  // .itd.communication.protobuf.Bridge bridge = 13;
   if (has_bridge()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      14, *msg_.bridge_, output);
+      13, *msg_.bridge_, output);
   }
 
-  // .itd.communication.protobuf.Boundary boundary = 15;
+  // .itd.communication.protobuf.Boundary boundary = 14;
   if (has_boundary()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      15, *msg_.boundary_, output);
+      14, *msg_.boundary_, output);
   }
 
-  // .itd.communication.protobuf.Container container = 16;
+  // .itd.communication.protobuf.Container container = 15;
   if (has_container()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      16, *msg_.container_, output);
+      15, *msg_.container_, output);
   }
 
-  // .itd.communication.protobuf.Signboard signboard = 17;
+  // .itd.communication.protobuf.Signboard signboard = 16;
   if (has_signboard()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      17, *msg_.signboard_, output);
+      16, *msg_.signboard_, output);
   }
 
-  // .itd.communication.protobuf.LidarStatus lidar_status = 18;
+  // .itd.communication.protobuf.LidarStatus lidar_status = 17;
   if (has_lidar_status()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      18, *msg_.lidar_status_, output);
+      17, *msg_.lidar_status_, output);
   }
 
-  // .itd.communication.protobuf.BoundingBox boundingBox = 19;
-  if (has_boundingbox()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      19, *msg_.boundingbox_, output);
-  }
-
-  // .itd.communication.protobuf.CanSignal can_signal = 20;
+  // .itd.communication.protobuf.CanSignal can_signal = 18;
   if (has_can_signal()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      20, *msg_.can_signal_, output);
+      18, *msg_.can_signal_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -6881,80 +5937,73 @@ void MessageSensor::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .itd.communication.protobuf.MessageSensor.MessageType type = 10;
+  // .itd.communication.protobuf.MessageSensor.MessageType type = 9;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      10, this->type(), target);
+      9, this->type(), target);
   }
 
-  // .itd.communication.protobuf.PointCloud cloud = 11;
+  // .itd.communication.protobuf.PointCloud cloud = 10;
   if (has_cloud()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        11, *msg_.cloud_, deterministic, target);
+        10, *msg_.cloud_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Freespace fs = 12;
+  // .itd.communication.protobuf.Freespace fs = 11;
   if (has_fs()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        12, *msg_.fs_, deterministic, target);
+        11, *msg_.fs_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Trailer trailer = 13;
+  // .itd.communication.protobuf.Trailer trailer = 12;
   if (has_trailer()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        13, *msg_.trailer_, deterministic, target);
+        12, *msg_.trailer_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Bridge bridge = 14;
+  // .itd.communication.protobuf.Bridge bridge = 13;
   if (has_bridge()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        14, *msg_.bridge_, deterministic, target);
+        13, *msg_.bridge_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Boundary boundary = 15;
+  // .itd.communication.protobuf.Boundary boundary = 14;
   if (has_boundary()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        15, *msg_.boundary_, deterministic, target);
+        14, *msg_.boundary_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Container container = 16;
+  // .itd.communication.protobuf.Container container = 15;
   if (has_container()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        16, *msg_.container_, deterministic, target);
+        15, *msg_.container_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.Signboard signboard = 17;
+  // .itd.communication.protobuf.Signboard signboard = 16;
   if (has_signboard()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        17, *msg_.signboard_, deterministic, target);
+        16, *msg_.signboard_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.LidarStatus lidar_status = 18;
+  // .itd.communication.protobuf.LidarStatus lidar_status = 17;
   if (has_lidar_status()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        18, *msg_.lidar_status_, deterministic, target);
+        17, *msg_.lidar_status_, deterministic, target);
   }
 
-  // .itd.communication.protobuf.BoundingBox boundingBox = 19;
-  if (has_boundingbox()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        19, *msg_.boundingbox_, deterministic, target);
-  }
-
-  // .itd.communication.protobuf.CanSignal can_signal = 20;
+  // .itd.communication.protobuf.CanSignal can_signal = 18;
   if (has_can_signal()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        20, *msg_.can_signal_, deterministic, target);
+        18, *msg_.can_signal_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -6974,77 +6023,70 @@ size_t MessageSensor::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // .itd.communication.protobuf.MessageSensor.MessageType type = 10;
+  // .itd.communication.protobuf.MessageSensor.MessageType type = 9;
   if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
   switch (msg_case()) {
-    // .itd.communication.protobuf.PointCloud cloud = 11;
+    // .itd.communication.protobuf.PointCloud cloud = 10;
     case kCloud: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.cloud_);
       break;
     }
-    // .itd.communication.protobuf.Freespace fs = 12;
+    // .itd.communication.protobuf.Freespace fs = 11;
     case kFs: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.fs_);
       break;
     }
-    // .itd.communication.protobuf.Trailer trailer = 13;
+    // .itd.communication.protobuf.Trailer trailer = 12;
     case kTrailer: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.trailer_);
       break;
     }
-    // .itd.communication.protobuf.Bridge bridge = 14;
+    // .itd.communication.protobuf.Bridge bridge = 13;
     case kBridge: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.bridge_);
       break;
     }
-    // .itd.communication.protobuf.Boundary boundary = 15;
+    // .itd.communication.protobuf.Boundary boundary = 14;
     case kBoundary: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.boundary_);
       break;
     }
-    // .itd.communication.protobuf.Container container = 16;
+    // .itd.communication.protobuf.Container container = 15;
     case kContainer: {
-      total_size += 2 +
+      total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.container_);
       break;
     }
-    // .itd.communication.protobuf.Signboard signboard = 17;
+    // .itd.communication.protobuf.Signboard signboard = 16;
     case kSignboard: {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.signboard_);
       break;
     }
-    // .itd.communication.protobuf.LidarStatus lidar_status = 18;
+    // .itd.communication.protobuf.LidarStatus lidar_status = 17;
     case kLidarStatus: {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *msg_.lidar_status_);
       break;
     }
-    // .itd.communication.protobuf.BoundingBox boundingBox = 19;
-    case kBoundingBox: {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *msg_.boundingbox_);
-      break;
-    }
-    // .itd.communication.protobuf.CanSignal can_signal = 20;
+    // .itd.communication.protobuf.CanSignal can_signal = 18;
     case kCanSignal: {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -7118,10 +6160,6 @@ void MessageSensor::MergeFrom(const MessageSensor& from) {
     }
     case kLidarStatus: {
       mutable_lidar_status()->::itd::communication::protobuf::LidarStatus::MergeFrom(from.lidar_status());
-      break;
-    }
-    case kBoundingBox: {
-      mutable_boundingbox()->::itd::communication::protobuf::BoundingBox::MergeFrom(from.boundingbox());
       break;
     }
     case kCanSignal: {
