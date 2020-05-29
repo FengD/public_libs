@@ -17,6 +17,7 @@
 // -------------------------------
 
 namespace itd {
+namespace common {
 enum ErrorType { EUNSPECIFIED, EYAML_PARSE };
 
 class Error : public std::exception {
@@ -53,7 +54,7 @@ class Error : public std::exception {
  private:
   const Error& operator=(const Error&);
 };
-
+}  // namespace common
 }  // namespace itd
 
 #endif  // _ITD_IPD_LIBS_COMMON_ERROR_H_
