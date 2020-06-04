@@ -5,8 +5,8 @@
 // Date: 2019-11-22
 // Change Log:
 
-#ifndef TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_PACK_H_
-#define TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_PACK_H_
+#ifndef TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_PACK_H_
+#define TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_PACK_H_
 
 #include <string.h>
 #include <map>
@@ -38,4 +38,4 @@ void packSignal(const Signal &s, const double &value, uint8_t *data);
 }  // namespace tools
 }  // namespace itd
 
-#endif  // TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_PACK_H_
+#endif  // TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_PACK_H_

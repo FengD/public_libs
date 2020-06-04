@@ -38,8 +38,8 @@ void DbcAnalysis::transformMessageFromLine(std::string line, Message &m) {
   std::vector<std::string> strSplited;
   split(line, " ", &strSplited);
   int counter = 0;
-  for(std::vector<std::string>::iterator info = strSplited.begin(); info != strSplited.end(); ++counter, ++info) {
-    switch(counter) {
+  for (std::vector<std::string>::iterator info = strSplited.begin(); info != strSplited.end(); ++counter, ++info) {
+    switch (counter) {
        // get the id of the msg
       case 1:
         m.id = atol(info->c_str());
@@ -63,8 +63,8 @@ void DbcAnalysis::transformSignalFromLine(std::string line, Message &m) {
   std::vector<std::string> strSplited;
   split(line, " ", &strSplited);
   int counter = 0;
-  for(std::vector<std::string>::iterator info = strSplited.begin(); info != strSplited.end(); ++counter, ++info) {
-    switch(counter) {
+  for (std::vector<std::string>::iterator info = strSplited.begin(); info != strSplited.end(); ++counter, ++info) {
+    switch (counter) {
       case 1:
         s.name = *info;
         break;
@@ -88,7 +88,7 @@ void DbcAnalysis::transformSignalFromLine(std::string line, Message &m) {
 void DbcAnalysis::getPosInfoTypeUnsignedFromStr(std::string str, Signal &s) {
   int plusIndex = str.find("+");
   int strLength = str.size();
-  if(plusIndex > 0 && plusIndex < strLength) {
+  if (plusIndex > 0 && plusIndex < strLength) {
     s.is_unsigned = 1;
     str.erase(std::remove(str.begin(), str.end(), '+'), str.end());
   } else {
@@ -125,7 +125,7 @@ void DbcAnalysis::getMaxMinFromStr(std::string str, Signal &s) {
 
 void DbcAnalysis::getUnitFromStr(std::string str, Signal &s) {
   str.erase(std::remove(str.begin(), str.end(), '"'), str.end());
-  if(str.find("NA") != 0) {
+  if (str.find("NA") != 0) {
     s.unit = str;
   }
 }
@@ -135,16 +135,17 @@ void DbcAnalysis::analysisFiles() {
     printf("No file given!\n");
     return;
   }
+
   for (std::string &filename : files_) {
     std::ifstream in(filename.c_str());
     std::string line;
-    if(in) {
+    if (in) {
       while (getline (in, line)) {
-        while(line.find( MSSAGEHEAD ) == 0){
+        while (line.find( MSSAGEHEAD ) == 0){
           Message newMessage;
           transformMessageFromLine(line, newMessage);
-          while(getline (in, line)){
-            if(line.find( SIGNALHEAD ) == 1){
+          while (getline (in, line)){
+            if (line.find( SIGNALHEAD ) == 1){
               transformSignalFromLine(line, newMessage);
               continue;
             }
@@ -171,12 +172,12 @@ std::map<long, Message>& DbcAnalysis::getMessages() {
 void DbcAnalysis::printMessages() {
   std::cout << "structure: " << std::endl;
   std::cout << "nb of messages_: " << messages_.size() << std::endl;
-  for(std::map<long, Message>::const_iterator m = messages_.begin(); m != messages_.end(); ++m) {
+  for (std::map<long, Message>::const_iterator m = messages_.begin(); m != messages_.end(); ++m) {
     std::cout << "  id: " << m->first << std::endl;
     std::cout << "  name: " << m->second.name << std::endl;
     std::cout << "  length: " << m->second.length << std::endl;
     std::cout << "  nb of signals: " << m->second.signals.size() << std::endl;
-    for(std::vector<Signal>::const_iterator s = m->second.signals.begin(); s != m->second.signals.end(); ++s) {
+    for (std::vector<Signal>::const_iterator s = m->second.signals.begin(); s != m->second.signals.end(); ++s) {
       std::cout << "    name: " << s->name << std::endl;
       std::cout << "    (startBit, length): (" << s->startBit << ", " << s->length << ")" << std::endl;
       std::cout << "    (factor, offset): (" << s->factor << ", " << s->offset << ")" << std::endl;

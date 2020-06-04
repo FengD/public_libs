@@ -5,8 +5,8 @@
 // Date: 2019-11-22
 // Change Log:
 
-#ifndef TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
-#define TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
+#ifndef TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_UNPACK_H_
+#define TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_UNPACK_H_
 
 #include <string.h>
 #include <map>
@@ -38,4 +38,4 @@ double unpackSignal(const Signal &s, const uint8_t *data);
 }  // namespace tools
 }  // namespace itd
 
-#endif  // TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
+#endif  // TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_DBC_CANMSG_UNPACK_H_

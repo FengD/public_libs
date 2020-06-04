@@ -32,7 +32,7 @@ struct StMemAllocRec {
 class CAllocLocalInfo {
  public:
   CAllocLocalInfo(char const * file, int32_t line) : _file(file), _line(line) {}
-  CAllocLocalInfo() : _file (0), _line (0) {}
+  CAllocLocalInfo() : _file(0), _line(0) {}
   char const * File() const { return _file; }
   int32_t Line() const { return _line; }
 
