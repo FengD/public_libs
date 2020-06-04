@@ -1,3 +1,10 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: dbc file analysis
+// Date: 2019-11-22
+// Change Log:
+
 #include "dbc_file_analysis.h"
 #include <algorithm>
 #include "util.h"

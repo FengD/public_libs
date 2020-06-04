@@ -1,15 +1,15 @@
-/**
-* Copyright (C) 2019 Hirain Technologies
-* License: Modified BSD Software License Agreement
-* Author: Feng DING
-* Description:
-*/
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: Can msg uppack
+// Date: 2019-11-22
+// Change Log:
 
 #include "dbc_canmsg_pack.h"
 #include <math.h>
 
 #define BITCALCULATEPACK(type) \
-data[startIndex] = data[startIndex] | (uint8_T)((uint8_T) \
+data[startIndex] = data[startIndex] | (uint8_t)((uint8_t) \
   ((type)(packedValue & (type)(((type)(1)) << i)) >> i)<< leftShift);
 
 #define TYPECALCULATEBITUNPACK(type) \
@@ -35,9 +35,9 @@ if (s.dataType) {\
 
 #define PACKVALUEUNSIGNED(type)\
 type packedValue;\
-if (outValue > (real64_T)(max)) {\
+if (outValue > (double)(max)) {\
   packedValue = (type) max;\
-} else if (outValue < (real64_T)(min)) {\
+} else if (outValue < (double)(min)) {\
   packedValue = (type) min;\
 } else {\
   packedValue = (type) (outValue);\
@@ -63,7 +63,7 @@ namespace itd {
 namespace tools {
 namespace can {
 
-int packCanmsg (const Message &m, const size_t &valueSize, const double *value, Canmsg *msg) {
+int packCanmsg(const Message &m, const size_t &valueSize, const double *value, Canmsg *msg) {
    // if the message has the correct number of signals
   if (valueSize != m.signals.size()) {
     printf("[%ld] value given error\n", m.id);
@@ -79,7 +79,7 @@ int packCanmsg (const Message &m, const size_t &valueSize, const double *value, 
   return PACK_UNPACK_SUCCESS;
 }
 
-void packSignal (const Signal &s, const double &value, uint8_T *data) {
+void packSignal(const Signal &s, const double &value, uint8_t *data) {
    // --------------- START Packing Signal ------------------
    //   startBit                = s.startBit
    //   length                  = s.length
@@ -91,9 +91,9 @@ void packSignal (const Signal &s, const double &value, uint8_T *data) {
    //   maximum                 = s.minimum
    //  -----------------------------------------------------------------------
   {
-    real64_T outValue = 0;
+    double outValue = 0;
     {
-      real64_T result = value;
+      double result = value;
        // check the maximum & minimum
       if (fabs(s.minimum - 0.0) > DELTA || fabs(s.maximum - 0.0) > DELTA) {
         result = result < s.minimum ? s.minimum : result;
@@ -119,28 +119,28 @@ void packSignal (const Signal &s, const double &value, uint8_T *data) {
     int leftShift = startBit % 8;
      // pack the value by the type
     if (s.is_unsigned) {
-      long max = pow(2, s.length) - 1;
-      long min = 0;
+      int64_t max = pow(2, s.length) - 1;
+      int64_t min = 0;
       if (s.length <= 8) {
-        PACKVALUEUNSIGNED(uint8_T);
+        PACKVALUEUNSIGNED(uint8_t);
       } else if (s.length > 8 && s.length <= 16) {
-        PACKVALUEUNSIGNED(uint16_T);
+        PACKVALUEUNSIGNED(uint16_t);
       } else if (s.length > 16 && s.length <= 32) {
-        PACKVALUEUNSIGNED(uint32_T);
+        PACKVALUEUNSIGNED(uint32_t);
       } else if (s.length > 32) {
-        PACKVALUEUNSIGNED(uint64_T);
+        PACKVALUEUNSIGNED(uint64_t);
       }
     } else {
-      long max = pow(2, s.length) / 2 - 1;
-      long min = (-1) * max - 1;
+      int64_t max = pow(2, s.length) / 2 - 1;
+      int64_t min = (-1) * max - 1;
       if (s.length <= 8) {
-        PACKVALUESIGNED(int8_T);
+        PACKVALUESIGNED(int8_t);
       } else if (s.length > 8 && s.length <= 16) {
-        PACKVALUESIGNED(int16_T);
+        PACKVALUESIGNED(int16_t);
       } else if (s.length > 16 && s.length <= 32) {
-        PACKVALUESIGNED(int32_T);
+        PACKVALUESIGNED(int32_t);
       } else if (s.length > 32) {
-        PACKVALUESIGNED(int64_T);
+        PACKVALUESIGNED(int64_t);
       }
     }
   }

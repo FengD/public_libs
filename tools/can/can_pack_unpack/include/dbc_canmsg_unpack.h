@@ -1,16 +1,16 @@
-/**
-* Copyright (C) 2019 Hirain Technologies
-* License: Modified BSD Software License Agreement
-* Author: Feng DING
-* Description:
-*/
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: Can msg uppack
+// Date: 2019-11-22
+// Change Log:
 
-#ifndef _ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
-#define _ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
+#ifndef TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
+#define TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
 
+#include <string.h>
 #include <map>
 #include <string>
-#include <string.h>
 #include "canmsg_define.h"
 
 namespace itd {
@@ -24,7 +24,7 @@ namespace can {
 * @param out [double array] the array of the values
 * @return [int] stat
 */
-int unpackCanmsg (const Message &m, const Canmsg &msg, const size_t valueSize, double *value);
+int unpackCanmsg(const Message &m, const Canmsg &msg, const size_t valueSize, double *value);
 
 /**
 * pack one Signal
@@ -32,10 +32,10 @@ int unpackCanmsg (const Message &m, const Canmsg &msg, const size_t valueSize, d
 * @param in_ [unsigned char array] the data array of the can msg
 * @return [double] the value that you unpack from the Signal
 */
-real64_T unpackSignal (const Signal &s, const uint8_T *data);
+double unpackSignal(const Signal &s, const uint8_t *data);
 
 }  // namespace can
 }  // namespace tools
 }  // namespace itd
 
-#endif  //_ITD_IPD_LIBS_TOOLS_CAN_DBC_CANMSG_UNPACK_H_
+#endif  // TOOLS_CAN_CAN_PACK_UNPACK_INCLUDE_CANMSG_UNPACK_H_
