@@ -1,17 +1,17 @@
-/**
-  * Copyright (C) 2019 Hirain Technologies
-  * License: Modified BSD Software License Agreement
-  * Author: Feng DING
-  * Description: log
-  */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: this module is a log module which used to print logs
+// Date: 2019-11-22
+// Change Log:
 
 #include "hlog.h"
 #include <stdio.h>
-#include <iostream>
 #include <stdarg.h>
 #include <stdint.h>
 #include <assert.h>
 #include <string>
+#include <iostream>
 
 namespace itd {
 namespace tools {
@@ -57,7 +57,7 @@ void HLog::HLogMsg(const int32_t& n_log_severity, const char *format, ...) {
   va_list arg_ptr;
   va_start(arg_ptr, format);
   vsprintf(p_log_buf_, format, arg_ptr);
-  switch(n_log_severity) {
+  switch (n_log_severity) {
     case 0:
       LOG(INFO) << p_log_buf_;
       break;
