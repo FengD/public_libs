@@ -1,16 +1,24 @@
-#ifndef _ITD_IPD_LIBS_TOOLS_TRACER_H_
-#define _ITD_IPD_LIBS_TOOLS_TRACER_H_
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: This module is used to check the memory problems
+// Date: 2020-03-02
+// Change Log:
+
+#ifndef TOOLS_MEMORY_CHECK_INCLUDE_TRACER_H_
+#define TOOLS_MEMORY_CHECK_INCLUDE_TRACER_H_
 
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <time.h>
+#include <string.h>
+#include <assert.h>
 #include <string>
 #include <map>
 #include <list>
-#include <string.h>
-#include <assert.h>
+
 #define DEBUG
 
 namespace itd {
@@ -23,7 +31,7 @@ struct StMemAllocRec {
 
 class CAllocLocalInfo {
  public:
-  CAllocLocalInfo(char const * file, int32_t line) : _file (file), _line (line) {}
+  CAllocLocalInfo(char const * file, int32_t line) : _file(file), _line(line) {}
   CAllocLocalInfo() : _file (0), _line (0) {}
   char const * File() const { return _file; }
   int32_t Line() const { return _line; }
@@ -48,7 +56,6 @@ class Tracer {
   void RemoveTrack(void* addr);
 
  protected:
-
   void Dump();
   void lock() {
     pthread_mutex_lock(&m_mtx);
@@ -58,9 +65,9 @@ class Tracer {
     pthread_mutex_unlock(&m_mtx);
   }
 
-protected:
+ protected:
   typedef std::map<void *, CAllocLocalInfo>::iterator iterator;
-  std::map<void *,CAllocLocalInfo> tracer;
+  std::map<void *, CAllocLocalInfo> tracer;
   pthread_mutex_t m_mtx;
 };
 
@@ -74,7 +81,7 @@ inline void * operator new(size_t size, const char* file, const size_t line) {
   return ptr;
 }
 
-inline void * operator new [](size_t size, const char* file, const size_t line) {
+inline void * operator new[](size_t size, const char* file, const size_t line) {
   void *ptr = malloc(size);
   itd::tools::Tracer::GetInstance().AddTrack(ptr, file, line);
   return ptr;
@@ -104,4 +111,4 @@ inline void operator delete [](void *p, const char* file, const size_t line) {
 #define new new(__FILE__, __LINE__)
 #endif
 
-#endif  // _ITD_IPD_LIBS_TOOLS_TRACER_H_
+#endif  // TOOLS_MEMORY_CHECK_INCLUDE_TRACER_H_
