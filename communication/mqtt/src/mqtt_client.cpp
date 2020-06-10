@@ -16,9 +16,12 @@ namespace communication {
 
 MqttClient::MqttClient(struct mosq_config cfg) {
   cfg_ = cfg;
+  mosquitto_lib_init();
 }
 
-MqttClient::~MqttClient() = default;
+MqttClient::~MqttClient() {
+  mosquitto_lib_cleanup();
+};
 
 int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(struct mosquitto *, void *, int)) {
   if (on_connect != nullptr) {
@@ -49,19 +52,14 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
   return NO_ERROR;
 }
 
-void MqttClient::DisconnectClient(struct mosquitto *mosq) {
-  mosquitto_destroy(mosq);
-  mosquitto_lib_cleanup();
-}
-
 void MqttClient::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
-  (void)mosq;
   printf("Client Connected. %p mid: %d\n", obj, mid);
+  mosquitto_threaded_set(mosq, true);
 }
 
 void MqttClient::OnDisconnect(struct mosquitto *mosq, void *obj, int mid) {
-  (void)mosq;
   printf("Client Disconnected. %p mid: %d\n", obj, mid);
+  mosquitto_destroy(mosq);
 }
 
 }  // namespace communication

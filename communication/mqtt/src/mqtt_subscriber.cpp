@@ -19,7 +19,6 @@ MqttSubscriber::MqttSubscriber(std::string host, int32_t port, std::string topic
   cfg_.password = password;
   topic_ = topic;
   mqtt_client_ = new MqttClient(cfg_);
-  mosquitto_lib_init();
   mosq_ = mosquitto_new(NULL, true, this);
   topic_ = topic;
   if (mqtt_client_->ConnectClient(mosq_, OnConnect) < 0) {
@@ -32,7 +31,6 @@ MqttSubscriber::MqttSubscriber(struct mosq_config cfg, std::string topic) {
   cfg_ = cfg;
   topic_ = topic;
   mqtt_client_ = new MqttClient(cfg_);
-  mosquitto_lib_init();
   mosq_ = mosquitto_new(NULL, true, this);
   if (mqtt_client_->ConnectClient(mosq_, OnConnect) < 0) {
     printf("Error: client connect failed.\n");
@@ -41,7 +39,6 @@ MqttSubscriber::MqttSubscriber(struct mosq_config cfg, std::string topic) {
 }
 
 MqttSubscriber::~MqttSubscriber() {
-  mqtt_client_->DisconnectClient(mosq_);
   delete mqtt_client_;
 }
 
@@ -103,7 +100,7 @@ void MqttSubscriber::OnUnsubscribe(struct mosquitto *mosq, void *obj, int mid) {
 }
 
 void MqttSubscriber::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
-  (void) mosq;
+  mosquitto_threaded_set(mosq, true);
   MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
   self->Subscribe();
   printf("Subscriber Connected. %p mid: %d\n", obj, mid);

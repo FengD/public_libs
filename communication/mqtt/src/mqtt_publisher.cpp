@@ -21,7 +21,6 @@ MqttPublisher::MqttPublisher(std::string host, int32_t port, std::string topic,
 MqttPublisher::MqttPublisher(struct mosq_config cfg, std::string topic) {
   cfg_ = cfg;
   mqtt_client_ = new MqttClient(cfg_);
-  mosquitto_lib_init();
   mosq_ = mosquitto_new(NULL, true, this);
   if (mqtt_client_->ConnectClient(mosq_) < 0) {
     printf("Error: client connect failed.\n");
@@ -32,7 +31,6 @@ MqttPublisher::MqttPublisher(struct mosq_config cfg, std::string topic) {
 }
 
 MqttPublisher::~MqttPublisher() {
-  mqtt_client_->DisconnectClient(mosq_);
   delete mqtt_client_;
 }
 
