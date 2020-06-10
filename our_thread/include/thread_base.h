@@ -24,6 +24,7 @@ class ThreadBase {
   pthread_t pid_;
   bool isAlive_;
   std::string pName_;
+  pthread_attr_t attr_;
 
  public:
   int32_t Start();

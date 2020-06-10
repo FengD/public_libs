@@ -19,6 +19,10 @@ if (switch) {\
   LOGINFO("%s start: %d\n", thread->getPName().c_str(), thread->Start());\
   LOGINFO("%s join: %d\n", thread->getPName().c_str(), thread->Join());\
 }
+#define S(switch, thread)\
+if (switch) {\
+  LOGINFO("%s start: %d\n", thread->getPName().c_str(), thread->Start());\
+}
 // thread stop
 #define ST(switch, thread)\
 if (switch) {\
