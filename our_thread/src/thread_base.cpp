@@ -1,10 +1,7 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
 
 #include "thread_base.h"
 
@@ -15,7 +12,6 @@ void* ThreadBase::func(void* arg) {
   ptr->Run();
   return NULL;
 }
-
 
 int32_t ThreadBase::Start() {
   pthread_attr_init(&attr_);

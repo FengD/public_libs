@@ -1,10 +1,7 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
 
 #include "thread_period.h"
 #include <stdio.h>
@@ -15,7 +12,6 @@ namespace itd {
 
 void ThreadPeriod::Run() {
   while (isAlive() == true) {
-
     clock_gettime(CLOCK_MONOTONIC, &start_time_);
     RunInPeriod();
     clock_gettime(CLOCK_MONOTONIC, &end_time_);
@@ -24,7 +20,7 @@ void ThreadPeriod::Run() {
 
     if (isLogOn_) {
       LOGINFO("%s(%d), [%1lu.%06ld]\n", getPName().c_str(), getPid(),
-             (unsigned long)elapsed_time_.tv_sec,
+             (unsigned long) elapsed_time_.tv_sec,
              elapsed_time_.tv_nsec / 1000);
     }
 
@@ -64,4 +60,4 @@ void ThreadPeriod::setThreadParam(const YAML::Node& config) {
 
 ThreadPeriod::~ThreadPeriod() {}
 
-}// namespace itd
+}  // namespace itd
