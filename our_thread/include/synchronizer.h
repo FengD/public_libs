@@ -120,7 +120,7 @@ class Synchronizer {
       }
       // we have at least 2 measurements; first in past and second in future -> find out closer one!
       if (queueT2.size() > 1) {
-        if ((t1.first << 1) > queueT2[0].first + queueT2[1].first ) {
+        if ((t1.first << 1) > queueT2[0].first + queueT2[1].first) {
           queueT2.pop_front();
         }
 

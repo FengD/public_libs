@@ -64,7 +64,7 @@ namespace tools {
 namespace can {
 
 int packCanmsg(const Message &m, const size_t &valueSize, const double *value, Canmsg *msg) {
-   // if the message has the correct number of signals
+  // if the message has the correct number of signals
   if (valueSize != m.signals.size()) {
     printf("[%ld] value given error\n", m.id);
     return SIGNAL_SIZE_MISMATCH;
@@ -80,21 +80,21 @@ int packCanmsg(const Message &m, const size_t &valueSize, const double *value, C
 }
 
 void packSignal(const Signal &s, const double &value, uint8_t *data) {
-   // --------------- START Packing Signal ------------------
-   //   startBit                = s.startBit
-   //   length                  = s.length
-   //   desiredSignalByteLayout = s.dataType
-   //   dataType                = s.is_unsigned
-   //   factor                  = s.factor
-   //   offset                  = s.offset
-   //   minimum                 = s.maximum
-   //   maximum                 = s.minimum
-   //  -----------------------------------------------------------------------
+  // --------------- START Packing Signal ------------------
+  //   startBit                = s.startBit
+  //   length                  = s.length
+  //   desiredSignalByteLayout = s.dataType
+  //   dataType                = s.is_unsigned
+  //   factor                  = s.factor
+  //   offset                  = s.offset
+  //   minimum                 = s.maximum
+  //   maximum                 = s.minimum
+  //  -----------------------------------------------------------------------
   {
     double outValue = 0;
     {
       double result = value;
-       // check the maximum & minimum
+      // check the maximum & minimum
       if (fabs(s.minimum - 0.0) > DELTA || fabs(s.maximum - 0.0) > DELTA) {
         result = result < s.minimum ? s.minimum : result;
         result = result > s.maximum ? s.maximum : result;
@@ -106,7 +106,7 @@ void packSignal(const Signal &s, const double &value, uint8_t *data) {
 
     int startBit = s.startBit;
     {
-       // if the motolora type <BEGENDIAN> the startbit needs to be recalculated
+      // if the motolora type <BEGENDIAN> the startbit needs to be recalculated
       if (!s.dataType) {
         int tmp1 = startBit / 8;
         int tmp2 = tmp1 * 8 + 7 - (startBit % 8) + s.length - 1;
@@ -117,7 +117,7 @@ void packSignal(const Signal &s, const double &value, uint8_t *data) {
 
     int startIndex = startBit / 8;
     int leftShift = startBit % 8;
-     // pack the value by the type
+    // pack the value by the type
     if (s.is_unsigned) {
       int64_t max = pow(2, s.length) - 1;
       int64_t min = 0;

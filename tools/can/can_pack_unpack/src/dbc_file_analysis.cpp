@@ -33,22 +33,22 @@ DbcAnalysis& DbcAnalysis::operator=(const DbcAnalysis&) {
 }
 
 void DbcAnalysis::transformMessageFromLine(std::string line, Message &m) {
-   // remove the ":" in_ the line
+  // remove the ":" in_ the line
   line.erase(std::remove(line.begin(), line.end(), ':'), line.end());
   std::vector<std::string> strSplited;
   split(line, " ", &strSplited);
   int counter = 0;
   for (std::vector<std::string>::iterator info = strSplited.begin(); info != strSplited.end(); ++counter, ++info) {
     switch (counter) {
-       // get the id of the msg
+      // get the id of the msg
       case 1:
         m.id = atol(info->c_str());
         break;
-       // get the name
+      // get the name
       case 2:
         m.name = *info;
         break;
-       // get the length
+      // get the length
       case 3:
         m.length = atoi(info->c_str());
         break;
@@ -58,7 +58,7 @@ void DbcAnalysis::transformMessageFromLine(std::string line, Message &m) {
 
 void DbcAnalysis::transformSignalFromLine(std::string line, Message &m) {
   Signal s;
-   // remove the ":" in_ the line
+  // remove the ":" in_ the line
   line.erase(std::remove(line.begin(), line.end(), ':'), line.end());
   std::vector<std::string> strSplited;
   split(line, " ", &strSplited);
@@ -152,7 +152,7 @@ void DbcAnalysis::analysisFiles() {
             sort(newMessage.signals.begin(), newMessage.signals.end());
             break;
           }
-          messages_.insert(std::map<long, Message>::value_type (newMessage.id, newMessage));
+          messages_.insert(std::map<int64_t, Message>::value_type (newMessage.id, newMessage));
         }
       }
     } else {
@@ -165,27 +165,27 @@ void DbcAnalysis::addOneDbcFile(const std::string &filePath) {
   files_.push_back(filePath);
 }
 
-std::map<long, Message>& DbcAnalysis::getMessages() {
+std::map<int64_t, Message>& DbcAnalysis::getMessages() {
   return messages_;
 }
 
 void DbcAnalysis::printMessages() {
   std::cout << "structure: " << std::endl;
   std::cout << "nb of messages_: " << messages_.size() << std::endl;
-  for (std::map<long, Message>::const_iterator m = messages_.begin(); m != messages_.end(); ++m) {
-    std::cout << "  id: " << m->first << std::endl;
-    std::cout << "  name: " << m->second.name << std::endl;
-    std::cout << "  length: " << m->second.length << std::endl;
-    std::cout << "  nb of signals: " << m->second.signals.size() << std::endl;
+  for (std::map<int64_t, Message>::const_iterator m = messages_.begin(); m != messages_.end(); ++m) {
+    std::cout << " id: " << m->first << std::endl;
+    std::cout << " name: " << m->second.name << std::endl;
+    std::cout << " length: " << m->second.length << std::endl;
+    std::cout << " nb of signals: " << m->second.signals.size() << std::endl;
     for (std::vector<Signal>::const_iterator s = m->second.signals.begin(); s != m->second.signals.end(); ++s) {
-      std::cout << "    name: " << s->name << std::endl;
-      std::cout << "    (startBit, length): (" << s->startBit << ", " << s->length << ")" << std::endl;
-      std::cout << "    (factor, offset): (" << s->factor << ", " << s->offset << ")" << std::endl;
-      std::cout << "    (minimum, maximum): (" << s->minimum << ", " << s->maximum << ")" << std::endl;
-       // 关于起始位置，和Intel格式或者是Motorola格式是有关的，如果是Intel格式，起始位通常是0
-      std::cout << "    dataType: " << s->dataType << " (motolora: 0 <BIGENDIAN>, intel: 1 <LITTLEENDIAN>)" << std::endl;
-      std::cout << "    unsigned: " << s->is_unsigned << " (unsigned: 1, signed: 0)" << std::endl;
-      std::cout << "    unit: " << s->unit << std::endl;
+      std::cout << "  name: " << s->name << std::endl;
+      std::cout << "  (startBit, length): (" << s->startBit << ", " << s->length << ")" << std::endl;
+      std::cout << "  (factor, offset): (" << s->factor << ", " << s->offset << ")" << std::endl;
+      std::cout << "  (minimum, maximum): (" << s->minimum << ", " << s->maximum << ")" << std::endl;
+      // 关于起始位置，和Intel格式或者是Motorola格式是有关的，如果是Intel格式，起始位通常是0
+      std::cout << "  dataType: " << s->dataType << " (motolora: 0 <BIGENDIAN>, intel: 1 <LITTLEENDIAN>)" << std::endl;
+      std::cout << "  unsigned: " << s->is_unsigned << " (unsigned: 1, signed: 0)" << std::endl;
+      std::cout << "  unit: " << s->unit << std::endl;
       std::cout << std::endl;
     }
     std::cout << std::endl;
