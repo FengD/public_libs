@@ -26,7 +26,7 @@ class Error : public std::exception {
 
   explicit Error(ErrorType t) : type(t) {}
 
-  Error(const std::string& a) : info(a), type(EUNSPECIFIED) {}
+  explicit Error(const std::string& a) : info(a), type(EUNSPECIFIED) {}
 
   Error() : type(EUNSPECIFIED) {}
 
