@@ -12,7 +12,8 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-#include <string>
+#include <vector>
+#include <map>
 #include "canmsg_define.h"
 
 #define MSSAGEHEAD "BO_"

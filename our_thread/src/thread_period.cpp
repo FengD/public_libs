@@ -20,7 +20,7 @@ void ThreadPeriod::Run() {
 
     if (isLogOn_) {
       LOGINFO("%s(%d), [%1lu.%06ld]\n", getPName().c_str(), getPid(),
-             (unsigned long) elapsed_time_.tv_sec,
+             (uint64_t) elapsed_time_.tv_sec,
              elapsed_time_.tv_nsec / 1000);
     }
 

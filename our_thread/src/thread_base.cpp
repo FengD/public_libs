@@ -67,4 +67,4 @@ ThreadBase::~ThreadBase() {
   }
 }
 
-} // namespace itd
+}  // namespace itd
