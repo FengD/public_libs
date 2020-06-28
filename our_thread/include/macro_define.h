@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
-#define _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
+#ifndef OUR_THREAD_INCLUDE_MACRO_DEFINE_H_
+#define OUR_THREAD_INCLUDE_MACRO_DEFINE_H_
 #include "hlog.h"
 
 // thread start and detach
@@ -29,4 +29,4 @@ if (switch) {\
   LOGINFO("%s start: %d\n", thread->getPName().c_str(), thread->Stop());\
 }
 
-#endif  // _ITD_IPD_LIBS_OUR_THREAD_MACRO_DEFINE_H_
+#endif  // OUR_THREAD_INCLUDE_MACRO_DEFINE_H_

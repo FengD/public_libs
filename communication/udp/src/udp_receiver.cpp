@@ -75,7 +75,7 @@ int32_t UdpReceiver::Setup(const std::string source_ip, const int32_t port, cons
     struct ip_mreq mreq;
     mreq.imr_multiaddr.s_addr = inet_addr(multicast_ip_str_.c_str());
     mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-    if ( setsockopt(sockfd_, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof(mreq)) < 0) {
+    if (setsockopt(sockfd_, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof(mreq)) < 0) {
       perror("setsockopt\n");
       return SOCKET_SETOPT_ERROR;
     }
@@ -130,7 +130,7 @@ int32_t UdpReceiver::GetPacket(const int32_t& packet_size, uint8_t *pkt) {
       if (source_ip_str_ != "" && sender_address.sin_addr.s_addr != source_ip_.s_addr)
         continue;
       else
-        break; // done
+        break;
     }
   }
   return NO_ERROR;

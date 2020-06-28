@@ -29,7 +29,7 @@ int32_t TcpClient::Setup(const std::string &ip_str, const int32_t &port) {
   if ((signed)inet_addr(ip_str_.c_str()) == -1) {
     struct hostent *he;
     struct in_addr **addr_list;
-    if ((he = gethostbyname( ip_str_.c_str())) == NULL) {
+    if ((he = gethostbyname(ip_str_.c_str())) == NULL) {
       herror("gethostbyname");
       return UNKOWN_HOST_ERROR;
     }
@@ -43,7 +43,7 @@ int32_t TcpClient::Setup(const std::string &ip_str, const int32_t &port) {
     ip_.sin_addr.s_addr = inet_addr(ip_str_.c_str());
   }
   ip_.sin_family = AF_INET;
-  ip_.sin_port = htons( port );
+  ip_.sin_port = htons(port);
   if (connect(socket_ , (struct sockaddr *)&ip_ , sizeof(ip_)) < 0) {
     perror("connect failed. Error");
     return CONNECT_ERROR;
@@ -69,7 +69,7 @@ int32_t TcpClient::Receive(const int32_t &data_len, uint8_t *data) {
 }
 
 void TcpClient::Exit() {
-  close( socket_ );
+  close(socket_);
 }
 
 }  // namespace communication

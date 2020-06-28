@@ -3,13 +3,13 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_
-#define _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_
+#ifndef OUR_THREAD_INCLUDE_THREAD_BASE_H_
+#define OUR_THREAD_INCLUDE_THREAD_BASE_H_
 
 #include <pthread.h>
 #include <signal.h>
-#include <string>
 #include <stdint.h>
+#include <string>
 
 namespace itd {
 class ThreadBase {
@@ -19,6 +19,7 @@ class ThreadBase {
     ThreadDetachFailed = -1,
     ThreadNoError = 0
   };
+  
  private:
   static void* func(void* arg);
   pthread_t pid_;
@@ -42,4 +43,4 @@ class ThreadBase {
 };
 } // namespace itd
 
-#endif  // _ITD_IPD_LIBS_OUR_THREAD_THREAD_BASE_H_
+#endif  // OUR_THREAD_INCLUDE_THREAD_BASE_H_

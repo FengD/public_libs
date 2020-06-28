@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: Support class data point to point communication
 
-#ifndef _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZED_QUEUE_H_
-#define _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZED_QUEUE_H_
+#ifndef OUR_THREAD_INCLUDE_SYNCHRONIZED_QUEUE_H_
+#define OUR_THREAD_INCLUDE_SYNCHRONIZED_QUEUE_H_
 
 #include <condition_variable>
 #include <mutex>
@@ -73,4 +73,4 @@ class SynchronizedQueue {
 };
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZED_QUEUE_H_
+#endif  // OUR_THREAD_INCLUDE_SYNCHRONIZED_QUEUE_H_

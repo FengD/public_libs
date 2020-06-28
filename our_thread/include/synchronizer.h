@@ -9,8 +9,8 @@
 //              This class is thread safe.
 //              Now two data support.
 
-#ifndef _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZER_H_
-#define _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZER_H_
+#ifndef OUR_THREAD_INCLUDE_SYNCHRONIZER_H_
+#define OUR_THREAD_INCLUDE_SYNCHRONIZER_H_
 
 #include <deque>
 #include <functional>
@@ -32,6 +32,7 @@ class Synchronizer {
 
   std::map<int32_t, CallbackFunction> cb_;
   int32_t callback_counter = 0;
+  
  public:
   int32_t addCallback(const CallbackFunction& callback) {
     std::unique_lock<std::mutex> publish_lock(publish_mutex_);
@@ -131,4 +132,4 @@ class Synchronizer {
 } // namespace itd
 
 
-#endif  // _ITD_IPD_LIBS_OUR_THREAD_SYNCHRONIZER_H_
+#endif  // OUR_THREAD_INCLUDE_SYNCHRONIZER_H_

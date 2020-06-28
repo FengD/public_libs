@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_
-#define _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_
+#ifndef OUR_THREAD_INCLUDE_THREAD_MUTEX_H_
+#define OUR_THREAD_INCLUDE_THREAD_MUTEX_H_
 
 #include <pthread.h>
 #include <stdint.h>
@@ -25,6 +25,7 @@ class ThreadMutex {
 class EnterCriticalSection {
  private:
   ThreadMutex * threadMutex_;
+  
  public:
   EnterCriticalSection(ThreadMutex * threadMutex);
   ~EnterCriticalSection();
@@ -32,4 +33,4 @@ class EnterCriticalSection {
 
 } // namespace itd
 
-#endif  // _ITD_IPD_LIBS_OUR_THREAD_THREAD_MUTEX_H_
+#endif  // OUR_THREAD_INCLUDE_THREAD_MUTEX_H_

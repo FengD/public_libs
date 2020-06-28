@@ -3,13 +3,13 @@
 // Author: Feng DING
 // Description: This file used to define the udp input
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_
+#ifndef COMMUNICATION_UDP_INCLUDE_UDP_RECEIVER_H_
+#define COMMUNICATION_UDP_INCLUDE_UDP_RECEIVER_H_
 
 #include <unistd.h>
-#include <string>
 #include <netinet/in.h>
 #include <stdint.h>
+#include <string>
 
 namespace itd {
 namespace communication {
@@ -23,6 +23,7 @@ class UdpReceiver {
   void set_source_ip_str(const std::string& source_ip_str);
   void set_multicast_ip_str(const std::string& multicast_ip_str);
   void set_port(const int32_t& port);
+
  private:
   std::string source_ip_str_;
   std::string multicast_ip_str_;
@@ -35,4 +36,4 @@ class UdpReceiver {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMUNICATION_UDP_RECEIVER_H_
+#endif  // COMMUNICATION_UDP_INCLUDE_UDP_RECEIVER_H_
