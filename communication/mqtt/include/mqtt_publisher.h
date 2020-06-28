@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: This file used to define the mqtt publisher
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_PUBLISHER_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_PUBLISHER_H_
+#ifndef COMMUNICATION_MQTT_INCLUDE_MQTT_PUBLISHER_H_
+#define COMMUNICATION_MQTT_INCLUDE_MQTT_PUBLISHER_H_
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -43,4 +43,4 @@ class MqttPublisher {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_PUBLISHER_H_
+#endif  // COMMUNICATION_MQTT_INCLUDE_MQTT_PUBLISHER_H_

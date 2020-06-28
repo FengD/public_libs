@@ -1,3 +1,8 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: example mqtt sub
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <mosquitto.h>
@@ -23,7 +28,10 @@ int main() {
   // if need username and password for mqtt server
   // itd::communication::Handler handler(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
   // if need a callback of log after subscribe
-  // itd::communication::Subscriber sub = handler.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage, OnLog);
+  // itd::communication::Subscriber sub = handler.subscribe<itd::communication::protobuf::PointCloud>("Test",
+  //                                                                                                  OnMessage,
+  //                                                                                                  OnLog);
   sub->Spin();
+  delete sub;
   return 0;
 }

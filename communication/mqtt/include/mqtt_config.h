@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: This file used to define the mqtt connection
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_CONFIG_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_CONFIG_H_
+#ifndef COMMUNICATION_MQTT_INCLUDE_MQTT_CONFIG_H_
+#define COMMUNICATION_MQTT_INCLUDE_MQTT_CONFIG_H_
 
 #include <string>
 #include <functional>
@@ -51,4 +51,4 @@ struct mosq_config {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMUNICATION_MQTT_MQTT_CONFIG_H_
+#endif  // COMMUNICATION_MQTT_INCLUDE_MQTT_CONFIG_H_

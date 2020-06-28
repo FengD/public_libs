@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: This file used to define the mqtt publisher
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_MQTT_PUBLISHER_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_MQTT_PUBLISHER_H_
+#ifndef COMMUNICATION_MQTT_INCLUDE_PUBLISHER_H_
+#define COMMUNICATION_MQTT_INCLUDE_PUBLISHER_H_
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 namespace itd {
 namespace communication {
 
-// The Publisher should always be created through a call to hander::advertise(), 
+// The Publisher should always be created through a call to hander::advertise(),
 // or copied from one that was.
 class Publisher {
  public:
@@ -41,4 +41,4 @@ class Publisher {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMUNICATION_MQTT_PUBLISHER_H_
+#endif  // COMMUNICATION_MQTT_INCLUDE_PUBLISHER_H_

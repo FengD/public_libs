@@ -1,3 +1,9 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: example mqtt pub
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <mosquitto.h>
@@ -21,12 +27,13 @@ int main() {
   // if need a callback of log after publish
   itd::communication::Publisher *pub = handler.advertise<itd::communication::protobuf::PointCloud>("Test", OnLog);
   int i = 0;
-  while(1) {
+  while (1) {
     itd::communication::protobuf::PointCloud msg;
     msg.set_height(10);
     msg.set_width(i++);
     pub->Publish(msg);
     usleep(10000);
   }
+  delete pub;
   return 0;
 }
