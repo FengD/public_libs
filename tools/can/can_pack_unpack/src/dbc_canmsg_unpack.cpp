@@ -10,7 +10,7 @@
 
 #define BITCALCULATEUNPACK(type) \
 tempValue = tempValue | (type)((type)((type)((data[startIndex]) & (type) ((type)\
-                        (1) << shift)) >> shift)<<i);
+                        (1) << shift)) >> shift) << i);
 
 #define UNPACKVALUE(unsignedType, type) \
 type unpackedValue = 0;\

@@ -140,12 +140,12 @@ void DbcAnalysis::analysisFiles() {
     std::ifstream in(filename.c_str());
     std::string line;
     if (in) {
-      while (getline (in, line)) {
-        while (line.find( MSSAGEHEAD ) == 0){
+      while (getline(in, line)) {
+        while (line.find(MSSAGEHEAD) == 0) {
           Message newMessage;
           transformMessageFromLine(line, newMessage);
-          while (getline (in, line)){
-            if (line.find( SIGNALHEAD ) == 1){
+          while (getline (in, line)) {
+            if (line.find(SIGNALHEAD) == 1) {
               transformSignalFromLine(line, newMessage);
               continue;
             }
