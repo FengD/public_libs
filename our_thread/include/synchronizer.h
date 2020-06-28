@@ -2,10 +2,14 @@
 // License: Modified BSD Software License Agreement
 // Author: Feng DING
 // Description: This template class synchronizes mutiplue data streams of different types.
-//              The data can be added using add0, add1, ... addn methods which expects also a timestamp of type uint64_t.
-//              If multiple matching data objects are found, registered callback functions are invoked with the objects and the time stamps.
-//              The only assumption of the timestamp is, that they are in the same unit, linear and strictly monotonic increasing.
-//              If filtering is desired, e.g. thresholding of time differences, the user can do that in the callback method.
+//              The data can be added using add0, add1, ... addn methods which expects
+//              also a timestamp of type uint64_t.
+//              If multiple matching data objects are found, registered callback functions
+//              are invoked with the objects and the time stamps.
+//              The only assumption of the timestamp is, that they are in the same unit,
+//              linear and strictly monotonic increasing.
+//              If filtering is desired, e.g. thresholding of time differences, the user
+//              can do that in the callback method.
 //              This class is thread safe.
 //              Now two data support.
 
@@ -16,6 +20,7 @@
 #include <functional>
 #include <mutex>
 #include <map>
+#include <utility>
 
 namespace itd {
 template <typename T1, typename T2>
@@ -129,7 +134,7 @@ class Synchronizer {
     }
   }
 };
-} // namespace itd
+}  // namespace itd
 
 
 #endif  // OUR_THREAD_INCLUDE_SYNCHRONIZER_H_
