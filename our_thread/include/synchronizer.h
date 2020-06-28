@@ -32,7 +32,7 @@ class Synchronizer {
 
   std::map<int32_t, CallbackFunction> cb_;
   int32_t callback_counter = 0;
-  
+
  public:
   int32_t addCallback(const CallbackFunction& callback) {
     std::unique_lock<std::mutex> publish_lock(publish_mutex_);
@@ -64,8 +64,8 @@ class Synchronizer {
     std::unique_lock<std::mutex> lock1(mutex1_);
     std::unique_lock<std::mutex> lock2(mutex2_);
 
-    for(const auto& cb : cb_) {
-      if(cb.second) {
+    for (const auto& cb : cb_) {
+      if (cb.second) {
         cb.second.operator()(queueT1.front().second, queueT2.front().second,
                              queueT1.front().first, queueT2.front().first);
       }
@@ -79,14 +79,14 @@ class Synchronizer {
     // only one publish call at once allowed
     std::unique_lock<std::mutex> publish_lock(publish_mutex_);
     std::unique_lock<std::mutex> lock1(mutex1_);
-    if(queueT1.empty()) {
+    if (queueT1.empty()) {
       return;
     }
 
     T1Stamped t1 = queueT1.front();
     lock1.unlock();
     std::unique_lock<std::mutex> lock2(mutex2_);
-    if(queueT2.empty()) {
+    if (queueT2.empty()) {
       return;
     }
 
@@ -94,14 +94,14 @@ class Synchronizer {
     lock2.unlock();
     bool do_publish = false;
 
-    if(t1.first <= t2.first) {
+    if (t1.first <= t2.first) {
       lock1.lock();
-      while(queueT1.size() > 1 && queueT1[1].first <= t2.first) {
+      while (queueT1.size() > 1 && queueT1[1].first <= t2.first) {
         queueT1.pop_front();
       }
        // we have at least 2 measurements; first in past and second in future -> find out closer one!
-      if(queueT1.size() > 1) {
-        if((t2.first << 1) > (queueT1[0].first + queueT1[1].first)) {
+      if (queueT1.size() > 1) {
+        if ((t2.first << 1) > (queueT1[0].first + queueT1[1].first)) {
           queueT1.pop_front();
         }
 
@@ -110,12 +110,12 @@ class Synchronizer {
       lock1.unlock();
     } else {  // iterate over queue2
       lock2.lock();
-      while(queueT2.size() > 1 && (queueT2[1].first <= t1.first)) {
+      while (queueT2.size() > 1 && (queueT2[1].first <= t1.first)) {
         queueT2.pop_front();
       }
       // we have at least 2 measurements; first in past and second in future -> find out closer one!
-      if(queueT2.size() > 1) {
-        if((t1.first << 1) > queueT2[0].first + queueT2[1].first ) {
+      if (queueT2.size() > 1) {
+        if ((t1.first << 1) > queueT2[0].first + queueT2[1].first ) {
           queueT2.pop_front();
         }
 
@@ -124,7 +124,7 @@ class Synchronizer {
       lock2.unlock();
     }
 
-    if(do_publish) {
+    if (do_publish) {
       publishData();
     }
   }

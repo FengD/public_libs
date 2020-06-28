@@ -25,12 +25,12 @@ class ThreadMutex {
 class EnterCriticalSection {
  private:
   ThreadMutex * threadMutex_;
-  
+
  public:
-  EnterCriticalSection(ThreadMutex * threadMutex);
+  explicit EnterCriticalSection(ThreadMutex * threadMutex);
   ~EnterCriticalSection();
 };
 
-} // namespace itd
+}  // namespace itd
 
 #endif  // OUR_THREAD_INCLUDE_THREAD_MUTEX_H_

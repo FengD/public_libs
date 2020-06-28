@@ -18,7 +18,7 @@ class SynchronizedQueue {
 
   void enqueue(const T& data) {
     std::unique_lock<std::mutex> lock(mutex_);
-    if(enqueue_data_) {
+    if (enqueue_data_) {
      queue_.push(data);
      cond_.notify_one();
     }
@@ -26,11 +26,11 @@ class SynchronizedQueue {
 
   bool dequeue(T& result) {
     std::unique_lock<std::mutex> lock(mutex_);
-    while(queue_.empty() && (!request_to_end_)) {
+    while (queue_.empty() && (!request_to_end_)) {
       cond_.wait(lock);
     }
 
-    if(request_to_end_) {
+    if (request_to_end_) {
       doEndActions();
       return false;
     }
@@ -59,7 +59,7 @@ class SynchronizedQueue {
  private:
   void doEndActions() {
     enqueue_data_ = false;
-    while(!queue_.empty()) {
+    while (!queue_.empty()) {
       queue_.pop();
     }
   }

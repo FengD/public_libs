@@ -3,12 +3,12 @@
 // Author: Feng DING
 // Description:
 
-#ifndef OUR_THREAD_INCLUDE_PERIOD_H_
-#define OUR_THREAD_INCLUDE_PERIOD_H_
+#ifndef OUR_THREAD_INCLUDE_THREAD_PERIOD_H_
+#define OUR_THREAD_INCLUDE_THREAD_PERIOD_H_
 
 #include <yaml-cpp/yaml.h>
-#include "thread_base.h"
 #include <stdint.h>
+#include "thread_base.h"
 
 namespace itd {
 class ThreadPeriod : public ThreadBase {
@@ -28,8 +28,7 @@ class ThreadPeriod : public ThreadBase {
   int64_t getElapsedTimeUs();
   virtual void RunInPeriod() = 0;
   // virtual void SetParam(YAML::Node config);
-
 };
 }  // namespace itd
 
-#endif  // OUR_THREAD_INCLUDE_PERIOD_H_
+#endif  // OUR_THREAD_INCLUDE_THREAD_PERIOD_H_

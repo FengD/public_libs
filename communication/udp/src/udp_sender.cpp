@@ -31,7 +31,7 @@ int32_t UdpSender::Init() {
 
   remote_server_address_.sin_family = host_->h_addrtype;
   memcpy((char *)&remote_server_address_.sin_addr.s_addr,
-	       host_->h_addr_list[0], host_->h_length);
+         host_->h_addr_list[0], host_->h_length);
   remote_server_address_.sin_port = htons(port_);
 
   // socket creation

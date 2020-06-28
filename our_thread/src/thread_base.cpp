@@ -19,7 +19,7 @@ void* ThreadBase::func(void* arg) {
 
 int32_t ThreadBase::Start() {
   pthread_attr_init(&attr_);
-	pthread_attr_setdetachstate(&attr_, PTHREAD_CREATE_DETACHED);
+  pthread_attr_setdetachstate(&attr_, PTHREAD_CREATE_DETACHED);
   if (pthread_create(&pid_, NULL, func, (void*)this) != 0) {
     return ThreadStartFailed;
   }

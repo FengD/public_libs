@@ -19,7 +19,7 @@ class ThreadBase {
     ThreadDetachFailed = -1,
     ThreadNoError = 0
   };
-  
+
  private:
   static void* func(void* arg);
   pthread_t pid_;
@@ -41,6 +41,6 @@ class ThreadBase {
   virtual void Run() = 0;
   virtual ~ThreadBase();
 };
-} // namespace itd
+}  // namespace itd
 
 #endif  // OUR_THREAD_INCLUDE_THREAD_BASE_H_
