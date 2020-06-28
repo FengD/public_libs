@@ -1,11 +1,7 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
-
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: socket can
 
 #include <errno.h>
 #include <stdlib.h>
@@ -50,21 +46,21 @@ int32_t SocketCan::can_socket_cfg(struct CanHandler *hdl, struct CanConfig *cfg)
     return ERR_BIND;
   }
 
-   // whether receive own message 1 yes(default) 0 no
+  // whether receive own message 1 yes(default) 0 no
   if (cfg->loopback >= 0 && cfg->loopback <= 1) {
     setsockopt(hdl->fd, SOL_CAN_RAW, CAN_RAW_LOOPBACK, &cfg->loopback, sizeof(cfg->loopback));
   }
 
-  if (cfg->is_filter_set){
+  if (cfg->is_filter_set) {
     if (cfg->rx_filter) {
       setsockopt(hdl->fd, SOL_CAN_RAW, CAN_RAW_FILTER, cfg->rx_filter, cfg->rx_filter_len * sizeof(can_filter));
     }
   } else {
-     // if no need to receive, the line behind could save the space of receive queue in the kernal
+    // if no need to receive, the line behind could save the space of receive queue in the kernal
     setsockopt(hdl->fd, SOL_CAN_RAW, CAN_RAW_FILTER, NULL, 0);
   }
 
-  can_err_mask_t err_mask = ( CAN_ERR_TRX | CAN_ERR_TX_TIMEOUT | CAN_ERR_CRTL | CAN_ERR_BUSOFF );
+  can_err_mask_t err_mask = (CAN_ERR_TRX | CAN_ERR_TX_TIMEOUT | CAN_ERR_CRTL | CAN_ERR_BUSOFF);
   setsockopt(hdl->fd, SOL_CAN_RAW, CAN_RAW_ERR_FILTER, &err_mask, sizeof(err_mask));
 
   return NO_ERROR;
@@ -129,5 +125,5 @@ int32_t SocketCan::can_write(struct CanHandler *hdl, const struct can_frame *fra
   return NO_ERROR;
 }
 
-}  // namespace itd
 }  // namespace communication
+}  // namespace itd

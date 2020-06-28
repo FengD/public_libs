@@ -1,13 +1,10 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: socket can
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_HANDLER_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_HANDLER_H_
+#ifndef COMMUNICATION_SOCKET_CAN_INCLUDE_HANDLER_H_
+#define COMMUNICATION_SOCKET_CAN_INCLUDE_HANDLER_H_
 
 #include <stdint.h>
 
@@ -19,8 +16,8 @@ class CanHandler {
   int32_t ifindex;
   bool fd_mode;
 };
-}  // namespace itd
 }  // namespace communication
+}  // namespace itd
 
 
-#endif  //_ITD_IPD_LIBS_COMMUNICATION_SOCKET_CAN_HANDLER_H_
+#endif  // COMMUNICATION_SOCKET_CAN_INCLUDE_HANDLER_H_
