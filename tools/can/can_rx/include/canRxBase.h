@@ -13,12 +13,13 @@
 #include <stdint.h>
 #include <float.h>
 #include <list>
+#include <string>
 #include "canmsg_define.h"
 
 namespace itd {
 namespace communication {
-  class CanHandler;
-  class CanConfig;
+class CanHandler;
+class CanConfig;
 }  // namespace communication
 
 namespace tools {

@@ -17,8 +17,8 @@
 
 namespace itd {
 namespace communication {
-  class CanHandler;
-  class CanConfig;
+class CanHandler;
+class CanConfig;
 }  // namespace communication
 
 namespace tools {
