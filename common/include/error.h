@@ -3,8 +3,8 @@
 // Author: DEMING YUAN
 // Description: error code
 
-#ifndef _ITD_IPD_LIBS_COMMON_ERROR_H_
-#define _ITD_IPD_LIBS_COMMON_ERROR_H_
+#ifndef COMMON_INCLUDE_ERROR_H_
+#define COMMON_INCLUDE_ERROR_H_
 
 #include <cassert>
 #include <cstdlib>
@@ -24,7 +24,7 @@ class Error : public std::exception {
  public:
   Error(ErrorType t, const std::string& a) : info(a), type(t) {}
 
-  Error(ErrorType t) : type(t) {}
+  explicit Error(ErrorType t) : type(t) {}
 
   Error(const std::string& a) : info(a), type(EUNSPECIFIED) {}
 
@@ -57,4 +57,4 @@ class Error : public std::exception {
 }  // namespace common
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMON_ERROR_H_
+#endif  // COMMON_INCLUDE_ERROR_H_

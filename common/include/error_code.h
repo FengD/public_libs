@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: error code
 
-#ifndef _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
-#define _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
+#ifndef COMMON_INCLUDE_ERROR_CODE_H_
+#define COMMON_INCLUDE_ERROR_CODE_H_
 
 enum CommunicationStatus {
   ERR_MQTT_INIT = -23,
@@ -33,4 +33,4 @@ enum CommunicationStatus {
   NO_ERROR = 0
 };
 
-#endif  // _ITD_IPD_LIBS_COMMON_ERROR_CODE_H_
+#endif  // COMMON_INCLUDE_ERROR_CODE_H_
