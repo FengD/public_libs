@@ -13,10 +13,10 @@ namespace itd {
 namespace communication {
 
 struct mosq_config {
-	std::string host;
-	int port;
-	std::string username;
-	std::string password;
+  std::string host;
+  int port;
+  std::string username;
+  std::string password;
 
   explicit mosq_config(std::string host = "",
                        int port = 0,

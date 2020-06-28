@@ -19,7 +19,7 @@ class MqttClient;
 class MqttSubscriber {
  public:
   MqttSubscriber(std::string host, int32_t port, std::string topic,
-	             std::string username = "", std::string password = "");
+                 std::string username = "", std::string password = "");
   MqttSubscriber(struct mosq_config cfg, std::string topic);
   ~MqttSubscriber();
 

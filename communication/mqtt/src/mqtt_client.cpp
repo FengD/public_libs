@@ -21,7 +21,7 @@ MqttClient::MqttClient(struct mosq_config cfg) {
 
 MqttClient::~MqttClient() {
   mosquitto_lib_cleanup();
-};
+}
 
 int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(struct mosquitto *, void *, int)) {
   if (on_connect != nullptr) {
@@ -29,6 +29,7 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
   } else {
     mosquitto_connect_callback_set(mosq, OnConnect);
   }
+
   mosquitto_disconnect_callback_set(mosq, OnDisconnect);
   if (!mosq) {
     printf("Error: Create client failed.\n");
@@ -42,12 +43,12 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
     return ERR_MQTT_CONNECT;
   }
 
-  if((!cfg_.username.empty() || !cfg_.password.empty()) &&
-      mosquitto_username_pw_set(mosq, cfg_.username.c_str(), cfg_.password.c_str())){
-		printf("Error: Problem setting username and/or password.\n");
-		mosquitto_lib_cleanup();
-		return ERR_MQTT_USER_PWD;
-	}
+  if ((!cfg_.username.empty() || !cfg_.password.empty()) &&
+       mosquitto_username_pw_set(mosq, cfg_.username.c_str(), cfg_.password.c_str())) {
+    printf("Error: Problem setting username and/or password.\n");
+    mosquitto_lib_cleanup();
+    return ERR_MQTT_USER_PWD;
+  }
 
   return NO_ERROR;
 }
