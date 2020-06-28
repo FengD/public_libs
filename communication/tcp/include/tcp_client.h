@@ -3,10 +3,9 @@
 // Author: Feng DING
 // Description:
 
-#ifndef _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_
-#define _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_
+#ifndef COMMUNICATION_TCP_INCLUDE_TCP_CLIENT_H_
+#define COMMUNICATION_TCP_INCLUDE_TCP_CLIENT_H_
 
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -16,9 +15,10 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
-#include <netdb.h>
-#include <vector>
 #include <stdint.h>
+#include <vector>
+#include <iostream>
+#include <string>
 
 namespace itd {
 namespace communication {
@@ -41,4 +41,4 @@ class TcpClient {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_COMMUNICATION_TCP_CLIENT_H_
+#endif  // COMMUNICATION_TCP_INCLUDE_TCP_CLIENT_H_
