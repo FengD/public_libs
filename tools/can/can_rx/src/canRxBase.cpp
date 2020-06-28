@@ -1,10 +1,9 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+// Date: 2019-11-22
+// Change Log:
 
 #include "canRxBase.h"
 #include "dbc_file_analysis.h"
@@ -91,7 +90,8 @@ void CanRxBase::SetCanFilterIdList(const int64_t* list, const int32_t &list_size
   }
 }
 
-void CanRxBase::SetCallBackFunction(std::function<void(int64_t id, double *value, int32_t value_size)> canmsg_unpack_callback) {
+void CanRxBase::SetCallBackFunction(std::function<void(int64_t id,
+                                                       double *value, int32_t value_size)> canmsg_unpack_callback) {
   canmsg_unpack_callback_ = canmsg_unpack_callback;
 }
 
@@ -135,7 +135,7 @@ void CanRxBase::Receive() {
 void CanRxBase::setCanFilter(communication::CanConfig *cfg) {
   if (id_list_size_ > 0) {
     cfg->rx_filter = (struct can_filter*) malloc(id_list_size_ * sizeof(struct can_filter));
-    for(int32_t i = 0; i < id_list_size_; i++) {
+    for (int32_t i = 0; i < id_list_size_; i++) {
       cfg->rx_filter[i].can_id = id_list_[i];
       cfg->rx_filter[i].can_mask = CAN_SFF_MASK;
     }
@@ -156,7 +156,7 @@ void CanRxBase::copyFromCanFrame2Canmsg(const can_frame &frame, struct Canmsg *m
   memset(msg->data, 0, 8 * sizeof(unsigned char));
   msg->id = frame.can_id;
   msg->length = frame.can_dlc;
-  for(int32_t j = 0; j < frame.can_dlc; j++) {
+  for (int32_t j = 0; j < frame.can_dlc; j++) {
     msg->data[j] = frame.data[j];
   }
 }

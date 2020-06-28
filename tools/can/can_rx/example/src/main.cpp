@@ -1,3 +1,10 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description: example can rx
+// Date: 2019-11-22
+// Change Log:
+
 #include "canRxBase.h"
 #include <functional>
 
@@ -17,10 +24,10 @@ int main(int argv, char ** argc) {
   canRx_->LoadDbcs();
   canRx_->Init();
   canRx_->LoadDbcs();
-  canRx_->SetCallBackFunction( std::bind(canReceiveCallBack,
-                                         std::placeholders::_1,
-                                         std::placeholders::_2,
-                                         std::placeholders::_3) );
+  canRx_->SetCallBackFunction(std::bind(canReceiveCallBack,
+                                        std::placeholders::_1,
+                                        std::placeholders::_2,
+                                        std::placeholders::_3));
   canRx_->Receive();
   delete canRx_;
   return 0;

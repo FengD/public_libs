@@ -1,30 +1,32 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
-#ifndef _CANTX_BASE_H_
-#define _CANTX_BASE_H_
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+// Date: 2019-11-22
+// Change Log:
+
+#ifndef TOOLS_CAN_CAN_TX_INCLUDE_CANTXBASE_H_
+#define TOOLS_CAN_CAN_TX_INCLUDE_CANTXBASE_H_
 
 #include <stdint.h>
 #include <yaml-cpp/yaml.h>
-#include <list>
 #include <linux/can.h>
 #include "canmsg_define.h"
+#include <list>
+#include <string>
 
 namespace itd {
 namespace communication {
   class CanHandler;
   class CanConfig;
-}
+}  // namespace communication
+
 namespace tools {
 namespace can {
 
 class CanTxBase {
  private:
-   // can channel
+  // can channel
   int32_t channel_;
   std::string dbcsFolderPath_;
   void packValue(const int64_t &id, const int32_t &valueSize, const double *valueInput, Canmsg *msg);
@@ -50,4 +52,4 @@ class CanTxBase {
 }  // namespace tools
 }  // namespace itd
 
-#endif  // _CANTX_BASE_H_
+#endif  // TOOLS_CAN_CAN_TX_INCLUDE_CANTXBASE_H_

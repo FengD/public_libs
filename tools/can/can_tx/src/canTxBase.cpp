@@ -1,10 +1,9 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+// Date: 2019-11-22
+// Change Log:
 
 #include "canTxBase.h"
 #include "dbc_file_analysis.h"
@@ -32,7 +31,7 @@ void CanTxBase::Init() {
   cfg.ifname = interface;
   cfg.loopback = 1;
   cfg.is_filter_set = 0;
-   // can socket open
+  // can socket open
   ret_ = communication::SocketCan::can_open(&can_hdl_, &cfg);
   if (ret_ < 0) {
     printf("Unable to open CAN interface: %s\n", cfg.ifname);
@@ -78,7 +77,7 @@ void CanTxBase::copyFromCanmsg2CanFrame(const Canmsg &msg, struct can_frame *fra
   memset(frame->data, 0, 8 * sizeof(unsigned char));
   frame->can_id = msg.id;
   frame->can_dlc = msg.length;
-  for(int32_t j = 0; j < msg.length; j++) {
+  for (int32_t j = 0; j < msg.length; j++) {
     frame->data[j] = msg.data[j];
   }
 }

@@ -144,7 +144,7 @@ void DbcAnalysis::analysisFiles() {
         while (line.find(MSSAGEHEAD) == 0) {
           Message newMessage;
           transformMessageFromLine(line, newMessage);
-          while (getline (in, line)) {
+          while (getline(in, line)) {
             if (line.find(SIGNALHEAD) == 1) {
               transformSignalFromLine(line, newMessage);
               continue;
@@ -152,7 +152,7 @@ void DbcAnalysis::analysisFiles() {
             sort(newMessage.signals.begin(), newMessage.signals.end());
             break;
           }
-          messages_.insert(std::map<int64_t, Message>::value_type (newMessage.id, newMessage));
+          messages_.insert(std::map<int64_t, Message>::value_type(newMessage.id, newMessage));
         }
       }
     } else {

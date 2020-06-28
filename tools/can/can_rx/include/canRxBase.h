@@ -1,25 +1,26 @@
-/* -*- mode: C++ -*-
- *
- *  Copyright (C) 2019 Feng DING, Hirain
- *
- *  License: Modified BSD Software License Agreement
- *
- */
-#ifndef _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_
-#define _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+// Date: 2019-11-22
+// Change Log:
 
-#include <list>
+#ifndef TOOLS_CAN_CAN_RX_INCLUDE_CANRXBASE_H_
+#define TOOLS_CAN_CAN_RX_INCLUDE_CANRXBASE_H_
+
 #include <yaml-cpp/yaml.h>
 #include <linux/can.h>
 #include <stdint.h>
 #include <float.h>
+#include <list>
 #include "canmsg_define.h"
 
 namespace itd {
 namespace communication {
   class CanHandler;
   class CanConfig;
-}
+}  // namespace communication
+
 namespace tools {
 namespace can {
 
@@ -57,4 +58,4 @@ class CanRxBase {
 }  // namespace tools
 }  // namespace itd
 
-#endif  // _ITD_IPD_LIBS_TOOLS_CAN_CANRX_BASE_H_
+#endif  // TOOLS_CAN_CAN_RX_INCLUDE_CANRXBASE_H_
