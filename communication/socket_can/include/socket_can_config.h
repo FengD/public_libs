@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: socket can
 
-#ifndef COMMUNICATION_SOCKET_CAN_INCLUDE_CONFIG_H_
-#define COMMUNICATION_SOCKET_CAN_INCLUDE_CONFIG_H_
+#ifndef COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_CONFIG_H_
+#define COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_CONFIG_H_
 
 #include <stdint.h>
 #include <sys/types.h>
@@ -26,4 +26,4 @@ class CanConfig {
 }  // namespace itd
 
 
-#endif  // COMMUNICATION_SOCKET_CAN_INCLUDE_CONFIG_H_
+#endif  // COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_CONFIG_H_

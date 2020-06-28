@@ -3,8 +3,8 @@
 // Author: Feng DING
 // Description: socket can
 
-#ifndef COMMUNICATION_SOCKET_CAN_INCLUDE_
-#define COMMUNICATION_SOCKET_CAN_INCLUDE_
+#ifndef COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_H_
+#define COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_H_
 
 #include <linux/can.h>
 #include <linux/can/raw.h>
@@ -31,4 +31,4 @@ class SocketCan {
 }  // namespace itd
 
 
-#endif  // COMMUNICATION_SOCKET_CAN_INCLUDE_
+#endif  // COMMUNICATION_SOCKET_CAN_INCLUDE_SOCKET_CAN_H_
