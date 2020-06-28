@@ -11,9 +11,9 @@
 #include <stdint.h>
 #include <yaml-cpp/yaml.h>
 #include <linux/can.h>
-#include "canmsg_define.h"
 #include <list>
 #include <string>
+#include "canmsg_define.h"
 
 namespace itd {
 namespace communication {
