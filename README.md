@@ -4,20 +4,19 @@
 也可使用cmake在x86下执行。
 
 # Change Log
-
-* Created by feng.ding @Hirain 20200302
-- Create 5 module "common", "communication", "our_thread", "util" and "tools"
+- Created by feng.ding @Hirain 20200302
+- Create 5 module "common", "communication", "our_thread", "util" and "tools" by feng.ding @Hirain 20200404
+- Create Json module by feng.ding @Hirain 20200501
 
 ## Notice
-
 * 在未经master所有者授权情况下，禁止泄露源码到工程成员以外人员
 
 ## 版本说明
-
 | Version | Update | Contractor | Description | Remark |
 | ------ | ------- | :----: | --------| --------- |
 | V1.0.0 | 2020/03/02 |  丁丰  | 创建 | |
 | V2.0.0 | 2020/04/25 |  丁丰  | 更新了mqtt和protobuf模块，支撑感知3.0的开发 | |
+| V2.0.1 | 2020/06/01 |  丁丰  | 修复库中代码静态查问题 | |
 
 ## 怎样使用
 
