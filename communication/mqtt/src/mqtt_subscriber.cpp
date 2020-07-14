@@ -100,7 +100,7 @@ void MqttSubscriber::OnUnsubscribe(struct mosquitto *mosq, void *obj, int mid) {
 }
 
 void MqttSubscriber::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
-  mosquitto_threaded_set(mosq, true);
+  (void)mosq;
   MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
   self->Subscribe();
   printf("Subscriber Connected. %p mid: %d\n", obj, mid);

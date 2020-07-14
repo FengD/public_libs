@@ -54,8 +54,8 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
 }
 
 void MqttClient::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
+  (void)mosq;
   printf("Client Connected. %p mid: %d\n", obj, mid);
-  mosquitto_threaded_set(mosq, true);
 }
 
 void MqttClient::OnDisconnect(struct mosquitto *mosq, void *obj, int mid) {
