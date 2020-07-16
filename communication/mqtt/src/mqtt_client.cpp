@@ -54,13 +54,13 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
 }
 
 void MqttClient::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
-  (void)mosq;
+  mosquitto_threaded_set(mosq, true);
   printf("Client Connected. %p mid: %d\n", obj, mid);
 }
 
 void MqttClient::OnDisconnect(struct mosquitto *mosq, void *obj, int mid) {
+  (void)mosq;
   printf("Client Disconnected. %p mid: %d\n", obj, mid);
-  mosquitto_destroy(mosq);
 }
 
 }  // namespace communication

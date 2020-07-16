@@ -39,6 +39,7 @@ MqttSubscriber::MqttSubscriber(struct mosq_config cfg, std::string topic) {
 }
 
 MqttSubscriber::~MqttSubscriber() {
+  mosquitto_destroy(mosq_);
   delete mqtt_client_;
 }
 
@@ -100,7 +101,7 @@ void MqttSubscriber::OnUnsubscribe(struct mosquitto *mosq, void *obj, int mid) {
 }
 
 void MqttSubscriber::OnConnect(struct mosquitto *mosq, void *obj, int mid) {
-  (void)mosq;
+  mosquitto_threaded_set(mosq, true);
   MqttSubscriber *self = static_cast<MqttSubscriber*>(obj);
   self->Subscribe();
   printf("Subscriber Connected. %p mid: %d\n", obj, mid);

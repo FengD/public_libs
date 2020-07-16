@@ -31,6 +31,7 @@ MqttPublisher::MqttPublisher(struct mosq_config cfg, std::string topic) {
 }
 
 MqttPublisher::~MqttPublisher() {
+  mosquitto_destroy(mosq_);
   delete mqtt_client_;
 }
 
