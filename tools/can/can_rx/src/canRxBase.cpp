@@ -117,14 +117,19 @@ void CanRxBase::Receive() {
     }
 
     if (can_rx_frame_->can_id & CAN_ERR_FLAG) {
-      LOGERROR("error frame id: %d\n", can_rx_frame_->can_id);
+      LOGERROR("error frame id: %d on channel %d\n", can_rx_frame_->can_id, channel_);
       LOGERROR("data[8] [%d %d %d %d %d %d %d %d]\n", can_rx_frame_->data[0], can_rx_frame_->data[1],
-       can_rx_frame_->data[2], can_rx_frame_->data[3], can_rx_frame_->data[4],
-       can_rx_frame_->data[5], can_rx_frame_->data[6], can_rx_frame_->data[7]);
-       if (can_rx_frame_->can_id & CAN_ERR_CRTL) {
-         system("ip link set can1 down");
-         system("ip link set can1 up");
-       }
+                                                      can_rx_frame_->data[2], can_rx_frame_->data[3],
+                                                      can_rx_frame_->data[4], can_rx_frame_->data[5],
+                                                      can_rx_frame_->data[6], can_rx_frame_->data[7]);
+      if (can_rx_frame_->can_id & CAN_ERR_CRTL) {
+        LOGWARNING("Action: up & down channel %d\n", channel_);
+        char action_down_str[50], action_up_str[50];
+        sprintf(action_down_str, "ip link set can%d down", channel_);
+        sprintf(action_up_str, "ip link set can%d up", channel_);
+        system(action_down_str);
+        system(action_up_str);
+      }
     } else {
       unpackValue(*can_rx_frame_, value_out, value_size);
       canmsg_unpack_callback_(can_rx_frame_->can_id, value_out, value_size);
