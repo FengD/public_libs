@@ -23,7 +23,7 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_APP = canrx_example
+ARM_APP = cantx_example
 
 # ARM_DEFS += -fopenmp
 
@@ -42,7 +42,7 @@ ARM_INCS += -I../../../../../tools/hlog/include
 ARM_INCS += -I../../../../../util/include
 ARM_INCS += -I../../../../../tools/can/can_pack_unpack/include
 ARM_INCS += -I../../../../../communication/socket_can/include
-ARM_INCS += -I../../../../../tools/can/can_rx/include
+ARM_INCS += -I../../../../../tools/can/can_tx/include
 ##############################################################################
 # static libs
 ##############################################################################
@@ -50,7 +50,7 @@ ARM_APP_LIBS += ../../../../../tools/hlog/$(ODIR)/libhlog.a
 ARM_APP_LIBS += ../../../../../util/$(ODIR)/libutil.a
 ARM_APP_LIBS += ../../../../../tools/can/can_pack_unpack/$(ODIR)/libcan_pack_unpack.a
 ARM_APP_LIBS += ../../../../../communication/socket_can/$(ODIR)/libcommunication_socketcan.a
-ARM_APP_LIBS += ../../../../../tools/can/can_rx/$(ODIR)/libcanRxBase.a
+ARM_APP_LIBS += ../../../../../tools/can/can_tx/$(ODIR)/libcanTxBase.a
 
 ##############################################################################
 # dynamic libs
