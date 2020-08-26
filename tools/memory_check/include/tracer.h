@@ -26,7 +26,7 @@ namespace tools {
 
 struct StMemAllocRec {
   void* addr;
-  size_t nSize;
+  size_t size;
 };
 
 class CAllocLocalInfo {
