@@ -1,3 +1,8 @@
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+
 #include "shared_memory_posix.h"
 #include <sys/mman.h>
 #include <sys/types.h>
@@ -9,7 +14,8 @@
 
 namespace itd {
 namespace communication {
-SharedMemoryPosix::SharedMemoryPosix( const std::string& segment_name ) :
+
+SharedMemoryPosix::SharedMemoryPosix(const std::string& segment_name) :
   memory_segment_name_(segment_name),
   memory_id_(-1),
   memory_segment_id_(NULL),
@@ -19,10 +25,10 @@ SharedMemoryPosix::SharedMemoryPosix( const std::string& segment_name ) :
 }
 
 bool SharedMemoryPosix::Create(size_t size, int mode) {
-   memory_segment_size_ = size;
-   memory_id_ = shm_open(memory_segment_name_.c_str(), O_CREAT | mode, S_IRWXU | S_IRWXG);
-   if (memory_id_ < 0) {
-      switch (errno) {
+  memory_segment_size_ = size;
+  memory_id_ = shm_open(memory_segment_name_.c_str(), O_CREAT | mode, S_IRWXU | S_IRWXG);
+  if (memory_id_ < 0) {
+    switch (errno) {
       case EACCES:
         throw SharedMemoryException("Permission Exception ");
         break;
@@ -46,9 +52,9 @@ bool SharedMemoryPosix::Create(size_t size, int mode) {
         break;
       }
    }
-   // adjusting mapped file size (make room for the whole segment to map)
-   ftruncate(memory_id_, memory_segment_size_);
-   return true;
+  // adjusting mapped file size (make room for the whole segment to map)
+  ftruncate(memory_id_, memory_segment_size_);
+  return true;
 }
 
 bool SharedMemoryPosix::Attach(int mode) {
@@ -84,7 +90,7 @@ void SharedMemoryPosix::Clear() {
     }
   }
   /**
-  * Semaphore unlink: Remove a named semaphore  from the system.
+  * Semaphore unlink: Remove a named semaphore from the system.
   */
   if (memory_segment_id_ != NULL) {
     /**
@@ -94,7 +100,7 @@ void SharedMemoryPosix::Clear() {
       perror("sem_close");
     }
     /**
-    * Semaphore unlink: Remove a named semaphore  from the system.
+    * Semaphore unlink: Remove a named semaphore from the system.
     */
     if (sem_unlink(SEMAPHORE_NAME) < 0) {
       perror("sem_unlink");
@@ -107,7 +113,7 @@ SharedMemoryException::SharedMemoryException(const std::string &message, bool sy
   printf("exception: %s\n", message.c_str());
 }
 
-SharedMemoryException::~SharedMemoryException() throw () {}
+SharedMemoryException::~SharedMemoryException() throw (){}
 
 }  // namespace communication
 }  // namespace itd

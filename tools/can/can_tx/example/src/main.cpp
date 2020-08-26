@@ -18,7 +18,7 @@ int main(int argv, char ** argc) {
   canTx_->SetDbcsFolderPath(argc[1]);
   canTx_->LoadDbcs();
   canTx_->Init();
-  double value[] = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+  double value[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
   while (1) {
     printf("send before\n");
     canTx_->Send(2566868725, value, 13);

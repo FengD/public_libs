@@ -55,7 +55,6 @@ class SharedMemoryC {
   T *GetSharedMemory() {
     return share_memory_;
   }
-
 };
 }  // namespace communication
 }  // namespace itd

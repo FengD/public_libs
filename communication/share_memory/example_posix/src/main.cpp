@@ -1,10 +1,15 @@
-#include "shared_memory_posix.h"
+// Copyright (C) 2020 Hirain Technologies
+// License: Modified BSD Software License Agreement
+// Author: Feng DING
+// Description:
+
+#include <unistd.h>
 #include <iostream>
 #include <string>
-#include <unistd.h>
 #include <cstring>
 #include <cstdlib>
 #include <cstdio>
+#include "shared_memory_posix.h"
 
 int main(int argc, char* argv[]) {
   if (argc != 2) {
@@ -23,7 +28,7 @@ int main(int argc, char* argv[]) {
     }
 
     int *test = static_cast<int *>(shmMemory.GetData());
-    if(std::string(argv[1]) == "write") {
+    if (std::string(argv[1]) == "write") {
       printf("write\n");
       int i = 0;
       while (1) {
@@ -33,12 +38,11 @@ int main(int argc, char* argv[]) {
       }
     } else if (std::string(argv[1]) == "read") {
       printf("read\n");
-      while(1) {
+      while (1) {
         printf("--->%d\n", *test);
         usleep(100000);
       }
     }
-
   } catch (std::exception& ex) {
     std::cout << "Exception:" << ex.what() << std::endl;
   }

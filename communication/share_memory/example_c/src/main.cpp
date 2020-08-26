@@ -5,8 +5,7 @@
 
 #include <unistd.h>
 #include <pcl/point_cloud.h>
-#include <pcl/point_cloud.h>
-#include<signal.h>
+#include <signal.h>
 #include <pcl/common/common.h>
 #include "shared_memory_c.h"
 
@@ -25,7 +24,7 @@ int main(int argc, char* argv[]) {
   signal(SIGINT, ctrlhandler);
   test = new itd::communication::SharedMemoryC<pcl::PointCloud<pcl::PointXYZI>>(2000);
   pcl::PointCloud<pcl::PointXYZI> *cloud = test->GetSharedMemory();
-  if(std::string(argv[1]) == "write") {
+  if (std::string(argv[1]) == "write") {
     printf("write\n");
     while (1) {
       pcl::PointXYZI a;
@@ -35,7 +34,7 @@ int main(int argc, char* argv[]) {
     }
   } else if (std::string(argv[1]) == "read") {
     printf("read\n");
-    while(1) {
+    while (1) {
       printf("%d\n", cloud->size());
       usleep(100000);
     }

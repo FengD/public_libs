@@ -3,12 +3,11 @@
 // Author: Feng DING
 // Description:
 
-#ifndef COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARE_MEMORY_POSIX_H_
-#define COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARE_MEMORY_POSIX_H_
+#ifndef COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARED_MEMORY_POSIX_H_
+#define COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARED_MEMORY_POSIX_H_
 
 #include <sys/mman.h>
 #include <sys/stat.h>        /* For mode constants */
-#include <sys/mman.h>
 #include <fcntl.h>           /* For O_* constants */
 #include <semaphore.h>
 #include <string>
@@ -25,19 +24,21 @@ class SharedMemoryException : public std::exception {
   *   @param system_msg true if system message (from strerror(errno))
   *   should be postfixed to the user provided message
   */
-  SharedMemoryException(const std::string &message, bool system_msg = false) throw();
+  explicit SharedMemoryException(const std::string &message, bool system_msg = false) throw();
 
   /** Destructor.
   * Virtual to allow for subclassing.
   */
-  virtual ~SharedMemoryException() throw ();
+  virtual ~SharedMemoryException() throw();
 
   /** Returns a pointer to the (constant) error description.
   *  @return A pointer to a \c const \c char*. The underlying memory
   *          is in posession of the \c Exception object. Callers \a must
   *          not attempt to free the memory.
   */
-  virtual const char* what() const throw (){  return memory_segment_msg_.c_str(); }
+  virtual const char* what() const throw() {
+    return memory_segment_msg_.c_str();
+  }
 
  protected:
   std::string memory_segment_msg_;
@@ -55,7 +56,7 @@ class SharedMemoryPosix {
     A_WRITE = PROT_WRITE,
   } ATTACH_MODE;
 
-  SharedMemoryPosix(const std::string& segment_name);
+  explicit SharedMemoryPosix(const std::string& segment_name);
   ~SharedMemoryPosix();
   bool Create(size_t size, int mode = C_READ_WRITE);
   bool Attach(int mode = A_READ | A_WRITE);
@@ -86,4 +87,4 @@ class SharedMemoryPosix {
 }  // namespace communication
 }  // namespace itd
 
-#endif  // COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARE_MEMORY_POSIX_H_
+#endif  // COMMUNICATION_SHARE_MEMORY_INCLUDE_SHARED_MEMORY_POSIX_H_
