@@ -50,21 +50,21 @@ bool SharedMemoryPosix::Create(size_t size, int mode) {
       default:
         throw SharedMemoryException("Invalid exception occurred in shared memory creation");
         break;
-      }
-   }
+    }
+  }
   // adjusting mapped file size (make room for the whole segment to map)
   ftruncate(memory_id_, memory_segment_size_);
   return true;
 }
 
 bool SharedMemoryPosix::Attach(int mode) {
-   /* requesting the shared segment    --  mmap() */
-   memory_ptr_ = mmap(NULL, memory_segment_size_, mode, MAP_SHARED, memory_id_, 0);
-   if (memory_ptr_ == NULL) {
-     throw SharedMemoryException("Exception in attaching the shared memory region");
-     return false;
-   }
-   return true;
+  /* requesting the shared segment    --  mmap() */
+  memory_ptr_ = mmap(NULL, memory_segment_size_, mode, MAP_SHARED, memory_id_, 0);
+  if (memory_ptr_ == NULL) {
+    throw SharedMemoryException("Exception in attaching the shared memory region");
+    return false;
+  }
+  return true;
 }
 
 bool SharedMemoryPosix::Detach() {
@@ -113,7 +113,7 @@ SharedMemoryException::SharedMemoryException(const std::string &message, bool sy
   printf("exception: %s\n", message.c_str());
 }
 
-SharedMemoryException::~SharedMemoryException() throw (){}
+SharedMemoryException::~SharedMemoryException() throw() {}
 
 }  // namespace communication
 }  // namespace itd
