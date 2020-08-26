@@ -23,10 +23,10 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_LIB = libJson.a
+ARM_LIB = libcommunication_json.a
 
 ##############################################################################
-# libJson.a
+# libcommunication_json.a
 ##############################################################################
 ARM_LIB_SRCS += json_reader.cpp
 ARM_LIB_SRCS += json_value.cpp

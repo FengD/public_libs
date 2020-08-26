@@ -23,7 +23,7 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_LIB = libCommunicationUdp.a
+ARM_LIB = libcommunication_udp.a
 
 ##############################################################################
 # libutil.a

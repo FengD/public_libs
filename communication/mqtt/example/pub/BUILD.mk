@@ -37,7 +37,7 @@ ARM_INCS += -I../../../../protobuf/include/
 
 ##############################################################################
 
-ARM_APP_LIBS += ../../../$(ODIR)/libCommunicationMqtt.a
-ARM_APP_LIBS += ../../../../protobuf/$(ODIR)/libCommunicationProtobuf.a
+ARM_APP_LIBS += ../../../$(ODIR)/libcommunication_mqtt.a
+ARM_APP_LIBS += ../../../../protobuf/$(ODIR)/libcommunication_protobuf.a
 ARM_LDOPTS += -lmosquitto
 ARM_LDOPTS += -lprotobuf

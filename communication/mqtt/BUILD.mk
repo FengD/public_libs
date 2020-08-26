@@ -23,10 +23,10 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_LIB = libCommunicationMqtt.a
+ARM_LIB = libcommunication_mqtt.a
 
 ##############################################################################
-# libCommunicationMqtt.a
+# libcommunication_mqtt.a
 ##############################################################################
 
 ARM_LIB_SRCS += mqtt_client.cpp

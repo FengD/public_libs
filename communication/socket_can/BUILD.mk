@@ -23,10 +23,10 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_LIB = libsocket_can.a
+ARM_LIB = libcommunication_socketcan.a
 
 ##############################################################################
-# libsocket_can.a
+# libcommunication_socketcan.a
 ##############################################################################
 
 ARM_LIB_SRCS += socket_can.cpp

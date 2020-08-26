@@ -23,10 +23,10 @@
 
 SDK_ROOT := $(call path_relative_to,$(CURDIR),$(CURR_SDK_ROOT))
 
-ARM_LIB = libCommunicationProtobuf.a
+ARM_LIB = libcommunication_protobuf.a
 
 ##############################################################################
-# libCommunicationProtobuf.a
+# libcommunication_protobuf.a
 ##############################################################################
 
 ARM_LIB_SRCS += itd_ipd_geometry_msgs.pb.cc
