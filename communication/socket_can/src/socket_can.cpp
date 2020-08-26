@@ -22,6 +22,9 @@ namespace itd {
 namespace communication {
 
 int32_t SocketCan::can_socket_cfg(struct CanHandler *hdl, struct CanConfig *cfg) {
+  // socket default is block mode
+  // No need to use no block mode for socket can
+  // because no match data exchange and could because extra cpu use
   signal(SIGPIPE, SIG_IGN);
   struct sockaddr_can addr;
   struct ifreq ifr;
@@ -116,7 +119,8 @@ int32_t SocketCan::can_read(struct CanHandler *hdl, struct can_frame *frame) {
 
 int32_t SocketCan::can_write(struct CanHandler *hdl, const struct can_frame *frame) {
   ssize_t nbytes = -1;
-  nbytes = write(hdl->fd, frame, sizeof(can_frame));
+  // use no block send IO in block mode
+  nbytes = send(hdl->fd, frame, sizeof(can_frame), MSG_DONTWAIT);
   if (nbytes == -1) {
     LOGERROR("%s Error in write nbytes == -1. errno: %d\n",  __func__, errno);
     return ERR_CAN_WRITE;
