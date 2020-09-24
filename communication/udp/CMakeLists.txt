@@ -16,3 +16,13 @@ include_directories(
 )
 
 add_library(module_communication_udp ${SRCS})
+
+add_executable(example_udp example/src/main.cpp)
+
+add_dependencies(example_udp
+  module_communication_udp
+)
+
+target_link_libraries(example_udp
+  module_communication_udp
+)
