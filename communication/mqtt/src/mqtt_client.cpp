@@ -37,17 +37,17 @@ int32_t MqttClient::ConnectClient(struct mosquitto *mosq, void (*on_connect)(str
     return ERR_MQTT_INIT;
   }
 
-  if (mosquitto_connect(mosq, cfg_.host.c_str(), cfg_.port, KEEP_ALIVE)) {
-    printf("Error: Unable to connect.\n");
-    mosquitto_lib_cleanup();
-    return ERR_MQTT_CONNECT;
-  }
-
   if ((!cfg_.username.empty() || !cfg_.password.empty()) &&
        mosquitto_username_pw_set(mosq, cfg_.username.c_str(), cfg_.password.c_str())) {
     printf("Error: Problem setting username and/or password.\n");
     mosquitto_lib_cleanup();
     return ERR_MQTT_USER_PWD;
+  }
+
+  if (mosquitto_connect(mosq, cfg_.host.c_str(), cfg_.port, KEEP_ALIVE)) {
+    printf("Error: Unable to connect.\n");
+    mosquitto_lib_cleanup();
+    return ERR_MQTT_CONNECT;
   }
 
   return NO_ERROR;
