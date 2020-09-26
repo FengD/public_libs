@@ -12,23 +12,23 @@ message(${SRCS})
 
 include_directories(
   ../../common/include
+  ../protobuf/include
   include
 )
 
 add_library(module_communication_mqtt ${SRCS})
 
-add_executable(sub_example example/sub/src/demo.cpp)
+aux_source_directory(../protobuf/src PROTO_SRCS)
 
-add_dependencies(sub_example
-  module_communication_mqtt
-)
+add_executable(sub_example ${PROTO_SRCS} example/sub/src/demo.cpp)
 
 target_link_libraries(sub_example
   module_communication_mqtt
   mosquitto
+  /home/ding/Libraries/protobuf-3.5.1/src/.libs/libprotobuf.a
 )
 
-add_executable(pub_example example/pub/src/demo.cpp)
+add_executable(pub_example ${PROTO_SRCS} example/pub/src/demo.cpp)
 
 add_dependencies(pub_example
   module_communication_mqtt
@@ -37,4 +37,5 @@ add_dependencies(pub_example
 target_link_libraries(pub_example
   module_communication_mqtt
   mosquitto
+  /home/ding/Libraries/protobuf-3.5.1/src/.libs/libprotobuf.a
 )
