@@ -35,8 +35,8 @@ MqttPublisher::~MqttPublisher() {
   delete mqtt_client_;
 }
 
-void MqttPublisher::Publish(const void *payload, const int32_t &payloadlen) {
-  mosquitto_publish(mosq_, NULL, topic_.c_str(), payloadlen, payload, 0, 0);
+void MqttPublisher::Publish(const void *payload, const int32_t &payloadlen, const int32_t &qos) {
+  mosquitto_publish(mosq_, NULL, topic_.c_str(), payloadlen, payload, qos, 0);
 }
 
 void MqttPublisher::SetOnPublish(PublishCallback pcb) {

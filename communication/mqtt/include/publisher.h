@@ -28,9 +28,9 @@ class Publisher {
   ~Publisher();
 
   template<class M>
-  void Publish(const M& message) {
+  void Publish(const M& message, const int32_t &qos = 0) {
     message.SerializeToString(&output_buffer_);
-    mqtt_publisher_->Publish(output_buffer_.c_str(), output_buffer_.length());
+    mqtt_publisher_->Publish(output_buffer_.c_str(), output_buffer_.length(), qos);
   }
 
  private:

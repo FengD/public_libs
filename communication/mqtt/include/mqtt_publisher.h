@@ -23,7 +23,7 @@ class MqttPublisher {
   MqttPublisher(struct mosq_config cfg, std::string topic);
 
   ~MqttPublisher();
-  void Publish(const void *payload, const int32_t &payloadlen);
+  void Publish(const void *payload, const int32_t &payloadlen, const int32_t &qos = 0);
   void SetOnPublish(PublishCallback pcb);
   void SetOnLog(LogCallback lcb);
 
