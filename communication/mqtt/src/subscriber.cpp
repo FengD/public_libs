@@ -10,12 +10,12 @@ namespace communication {
 
 Subscriber::Subscriber() {}
 
-Subscriber::Subscriber(struct mosq_config cfg, std::string topic) {
-  mqtt_subscriber_ = new MqttSubscriber(cfg, topic);
+Subscriber::Subscriber(struct mosq_config cfg, std::string topic, const int32_t &qos) {
+  mqtt_subscriber_ = new MqttSubscriber(cfg, topic, qos);
 }
 
-Subscriber::Subscriber(struct mosq_config cfg, std::string topic, LogCallback on_log) {
-  mqtt_subscriber_ = new MqttSubscriber(cfg, topic);
+Subscriber::Subscriber(struct mosq_config cfg, std::string topic, LogCallback on_log, const int32_t &qos) {
+  mqtt_subscriber_ = new MqttSubscriber(cfg, topic, qos);
   mqtt_subscriber_->SetOnLog(on_log);
 }
 

@@ -12,12 +12,14 @@ namespace communication {
 // MqttSubscriber::MqttSubscriber() {}
 
 MqttSubscriber::MqttSubscriber(std::string host, int32_t port, std::string topic,
-                               std::string username, std::string password) {
+                               std::string username, std::string password,
+                               const int32_t &qos) {
   cfg_.port = port;
   cfg_.host = host;
   cfg_.username = username;
   cfg_.password = password;
   topic_ = topic;
+  qos_ = qos;
   mqtt_client_ = new MqttClient(cfg_);
   mosq_ = mosquitto_new(NULL, true, this);
   topic_ = topic;
@@ -27,9 +29,10 @@ MqttSubscriber::MqttSubscriber(std::string host, int32_t port, std::string topic
   }
 }
 
-MqttSubscriber::MqttSubscriber(struct mosq_config cfg, std::string topic) {
+MqttSubscriber::MqttSubscriber(struct mosq_config cfg, std::string topic, const int32_t &qos) {
   cfg_ = cfg;
   topic_ = topic;
+  qos_ = qos;
   mqtt_client_ = new MqttClient(cfg_);
   mosq_ = mosquitto_new(NULL, true, this);
   if (mqtt_client_->ConnectClient(mosq_, OnConnect) < 0) {
@@ -44,7 +47,7 @@ MqttSubscriber::~MqttSubscriber() {
 }
 
 void MqttSubscriber::Subscribe() {
-  mosquitto_subscribe(mosq_, NULL, topic_.c_str(), 0);
+  mosquitto_subscribe(mosq_, NULL, topic_.c_str(), qos_);
 }
 
 void MqttSubscriber::Spin() {

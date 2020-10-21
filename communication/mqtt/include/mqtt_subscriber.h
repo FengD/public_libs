@@ -19,8 +19,9 @@ class MqttClient;
 class MqttSubscriber {
  public:
   MqttSubscriber(std::string host, int32_t port, std::string topic,
-                 std::string username = "", std::string password = "");
-  MqttSubscriber(struct mosq_config cfg, std::string topic);
+                 std::string username = "", std::string password = "",
+                 const int32_t &qos = 0);
+  MqttSubscriber(struct mosq_config cfg, std::string topic, const int32_t &qos = 0);
   ~MqttSubscriber();
 
   void SetOnMessage(MessageCallback mcb);
@@ -34,6 +35,7 @@ class MqttSubscriber {
   struct mosquitto *mosq_;
   MqttClient *mqtt_client_;
   struct mosq_config cfg_;
+  int32_t qos_;
 
   MessageCallback mcb_;
   SubscribeCallback scb_;

@@ -21,9 +21,9 @@ class Subscriber {
  public:
   Subscriber();
 
-  Subscriber(struct mosq_config cfg, std::string topic);
+  Subscriber(struct mosq_config cfg, std::string topic, const int32_t &qos = 0);
 
-  Subscriber(struct mosq_config cfg, std::string topic, LogCallback on_log);
+  Subscriber(struct mosq_config cfg, std::string topic, LogCallback on_log, const int32_t &qos = 0);
 
   // One of Spin ot Nospin should be used.
   // Spin is to create a thread and block
