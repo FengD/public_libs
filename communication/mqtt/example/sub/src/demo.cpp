@@ -9,13 +9,15 @@
 #include <string.h>
 #include "subscriber.h"
 #include "handler.h"
-#include "itd_ipd_sensor_msgs.pb.h"
+#include "itd_ipd_std_msgs.pb.h"
 
-#define HOST "192.168.8.224"
+#define HOST "dingfeng.website"
 #define PORT 1883
+#define USERNAME "hirain"
+#define PASSWORD "123"
 
-void OnMessage(const itd::communication::protobuf::PointCloud &cloud) {
-  printf("%d\n", cloud.width());
+void OnMessage(const itd::communication::protobuf::Int32 &data) {
+  printf("%d\n", data.data());
 }
 
 void OnLog(int level, const char *str) {
@@ -23,8 +25,9 @@ void OnLog(int level, const char *str) {
 }
 
 int main() {
-  itd::communication::Handler handler(HOST, PORT);
-  itd::communication::Subscriber *sub = handler.subscribe<itd::communication::protobuf::PointCloud>("Test", OnMessage);
+  itd::communication::Handler handler(HOST, PORT, USERNAME, PASSWORD);
+  // itd::communication::Handler handler(HOST, PORT);
+  itd::communication::Subscriber *sub = handler.subscribe<itd::communication::protobuf::Int32>("Test", OnMessage, 2);
   // if need username and password for mqtt server
   // itd::communication::Handler handler(KEEP_ALIVE, HOST, PORT, USERNAME, PASSWORD);
   // if need a callback of log after subscribe
