@@ -5,40 +5,45 @@
 
 #include "thread_period.h"
 #include <stdio.h>
+#include <thread>
 #include "util.h"
 #include "hlog.h"
 
 namespace itd {
 
+ThreadPeriod::ThreadPeriod() : isLogOn_(false) {}
+
 void ThreadPeriod::Run() {
-  while (isAlive() == true) {
-    clock_gettime(CLOCK_MONOTONIC, &start_time_);
-    RunInPeriod();
-    clock_gettime(CLOCK_MONOTONIC, &end_time_);
-    calc_time_diff(&start_time_, &end_time_, &elapsed_time_);
-    calc_time_diff(&elapsed_time_, &period_call_, &sleep_time_);
-
-    if (isLogOn_) {
-      LOGINFO("%s(%d), [%1lu.%06ld]\n", getPName().c_str(), getPid(),
-             (uint64_t) elapsed_time_.tv_sec,
-             elapsed_time_.tv_nsec / 1000);
-    }
-
-    if (sleep_time_.tv_sec < 0) {
-      continue;
-    }
-
-    clock_nanosleep(CLOCK_MONOTONIC, 0, &sleep_time_, NULL);
+  // while (!stop_flag_) {
+  start_time_ = std::chrono::high_resolution_clock::now();
+  RunInPeriod();
+  end_time_ = std::chrono::high_resolution_clock::now();
+  elapsed_time_ = end_time_ - start_time_;
+  sleep_time_ = period_call_ - elapsed_time_;
+  if (isLogOn_) {
+    LOGINFO("%s(%d), [%lfns]\n", GetPName().c_str(), GetPid(),
+           elapsed_time_.count());
   }
+
+  if (sleep_time_.count() > 0) {
+    std::this_thread::sleep_for(sleep_time_);
+  }
+
+  //   if (pause_flag_) {
+  //     std::unique_lock<std::mutex> locker(mutex_);
+  //     while (pause_flag_) {
+  //       condition_.wait(locker);
+  //     }
+  //   }
+  // }
 }
 
 int64_t ThreadPeriod::getElapsedTimeUs() {
-  return elapsed_time_.tv_sec * 1000 * 1000 + elapsed_time_.tv_nsec / 1000;
+  return elapsed_time_.count();
 }
 
 void ThreadPeriod::setPeriodCall(const int32_t& usec) {
-  period_call_.tv_sec = usec / 1000000;
-  period_call_.tv_nsec = (usec * 1000) % 1000000000;
+  period_call_ = std::chrono::duration<double, std::micro>(usec);
 }
 
 void ThreadPeriod::setLogSwitch(const bool& isLogOn) {
@@ -54,7 +59,7 @@ void ThreadPeriod::setThreadParam(const YAML::Node& config) {
   bool isLogOn = config["log"].as<bool>();
   std::string name = config["name"].as<std::string>();
   setLogSwitch(isLogOn);
-  setPName(name);
+  SetPName(name);
   setPeriodCall(period);
 }
 

@@ -8,12 +8,14 @@
 
 #include <yaml-cpp/yaml.h>
 #include <stdint.h>
+#include <chrono>
 #include "thread_base.h"
 
 namespace itd {
 class ThreadPeriod : public ThreadBase {
  private:
-  struct timespec period_call_, start_time_, end_time_, elapsed_time_, sleep_time_;
+  std::chrono::time_point<std::chrono::high_resolution_clock> start_time_, end_time_;
+  std::chrono::duration<double, std::micro> elapsed_time_, sleep_time_, period_call_;
   bool isLogOn_;
 
  protected:
@@ -23,11 +25,11 @@ class ThreadPeriod : public ThreadBase {
   void setThreadParam(const YAML::Node &config);
 
  public:
+  ThreadPeriod();
   virtual ~ThreadPeriod();
+  virtual void RunInPeriod() = 0;
   void Run();
   int64_t getElapsedTimeUs();
-  virtual void RunInPeriod() = 0;
-  // virtual void SetParam(YAML::Node config);
 };
 }  // namespace itd
 
