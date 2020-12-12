@@ -4,67 +4,89 @@
 // Description:
 
 #include "thread_base.h"
+#include "hlog.h"
 
 namespace itd {
 
-void* ThreadBase::func(void* arg) {
-  ThreadBase *ptr = (ThreadBase*) arg;
-  ptr->Run();
-  return NULL;
-}
+void ThreadBase::thread_func() {
+  LOGINFO("Start thread: %d\n", this_thread_->get_id());
 
-int32_t ThreadBase::Start() {
-  pthread_attr_init(&attr_);
-  pthread_attr_setdetachstate(&attr_, PTHREAD_CREATE_DETACHED);
-  if (pthread_create(&pid_, NULL, func, (void*)this) != 0) {
-    return ThreadStartFailed;
+  while (!stop_flag_) {
+    Run();
+    if (pause_flag_) {
+      std::unique_lock<std::mutex> locker(mutex_);
+      while (pause_flag_) {
+        condition_.wait(locker);
+      }
+    }
   }
-  isAlive_ = true;
-  return ThreadNoError;
+  pause_flag_ = false;
+  stop_flag_ = false;
+
+  LOGINFO("Exit thread: %d\n", this_thread_->get_id());
 }
 
-int32_t ThreadBase::Join() {
-  if (pthread_join(pid_, NULL) != 0) {
-    return ThreadJoinFailed;
-  }
-  return ThreadNoError;
-}
-
-int32_t ThreadBase::Detach() {
-  if (pthread_detach(pid_) != 0) {
-    return ThreadDetachFailed;
-  }
-  return ThreadNoError;
-}
-
-int32_t ThreadBase::Stop() {
-  isAlive_ = false;
-  return ThreadNoError;
-}
-
-pthread_t ThreadBase::getPid() {
-  return pid_;
-}
-
-void ThreadBase::setPName(std::string pName) {
-  pName_ = pName;
-}
-
-std::string ThreadBase::getPName() {
-  return pName_;
-}
-
-
-bool ThreadBase::isAlive() {
-  return isAlive_;
-}
-
+ThreadBase::ThreadBase() : this_thread_(nullptr),
+                           p_name_(""),
+                           pause_flag_(false),
+                           stop_flag_(false),
+                           state_(Stoped) {}
 
 ThreadBase::~ThreadBase() {
-  if (isAlive_) {
-    pthread_kill(pid_, 0);
-    pthread_attr_destroy(&attr_);
+  Stop();
+}
+
+std::thread::id ThreadBase::GetPid() const {
+  return std::this_thread::get_id();
+}
+
+void ThreadBase::SetPName(const std::string& p_name) {
+  p_name_ = p_name;
+}
+
+std::string ThreadBase::GetPName() const {
+  return p_name_;
+}
+
+ThreadBase::State ThreadBase::GetState() const {
+  return state_;
+}
+
+void ThreadBase::Start() {
+  if (this_thread_ == nullptr) {
+    this_thread_ = new std::thread(&ThreadBase::thread_func, this);
+    pause_flag_ = false;
+    stop_flag_ = false;
+    state_ = Running;
   }
 }
+
+void ThreadBase::Stop() {
+  if (this_thread_ != nullptr) {
+    pause_flag_ = false;
+    stop_flag_ = true;
+    condition_.notify_all();
+    this_thread_->join();
+    delete this_thread_;
+    this_thread_ = nullptr;
+    state_ = Stoped;
+  }
+}
+
+void ThreadBase::Pause() {
+  if (this_thread_ != nullptr) {
+    pause_flag_ = true;
+    state_ = Paused;
+  }
+}
+
+void ThreadBase::Resume() {
+  if (this_thread_ != nullptr) {
+    pause_flag_ = false;
+    condition_.notify_all();
+    state_ = Running;
+  }
+}
+
 
 }  // namespace itd

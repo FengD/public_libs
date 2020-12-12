@@ -6,40 +6,46 @@
 #ifndef OUR_THREAD_INCLUDE_THREAD_BASE_H_
 #define OUR_THREAD_INCLUDE_THREAD_BASE_H_
 
-#include <pthread.h>
-#include <signal.h>
 #include <stdint.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <atomic>
 #include <string>
 
 namespace itd {
 class ThreadBase {
-  enum ThreadStat {
-    ThreadStartFailed = -3,
-    ThreadJoinFailed = -2,
-    ThreadDetachFailed = -1,
-    ThreadNoError = 0
-  };
+enum State {
+  Stoped,
+  Running,
+  Paused
+};
 
+ protected:
+  std::thread *this_thread_;
+  std::string p_name_;
+  std::atomic<bool> pause_flag_;
+  std::atomic<bool> stop_flag_;
+  State state_;
+  std::mutex mutex_;
+  std::condition_variable condition_;
+  
  private:
-  static void* func(void* arg);
-  pthread_t pid_;
-  bool isAlive_;
-  std::string pName_;
-  pthread_attr_t attr_;
+  void thread_func();
 
  public:
-  int32_t Start();
-  int32_t Join();
-  int32_t Detach();
-  int32_t Stop();
-
-  pthread_t getPid();
-  void setPName(std::string pName);
-  std::string getPName();
-  bool isAlive();
-
-  virtual void Run() = 0;
+  ThreadBase();
   virtual ~ThreadBase();
+  virtual void Run() = 0;
+
+  std::thread::id GetPid() const;
+  void SetPName(const std::string& p_name);
+  std::string GetPName() const;
+  State GetState() const;
+  void Start();
+  void Stop();
+  void Pause();
+  void Resume();
 };
 }  // namespace itd
 
