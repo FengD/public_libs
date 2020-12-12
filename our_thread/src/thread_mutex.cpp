@@ -8,32 +8,16 @@
 
 namespace itd {
 
-ThreadMutex::ThreadMutex() {
-  int32_t r = pthread_mutex_init(&mutex_, 0);
-  if (r != 0) {
-    printf("Error mutex init\n");
-  }
-}
+ThreadMutex::ThreadMutex() { }
 
-ThreadMutex::~ThreadMutex() {
-  int32_t r = pthread_mutex_destroy(&mutex_);
-  if (r != 0) {
-    printf("Error mutex deinit\n");
-  }
-}
+ThreadMutex::~ThreadMutex() { }
 
 void ThreadMutex::Lock() {
-  int32_t r = pthread_mutex_lock(&mutex_);
-  if (r != 0) {
-    printf("Error mutex lock\n");
-  }
+  mutex_.lock();
 }
 
 void ThreadMutex::Unlock() {
-  int32_t r = pthread_mutex_unlock(&mutex_);
-  if (r != 0) {
-    printf("Error mutex unlock\n");
-  }
+  mutex_.unlock();
 }
 
 EnterCriticalSection::EnterCriticalSection(ThreadMutex * threadMutex) {

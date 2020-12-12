@@ -6,14 +6,14 @@
 #ifndef OUR_THREAD_INCLUDE_THREAD_MUTEX_H_
 #define OUR_THREAD_INCLUDE_THREAD_MUTEX_H_
 
-#include <pthread.h>
 #include <stdint.h>
+#include <mutex>
 
 namespace itd {
 
 class ThreadMutex {
  private:
-  pthread_mutex_t  mutex_;
+  std::mutex mutex_;
 
  public:
   ThreadMutex();
