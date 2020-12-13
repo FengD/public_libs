@@ -6,40 +6,42 @@
 #include "thread_period.h"
 #include <stdio.h>
 #include <thread>
+#include <future>
 #include "util.h"
 #include "hlog.h"
 
 namespace itd {
 
-ThreadPeriod::ThreadPeriod() : isLogOn_(false) {}
+ThreadPeriod::ThreadPeriod() :
+  period_call_(std::chrono::duration<double, std::micro>(1000000)),
+  is_log_on_(false),
+  step_counter_(1),
+  sum_runtime_(0),
+  avg_runtime_(0) {}
 
 void ThreadPeriod::Run() {
-  // while (!stop_flag_) {
   start_time_ = std::chrono::high_resolution_clock::now();
   RunInPeriod();
   end_time_ = std::chrono::high_resolution_clock::now();
   elapsed_time_ = end_time_ - start_time_;
   sleep_time_ = period_call_ - elapsed_time_;
-  if (isLogOn_) {
-    LOGINFO("%s(%d), [%lfns]\n", GetPName().c_str(), GetPid(),
-           elapsed_time_.count());
-  }
-
+  CalculateAverageElapsedTimeUs();
   if (sleep_time_.count() > 0) {
     std::this_thread::sleep_for(sleep_time_);
   }
-
-  //   if (pause_flag_) {
-  //     std::unique_lock<std::mutex> locker(mutex_);
-  //     while (pause_flag_) {
-  //       condition_.wait(locker);
-  //     }
-  //   }
-  // }
 }
 
-int64_t ThreadPeriod::getElapsedTimeUs() {
-  return elapsed_time_.count();
+void ThreadPeriod::CalculateAverageElapsedTimeUs() {
+  sum_runtime_ += static_cast<int64_t>(elapsed_time_.count());
+  avg_runtime_ = sum_runtime_ / step_counter_;
+  if (++step_counter_ > 100) {
+    step_counter_ = 1;
+    sum_runtime_ = 0;
+  }
+}
+
+int64_t ThreadPeriod::getAverageElapsedTimeUs() {
+  return avg_runtime_;
 }
 
 void ThreadPeriod::setPeriodCall(const int32_t& usec) {
@@ -47,11 +49,11 @@ void ThreadPeriod::setPeriodCall(const int32_t& usec) {
 }
 
 void ThreadPeriod::setLogSwitch(const bool& isLogOn) {
-  isLogOn_ = isLogOn;
+  is_log_on_ = isLogOn;
 }
 
 bool ThreadPeriod::getLogSwitch() const {
-  return isLogOn_;
+  return is_log_on_;
 }
 
 void ThreadPeriod::setThreadParam(const YAML::Node& config) {

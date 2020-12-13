@@ -15,8 +15,11 @@ namespace itd {
 class ThreadPeriod : public ThreadBase {
  private:
   std::chrono::time_point<std::chrono::high_resolution_clock> start_time_, end_time_;
+  // period_call 100ms by default
   std::chrono::duration<double, std::micro> elapsed_time_, sleep_time_, period_call_;
-  bool isLogOn_;
+  bool is_log_on_;
+  int64_t step_counter_, sum_runtime_, avg_runtime_;
+  void CalculateAverageElapsedTimeUs();
 
  protected:
   void setPeriodCall(const int32_t &usec);
@@ -29,7 +32,7 @@ class ThreadPeriod : public ThreadBase {
   virtual ~ThreadPeriod();
   virtual void RunInPeriod() = 0;
   void Run();
-  int64_t getElapsedTimeUs();
+  int64_t getAverageElapsedTimeUs();
 };
 }  // namespace itd
 

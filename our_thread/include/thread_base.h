@@ -16,7 +16,7 @@
 namespace itd {
 class ThreadBase {
 enum State {
-  Stoped,
+  Stopped,
   Running,
   Paused
 };
@@ -29,7 +29,7 @@ enum State {
   State state_;
   std::mutex mutex_;
   std::condition_variable condition_;
-  
+
  private:
   void thread_func();
 

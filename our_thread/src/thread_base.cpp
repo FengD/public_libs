@@ -9,8 +9,6 @@
 namespace itd {
 
 void ThreadBase::thread_func() {
-  LOGINFO("Start thread: %d\n", this_thread_->get_id());
-
   while (!stop_flag_) {
     Run();
     if (pause_flag_) {
@@ -22,22 +20,23 @@ void ThreadBase::thread_func() {
   }
   pause_flag_ = false;
   stop_flag_ = false;
-
-  LOGINFO("Exit thread: %d\n", this_thread_->get_id());
 }
 
 ThreadBase::ThreadBase() : this_thread_(nullptr),
                            p_name_(""),
                            pause_flag_(false),
                            stop_flag_(false),
-                           state_(Stoped) {}
+                           state_(Stopped) {}
 
 ThreadBase::~ThreadBase() {
   Stop();
 }
 
 std::thread::id ThreadBase::GetPid() const {
-  return std::this_thread::get_id();
+  if (this_thread_ != nullptr) {
+    return this_thread_->get_id();
+  }
+  return std::thread::id(0);
 }
 
 void ThreadBase::SetPName(const std::string& p_name) {
@@ -69,7 +68,7 @@ void ThreadBase::Stop() {
     this_thread_->join();
     delete this_thread_;
     this_thread_ = nullptr;
-    state_ = Stoped;
+    state_ = Stopped;
   }
 }
 
