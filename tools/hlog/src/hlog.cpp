@@ -12,26 +12,29 @@
 #include <assert.h>
 #include <string>
 #include <iostream>
+#include <thread>
 
 namespace itd {
 namespace tools {
-pthread_mutex_t HLog::mutex_;
-HLog* HLog::Instance() {
-  pthread_mutex_lock(&mutex_);
-  static HLog obj;
-  pthread_mutex_unlock(&mutex_);
-  return &obj;
+
+HLog* HLog::instance_ = new (std::nothrow) HLog;
+
+HLog* HLog::GetInstance() {
+  return instance_;
+}
+
+void HLog::DeleteInstance() {
+  if (instance_) {
+    delete instance_;
+    instance_ = nullptr;
+  }
 }
 
 HLog::HLog() {
-  pthread_mutex_init(&mutex_, NULL);
-  memset(p_log_buf_, 0, 2048);
+  memset(p_log_buf_, 0, 512);
 }
+
 HLog::~HLog() {}
-HLog::HLog(const HLog&) {}
-HLog& HLog::operator=(const HLog&) {
-  return *this;
-}
 
 int32_t HLog::InitHLog(const char* log_init,
                        const char* log_file_path,
@@ -74,7 +77,8 @@ void HLog::HLogMsg(const int32_t& n_log_severity, const char *format, ...) {
       assert(false);
   }
   va_end(arg_ptr);
-  memset(p_log_buf_, 0, 2048);
+  std::this_thread::sleep_for(std::chrono::milliseconds(1));
+  memset(p_log_buf_, 0, 512);
 }
 }  // namespace tools
 }  // namespace itd

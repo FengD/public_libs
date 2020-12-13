@@ -7,7 +7,7 @@
 
 #ifndef TOOLS_HLOG_INCLUDE_HLOG_H_
 #define TOOLS_HLOG_INCLUDE_HLOG_H_
-#include <pthread.h>
+
 #include <glog/logging.h>
 #include <glog/log_severity.h>
 #include <stdint.h>
@@ -16,7 +16,8 @@ namespace itd {
 namespace tools {
 class HLog {
  public:
-  static HLog *Instance();
+  static HLog *GetInstance();
+  static void DeleteInstance();
   int32_t InitHLog(const char* log_init,
                    const char* log_file_path = "./lidar_log/",
                    int32_t n_log_severity_to_print = google::GLOG_WARNING,
@@ -26,18 +27,17 @@ class HLog {
  private:
   HLog();
   ~HLog();
-  HLog(const HLog&);
-  HLog& operator=(const HLog&);
+  HLog(const HLog&) = delete;
+  const HLog& operator=(const HLog&) = delete;
   static HLog* instance_;
-  static pthread_mutex_t mutex_;
-  char p_log_buf_[2048];
+  char p_log_buf_[512];
 };
 
-#define LOGINIT(...) itd::tools::HLog::Instance()->InitHLog(__VA_ARGS__);
-#define LOGINFO(...) itd::tools::HLog::Instance()->HLogMsg(0, __VA_ARGS__);
-#define LOGWARNING(...) itd::tools::HLog::Instance()->HLogMsg(1, __VA_ARGS__);
-#define LOGERROR(...) itd::tools::HLog::Instance()->HLogMsg(2, __VA_ARGS__);
-#define LOGFATAL(...) itd::tools::HLog::Instance()->HLogMsg(3, __VA_ARGS__);
+#define LOGINIT(...) itd::tools::HLog::GetInstance()->InitHLog(__VA_ARGS__);
+#define LOGINFO(...) itd::tools::HLog::GetInstance()->HLogMsg(0, __VA_ARGS__);
+#define LOGWARNING(...) itd::tools::HLog::GetInstance()->HLogMsg(1, __VA_ARGS__);
+#define LOGERROR(...) itd::tools::HLog::GetInstance()->HLogMsg(2, __VA_ARGS__);
+#define LOGFATAL(...) itd::tools::HLog::GetInstance()->HLogMsg(3, __VA_ARGS__);
 }  // namespace tools
 }  // namespace itd
 
