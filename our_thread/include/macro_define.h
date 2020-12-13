@@ -7,6 +7,34 @@
 #define OUR_THREAD_INCLUDE_MACRO_DEFINE_H_
 #include "hlog.h"
 
+template<typename T>
+class ThreadManager {
+ public:
+  static void ThreadStart(const bool &on_flag, const T& t) {
+    if (on_flag) {
+      t.Start();
+    }
+  }
+
+  static void ThreadStop(const bool &on_flag, const T& t) {
+    if (on_flag) {
+      t.Stop();
+    }
+  }
+
+  static void ThreadResume(const bool &on_flag, const T& t) {
+    if (on_flag) {
+      t.Resume();
+    }
+  }
+
+  static void ThreadPause(const bool &on_flag, const T& t) {
+    if (on_flag) {
+      t.Pause();
+    }
+  }
+};
+
 // thread start and detach
 #define SDT(switch, thread)\
 if (switch) {\
