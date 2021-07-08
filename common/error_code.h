@@ -3,8 +3,7 @@
 // Author: Feng DING
 // Description: error code
 
-#ifndef COMMON_INCLUDE_ERROR_CODE_H_
-#define COMMON_INCLUDE_ERROR_CODE_H_
+#pragma once
 
 enum CommunicationStatus {
   ERR_MQTT_INIT = -23,
@@ -32,5 +31,3 @@ enum CommunicationStatus {
   DEVICE_ERROR = -1,
   NO_ERROR = 0
 };
-
-#endif  // COMMON_INCLUDE_ERROR_CODE_H_

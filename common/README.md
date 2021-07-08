@@ -1,17 +1,7 @@
 # Description
-
 Common header
 
-# Change Log
+# Release Note
 
 * Created by feng.ding @Hirain 20200302
-
-## Notice
-
-* 在未经master所有者授权情况下，禁止泄露源码到工程成员以外人员
-
-## 版本说明
-
-| Version | Update | Contractor | Description | Remark |
-| ------ | ------- | :----: | --------| --------- |
-| V1.0.0 | 2020/03/02 |  丁丰  | 创建 添加 公共错误码 | |
+* Create Factory, singleton, concurrent_object_pool, for_each, thread_safe_queue, etc.

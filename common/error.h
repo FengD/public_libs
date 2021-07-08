@@ -3,8 +3,7 @@
 // Author: DEMING YUAN
 // Description: error code
 
-#ifndef COMMON_INCLUDE_ERROR_H_
-#define COMMON_INCLUDE_ERROR_H_
+#pragma once
 
 #include <cassert>
 #include <cstdlib>
@@ -56,5 +55,3 @@ class Error : public std::exception {
 };
 }  // namespace common
 }  // namespace itd
-
-#endif  // COMMON_INCLUDE_ERROR_H_
